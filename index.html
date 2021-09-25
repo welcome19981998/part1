@@ -291,7 +291,7 @@
                 <div class="command" v-show=" Confirmtype === '次の行動'" @click="BattleE('ガブ',70,10,20,[{action: EMagic_fire, per: 80},{action: Eheal80, per: 0}],['火弱'],'ゴブリン.PNG',1200,12);" v-on:mouseover= "msg1 = 'やさしく攻撃する'" v-on:mouseleave="msg1 = ''">前に進む</div>
                 <div class="command" v-show=" Confirmtype === '次の行動'" @click="Goahead();" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">周囲を調べる</div>
                 <div class="command" v-show=" Confirmtype === '次の行動'" @click="NonBCommand = 'item_nonbattle' " v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">道具</div>
-                <div class="command" v-show=" Confirmtype === '次の行動'" @click="Takarabakohakken('ミミック',100,100,100,[{action: EPoisonattack, per: 10},{action: ESleep, per: 80}],'','image/ミミック.png',1200,12);" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">街に戻る</div>
+                <div class="command" v-show=" Confirmtype === '次の行動'" @click="Takarabakohakken('ミミック',100,100,100,[{action: EPoisonattack, per: 10},{action: ESleep, per: 80}],'','ミミック.png',1200,12);" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">街に戻る</div>
                 <div class="command" v-show=" Confirmtype === 'はいいいえ'" @click="YesAction" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">はい</div>
                 <div class="command" v-show=" Confirmtype === 'はいいいえ'" @click="NoAction" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">いいえ</div>
 
@@ -1125,13 +1125,13 @@
                     Stage1: function(){
                       const p = Math.floor(Math.random() * this.Gopoint) + 1;
                       if(p <= 0){
-                        this.BattleE('ピヨピヨバード',40,10,20,[{action: this.Eheal, per: 0},],'','image/ピヨ鳥.png',100,12);
+                        this.BattleE('ピヨピヨバード',40,10,20,[{action: this.Eheal, per: 0},],'','ピヨ鳥.png',100,12);
                       }
                       else if(p <= 0){
                         this.BattleE('ガブ',70,10,20,[{action: this.Eheal, per: 80},{action: this.Eheal80, per: 0}],["火弱"],'ゴブリン.PNG',1200,12);
                       }
                       else if(p <= 7){
-                        this.BattleE('キングフロッグ',100,30,40,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],['呪文反射'],'image/蛙.png',1200,12);
+                        this.BattleE('キングフロッグ',100,30,40,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],['呪文反射'],'蛙.png',1200,12);
                       }
                     },
                     BattleE: function(ename,ehp,eatk,edef,actions,eunique,image,eexp,egold){
@@ -1156,7 +1156,7 @@
                       this.Action= this.Playerturn;//なぜかうまくいく
                     },
                     Takarabakohakken: function(ename,ehp,eatk,edef,actions,eunique,image,eexp,egold){
-                      this.Image = "image/宝箱.png";
+                      this.Image = "宝箱.png";
                       this.ImageOn = true;//画像表示
                       this.text = "宝箱を見つけた！";
                       this.SwitchOn= false;
