@@ -99,6 +99,11 @@
             background-repeat: no-repeat;
             background-size:cover;
           }
+          .syuraku{
+            background-image:url("村2.jpeg");
+            background-repeat: no-repeat;
+            background-size:cover;
+          }
           .content {
             width: 100vw;
             height: 100vh;
@@ -227,7 +232,7 @@
     </head>
     <body>
       <div id="app">
-        <div class = "content stage1">
+        <div class = "content" v-bind:class="{'syuraku': this.BackImage==='syuraku','stage1': this.BackImage==='stage1'}">
           <div>{{"msg2"}}</div>
           <button name="myBtn" v-show="SwitchOn === false" class="z" v-on:click="Action" ></button>
 
@@ -294,20 +299,25 @@
                 <div class="command" v-show=" Confirmtype === '次の行動'" @click="Takarabakohakken('ミミック',100,100,100,[{action: EPoisonattack, per: 10},{action: ESleep, per: 80}],'','ミミック.png',1200,12);" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">街に戻る</div>
                 <div class="command" v-show=" Confirmtype === 'はいいいえ'" @click="YesAction" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">はい</div>
                 <div class="command" v-show=" Confirmtype === 'はいいいえ'" @click="NoAction" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">いいえ</div>
+                <div class="command" v-show=" Confirmtype === '買い物'" @click="NonBCommand = 'Buy'" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">物を買う</div>
+                <div class="command" v-show=" Confirmtype === '買い物'" @click="NonBCommand = 'Sell'" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">物を売る</div>
+                <div class="command" v-show=" Confirmtype === '買い物'" @click="NonBCommand = 'item_nonbattle' " v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">持ち物を確認する</div>
+                <div class="command" v-show=" Confirmtype === '買い物'" @click="NoAction" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">村を出る</div>
 
               </div>
-              <div class="Maincommand center ml-3vw" v-show=" SwitchOn && BClist === 'confirm' && NonBCommand === 'item_nonbattle'">
+              <div class="Maincommand center ml-3vw" v-show=" SwitchOn && BClist === 'confirm' && NonBCommand === 'item_nonbattle' ||SwitchOn && BClist === 'confirm' && NonBCommand !== 'main'">
                 <div class="center"  v-on:mouseover="msg1 = '' " v-on:mouseleave="msg1 = ''">{{Name}}Lv.{{Level}}</div>
-                <div  v-show=" NonBClist !== 'Wepon'" v-on:mouseover="msg1 = '' " v-on:mouseleave="msg1 = ''"> HP：{{Hp}}/{{MaxHp}}</div>
-                <div  v-show=" NonBClist !== 'Wepon'" v-on:mouseover="msg1 = ''" v-on:mouseleave="msg1 = ''"> MP：{{Mp}}/{{MaxMp}}</div>
-                <div  v-show=" NonBClist !== 'Wepon'" v-on:mouseover="msg1 = ''" v-on:mouseleave="msg1 = ''"> 状態変化：{{Joutaihennka}}</div>
-                <div  v-show=" NonBClist === 'Wepon'" v-on:mouseover="msg1 = '' " v-on:mouseleave="msg1 = ''"> AT：{{BaseATk+WeponATk}}</div>
-                <div  v-show=" NonBClist === 'Wepon'" v-on:mouseover="msg1 = ''" v-on:mouseleave="msg1 = ''"> DF：{{BaseDEf+WeponDEf}}</div>
+                <div  v-show=" NonBClist !== 'Wepon' && NonBClist !== 'Shield'" v-on:mouseover="msg1 = '' " v-on:mouseleave="msg1 = ''"> HP：{{Hp}}/{{MaxHp}}</div>
+                <div  v-show=" NonBClist !== 'Wepon' && NonBClist !== 'Shield'" v-on:mouseover="msg1 = ''" v-on:mouseleave="msg1 = ''"> MP：{{Mp}}/{{MaxMp}}</div>
+                <div  v-show=" NonBClist !== 'Wepon' && NonBClist !== 'Shield' && Confirmtype !== '買い物'" v-on:mouseover="msg1 = ''" v-on:mouseleave="msg1 = ''"> 状態変化：{{Joutaihennka}}</div>
+                <div  v-show=" NonBClist === 'Wepon' || NonBClist === 'Shield'" v-on:mouseover="msg1 = '' " v-on:mouseleave="msg1 = ''"> AT：{{BaseATk+WeponATk}}</div>
+                <div  v-show=" NonBClist === 'Wepon' || NonBClist === 'Shield'" v-on:mouseover="msg1 = ''" v-on:mouseleave="msg1 = ''"> DF：{{BaseDEf+WeponDEf}}</div>
+                <div  v-show=" Confirmtype === '買い物'" v-on:mouseover="msg1 = ''" v-on:mouseleave="msg1 = ''"> お金：{{Gold}}G</div>
               </div>
               <div class="Maincommand" v-show="SwitchOn && BClist === 'confirm' && NonBCommand === 'item_nonbattle'">
                 <div class="command" @click=" NonBCommand = 'main'; NonBClist = '';" v-show="a() <= 1" v-on:mouseover="msg1 = '通常攻撃　稀に会心の一撃を繰り出す' " v-on:mouseleave="msg1 = ''">・戻る</div>
                 <div class="command" @click="NonBClist = 'Wepon'" v-show="a() <= 1" v-on:mouseover="msg1 = '凄まじく攻撃する' " v-on:mouseleave="msg1 = ''">・武器</div>
-                <div class="command" @click="BClist = 'Magic'" v-show="a() <= 1" v-on:mouseover="msg1 = 'MPを使って魔法を唱える' " v-on:mouseleave="msg1 = ''">・防具</div>
+                <div class="command" @click="NonBClist = 'Shield'" v-show="a() <= 1" v-on:mouseover="msg1 = 'MPを使って魔法を唱える' " v-on:mouseleave="msg1 = ''">・防具</div>
                 <div class="command" @click="NonBClist = 'Item'"v-show="a() <= 1" v-on:mouseover="msg1 = '道具を使って回復する' " v-on:mouseleave="msg1 = ''">・道具</div>
               </div>
               <div class="menu Unusable" v-show="SwitchOn && NonBClist === 'Wepon'">
@@ -323,6 +333,13 @@
                 <div class="command" @click="SwitchOn= !SwitchOn; aaa2" v-show=" 1 <= 1"v-on:mouseover="msg1 = '雑に攻撃する' " v-on:mouseleave="msg1 = ''">・酷い</div>
 
               </div>
+              <div class="menu Unusable" v-show="SwitchOn && NonBClist === 'Shield'">
+                <div class="command" @click=" WeponDEf = 10;Shield = '鍋ぶた'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('鍋ぶた')" v-on:mouseover="msg1 = '守備力+10' " v-on:mouseleave="msg1 = ''">・鍋ぶた</div>
+                <div class="command" @click=" WeponDEf = 20;Shield = '銅の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('銅の盾')" v-on:mouseover="msg1 = '守備力+20' " v-on:mouseleave="msg1 = ''">・銅の盾</div>
+                <div class="command" @click=" WeponDEf = 30;Shield = '鋼の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('鋼の盾')" v-on:mouseover="msg1 = '守備力+30' " v-on:mouseleave="msg1 = ''">・鋼の盾</div>
+                <div class="command" @click=" WeponDEf = 20;Shield = '魔力の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('魔力の盾')" v-on:mouseover="msg1 = '守備力+20 毎ターンMPを回復する' " v-on:mouseleave="msg1 = ''">・魔力の盾</div>
+
+              </div>
               <div class="menu" v-show="SwitchOn && NonBClist === 'Item'">
                 <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_yakusou; Item_yakusou();" v-show="Yakusou_stock >= 1" v-on:mouseover="msg1 = '体力を40回復する　　　　　所持数：'+Yakusou_stock " v-on:mouseleave="msg1 = ''">・薬草</div>
                 <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Dokukesi_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Dokukesi_stock " v-on:mouseleave="msg1 = ''">・毒消し</div>
@@ -333,13 +350,45 @@
                 <div class="command" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">・かっこいい</div>
                 <div class="command" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">・良い</div>
               </div>
+              <!--　ここから買うリスト-->
+              <div class="Maincommand" v-show="SwitchOn && BClist === 'confirm' && NonBCommand === 'Buy'">
+                <div class="command" @click=" NonBCommand = 'main'; NonBClist = '';" v-show="a() <= 1" v-on:mouseover="msg1 = '通常攻撃　稀に会心の一撃を繰り出す' " v-on:mouseleave="msg1 = ''">・戻る</div>
+                <div class="command" @click="NonBClist = 'Buy_Wepon'" v-show="a() <= 1" v-on:mouseover="msg1 = '武器を買う' " v-on:mouseleave="msg1 = ''">・武器</div>
+                <div class="command" @click="NonBClist = 'Buy_Shield'" v-show="a() <= 1" v-on:mouseover="msg1 = '防具を買う' " v-on:mouseleave="msg1 = ''">・防具</div>
+                <div class="command" @click="NonBClist = 'Buy_Item'"v-show="a() <= 1" v-on:mouseover="msg1 = '道具を買う' " v-on:mouseleave="msg1 = ''">・道具</div>
+              </div>
+              <div class="menu Unusable" v-show="SwitchOn && NonBClist === 'Buy_Wepon'">
+                <div class="command" @click=" WeponATk = 10;Wepon = '木刀'; Action= Wepon_change; Wepon_change();" v-show="AllWeponShield.includes('木刀')" v-on:mouseover="msg1 = '攻撃力+10' " v-on:mouseleave="msg1 = ''">・木刀</div>
+                <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('銅の剣',300); " v-show="AllWeponShield.includes('銅の剣')" v-on:mouseover="msg1 = '攻撃力+30 値段：300G' " v-on:mouseleave="msg1 = ''">・銅の剣</div>
+                <div v-bind:class="{command: Gold >=500}" @click="Action= WeponShield_buy; WeponShield_buy('鋼の剣',500); " v-show="AllWeponShield.includes('鋼の剣')" v-on:mouseover="msg1 = '攻撃力+30 値段：500G' " v-on:mouseleave="msg1 = ''">・鋼の剣</div>
+
+              </div>
+              <div class="menu Unusable" v-show="SwitchOn && NonBClist === 'Buy_Shield'">
+                <div class="command" @click=" WeponDEf = 10;Shield = '鍋ぶた'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('鍋ぶた')" v-on:mouseover="msg1 = '守備力+10' " v-on:mouseleave="msg1 = ''">・鍋ぶた</div>
+                <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('銅の盾',300); " v-show="AllWeponShield.includes('銅の盾')" v-on:mouseover="msg1 = '守備力+20 値段：300G' " v-on:mouseleave="msg1 = ''">・銅の盾</div>
+                <div class="command" @click=" WeponDEf = 20;Shield = '銅の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('銅の盾')" v-on:mouseover="msg1 = '守備力+20' " v-on:mouseleave="msg1 = ''">・銅の盾</div>
+                <div class="command" @click=" WeponDEf = 30;Shield = '鋼の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('鋼の盾')" v-on:mouseover="msg1 = '守備力+30' " v-on:mouseleave="msg1 = ''">・鋼の盾</div>
+                <div class="command" @click=" WeponDEf = 20;Shield = '魔力の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('魔力の盾')" v-on:mouseover="msg1 = '守備力+20 毎ターンMPを回復する' " v-on:mouseleave="msg1 = ''">・魔力の盾</div>
+
+              </div>
+              <div class="menu" v-show="SwitchOn && NonBClist === 'Buy_Item'">
+                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_yakusou; Item_yakusou();" v-show="Yakusou_stock >= 1" v-on:mouseover="msg1 = '体力を40回復する　　　　　所持数：'+Yakusou_stock " v-on:mouseleave="msg1 = ''">・薬草</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Dokukesi_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Dokukesi_stock " v-on:mouseleave="msg1 = ''">・毒消し</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Seisui_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Seisui_stock " v-on:mouseleave="msg1 = ''">・聖水</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Bannouyaku_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Bannouyaku_stock " v-on:mouseleave="msg1 = ''">・万能薬</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Coffee_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Coffee_stock " v-on:mouseleave="msg1 = ''">・コーヒー</div>
+                <div class="command" v-show="a() <= 1" v-on:mouseover="msg1 = 'やさしく攻撃する' " v-on:mouseleave="msg1 = ''">・yasasii</div>
+                <div class="command" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">・かっこいい</div>
+                <div class="command" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">・良い</div>
+              </div>
+              <!--　ここまで買うリスト-->
               <div class="menu" v-show="SwitchOn && NonBClist === 'Magic'">
                 <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= aaa2; aaa2();" v-show="a() <= 1" v-on:mouseover="msg1 = '念入りに攻撃する' " v-on:mouseleave="msg1 = ''">・クリック！</div>
                 <div class="command" v-show="a() <= 1" v-on:mouseover="msg1 = 'やさしく攻撃する' " v-on:mouseleave="msg1 = ''">・yasasii</div>
                 <div class="command" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">・かっこいい</div>
                 <div class="command" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">・良い</div>
               </div>
-              <div class="Maincommand w-19vw" v-show="SwitchOn && BClist !== 'confirm' ||SwitchOn && BClist === 'confirm' && NonBCommand === 'item_nonbattle'">{{msg1}}</div>
+              <div class="Maincommand w-19vw" v-show="SwitchOn && BClist !== 'confirm' || SwitchOn && BClist === 'confirm' && NonBCommand === 'item_nonbattle' || SwitchOn && BClist === 'confirm' && NonBCommand !== 'main'">{{msg1}}</div>
           </div>
           <div class="Imagearea">
             <div class="Image" v-show="ImageOn" v-bind:class="{tennmetu1: tennmetufun===1, tennmetu2: tennmetufun===2,}">
@@ -399,6 +448,7 @@
                    Image:"ゴブリン.PNG",//image
                    MimicImage:"",//ミミック登場用
                    EfectImage:"炎.png",//エフェクトのイメージ
+                   BackImage:"stage1",//背景画像のクラス
                    //戦闘時に必要な変数------------------------------
                    //自分の変数
                    Name:"プレイヤー",
@@ -409,6 +459,7 @@
                    Mp:10,
                    Joutaihennka:"なし",
                    Wepon:"",
+                   Shield:"",//着けている防具
                    BaseATk:50,
                    BaseDEf:20,
                    WeponATk:0,
@@ -419,7 +470,7 @@
                    Sleep:0,//スリープカウント
                    EXp:0,
                    Levelup:100,//this.Level*100,//levelupに必要な経験値
-                   Gold:0,
+                   Gold:1000,
                    ///敵の変数
                    EMaxHp :100,
                    EMaxHp :100,
@@ -440,8 +491,8 @@
                    Allmagic:['ファイア','フレイム','アイス','ブリザード','スパーク','サンダー',],
                    Usemagic:['ファイア','アイス','スパーク'],
                    //持っていない全ての武器、持っている武器
-                   AllWeponShield:['銅の剣','鋼の剣','会心の剣','妖刀村正','力の剣','銅の盾','鋼の盾'],
-                   UseWeponShield:['木刀','鍋ぶた'],
+                   AllWeponShield:['銅の剣','鋼の剣','会心の剣','妖刀村正','力の剣','銅の盾','鋼の盾','魔力の盾'],
+                   UseWeponShield:['木刀','鍋ぶた',],
                    //宝箱で入手できる道具の全量
                    AllItem:['薬草','毒消し','聖水','万能薬','コーヒー'],
                    //宝箱で入手したもの
@@ -1104,7 +1155,12 @@
                       a+=1;
                     },
                     Wepon_change: function(){
-                      command = [this.Name+"は"+this.Wepon+"を装備した！",];
+                      if(this.NonBClist === 'Wepon'){
+                        command = [this.Name+"は"+this.Wepon+"を装備した！",];
+                      }
+                      else if(this.NonBClist === 'Shield'){
+                        command = [this.Name+"は"+this.Shield+"を装備した！",];
+                      }
                       this.SwitchOn= false;
                       this.Action= this.Wepon_change;
                       if(a === command.length){
@@ -1113,6 +1169,27 @@
                       }
                       this.text=command[a];
                       console.log(a+"2");
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    WeponShield_buy: function(item,gold){//武器か防具を買う
+                        command = [this.Name+"は"+gold+"G払って"+item+"を手に入れた！",];
+
+                      this.SwitchOn= false;
+                      //this.Action= this.WeponShield_buy(item,gold);
+                      if(a === 0){
+                        const p = this.AllWeponShield.indexOf(item);
+                        this.AllWeponShield.splice(p,1);//持っていないリストから削除
+                        //
+                        this.UseWeponShield.push(item);//持っているリストに追加
+                        //
+                        this.Gold -= gold;//お金を差し引く
+                      }
+                      if(a === command.length){
+                        a= -1;
+                        this.SwitchOn= true;//ターンを渡す
+                      }
+                      this.text=command[a];
                       this.msg2=a;
                       a+=1;
                     },
@@ -1130,8 +1207,10 @@
                       else if(p <= 0){
                         this.BattleE('ガブ',70,10,20,[{action: this.Eheal, per: 80},{action: this.Eheal80, per: 0}],["火弱"],'ゴブリン.PNG',1200,12);
                       }
-                      else if(p <= 7){
+                      else if(p <= 0){
                         this.BattleE('キングフロッグ',100,30,40,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],['呪文反射'],'蛙.png',1200,12);
+                      }else if(p <= 4){
+                        this.Yado();
                       }
                     },
                     BattleE: function(ename,ehp,eatk,edef,actions,eunique,image,eexp,egold){
@@ -1322,6 +1401,31 @@
                       }
                       this.text=command[a];
                       console.log(a+"2");
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Yado: function(){
+                      if(a === 0){
+                        command = [this.Name+"は小さな集落を見つけた！","旅の方よ、ここで休んでいきなさい",this.Name+"は体力と魔力を全回復した！","何か買い物されますか？"];
+                        this.BackImage = "syuraku";
+                        this.Action = this.Yado;
+                      }
+                      BClist = 0;
+                      this.SwitchOn= false;
+                      if(a === command.length){
+                        a= -1;
+                        //戦闘ではない場合
+                          this.BClist = "confirm";
+                          this.SwitchOn = true;
+                          this.Confirmtype = '買い物';
+                          console.log("yado");
+                      }
+                      if(a === 1){
+                        this.Image = "婆さん.png";
+                        this.ImageOn = true;//画像表示
+
+                      }
+                      this.text=command[a];
                       this.msg2=a;
                       a+=1;
                     },
