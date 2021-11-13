@@ -366,7 +366,6 @@
               <div class="menu Unusable" v-show="SwitchOn && NonBClist === 'Buy_Shield'">
                 <div class="command" @click=" WeponDEf = 10;Shield = '鍋ぶた'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('鍋ぶた')" v-on:mouseover="msg1 = '守備力+10' " v-on:mouseleave="msg1 = ''">・鍋ぶた</div>
                 <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('銅の盾',300); " v-show="AllWeponShield.includes('銅の盾')" v-on:mouseover="msg1 = '守備力+20 値段：300G' " v-on:mouseleave="msg1 = ''">・銅の盾</div>
-                <div class="command" @click=" WeponDEf = 20;Shield = '銅の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('銅の盾')" v-on:mouseover="msg1 = '守備力+20' " v-on:mouseleave="msg1 = ''">・銅の盾</div>
                 <div class="command" @click=" WeponDEf = 30;Shield = '鋼の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('鋼の盾')" v-on:mouseover="msg1 = '守備力+30' " v-on:mouseleave="msg1 = ''">・鋼の盾</div>
                 <div class="command" @click=" WeponDEf = 20;Shield = '魔力の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('魔力の盾')" v-on:mouseover="msg1 = '守備力+20 毎ターンMPを回復する' " v-on:mouseleave="msg1 = ''">・魔力の盾</div>
 
