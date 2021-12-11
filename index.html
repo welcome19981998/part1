@@ -314,6 +314,7 @@
                 <div  v-show=" NonBClist === 'Wepon' || NonBClist === 'Shield'" v-on:mouseover="msg1 = ''" v-on:mouseleave="msg1 = ''"> DF：{{BaseDEf+WeponDEf}}</div>
                 <div  v-show=" Confirmtype === '買い物'" v-on:mouseover="msg1 = ''" v-on:mouseleave="msg1 = ''"> お金：{{Gold}}G</div>
               </div>
+              <!--　ここから持ち物確認リスト-->
               <div class="Maincommand" v-show="SwitchOn && BClist === 'confirm' && NonBCommand === 'item_nonbattle'">
                 <div class="command" @click=" NonBCommand = 'main'; NonBClist = '';" v-show="a() <= 1" v-on:mouseover="msg1 = '通常攻撃　稀に会心の一撃を繰り出す' " v-on:mouseleave="msg1 = ''">・戻る</div>
                 <div class="command" @click="NonBClist = 'Wepon'" v-show="a() <= 1" v-on:mouseover="msg1 = '凄まじく攻撃する' " v-on:mouseleave="msg1 = ''">・武器</div>
@@ -350,6 +351,34 @@
                 <div class="command" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">・かっこいい</div>
                 <div class="command" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">・良い</div>
               </div>
+              <!--　ここまで持ち物確認リスト-->
+               <!--　ここから売るリスト-->
+               <div class="Maincommand" v-show="SwitchOn && BClist === 'confirm' && NonBCommand === 'Sell'">
+                <div class="command" @click=" NonBCommand = 'main'; NonBClist = '';" v-show="a() <= 1" v-on:mouseover="msg1 = '通常攻撃　稀に会心の一撃を繰り出す' " v-on:mouseleave="msg1 = ''">・戻る</div>
+                <div class="command" @click="NonBClist = 'Sell_Wepon'" v-show="a() <= 1" v-on:mouseover="msg1 = '武器を売る' " v-on:mouseleave="msg1 = ''">・武器</div>
+                <div class="command" @click="NonBClist = 'Sell_Shield'" v-show="a() <= 1" v-on:mouseover="msg1 = '防具を売る' " v-on:mouseleave="msg1 = ''">・防具</div>
+                <div class="command" @click="NonBClist = 'Sell_Item'"v-show="a() <= 1" v-on:mouseover="msg1 = '道具を売る' " v-on:mouseleave="msg1 = ''">・道具</div>
+              </div>
+              <div class="menu Unusable" v-show="SwitchOn && NonBClist === 'Sell_Wepon'">
+                <div class="command" @click=" WeponATk = 10;Wepon = '木刀'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('木刀')" v-on:mouseover="msg1 = '攻撃力+10' " v-on:mouseleave="msg1 = ''">・木刀</div>
+                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('銅の剣',150); " v-show="UseWeponShield.includes('銅の剣')" v-on:mouseover="msg1 = '攻撃力+30 売り値：150G' " v-on:mouseleave="msg1 = ''">・銅の剣</div>
+                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('鋼の剣',250); " v-show="UseWeponShield.includes('鋼の剣')" v-on:mouseover="msg1 = '攻撃力+50 売り値：250G' " v-on:mouseleave="msg1 = ''">・鋼の剣</div>
+              </div>
+              <div class="menu Unusable" v-show="SwitchOn && NonBClist === 'Sell_Shield'">
+                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('銅の盾',150); " v-show="UseWeponShield.includes('銅の盾')" v-on:mouseover="msg1 = '守備力+20 売り値：150G' " v-on:mouseleave="msg1 = ''">・銅の盾</div>
+                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('鋼の盾',250); " v-show="UseWeponShield.includes('鋼の盾')" v-on:mouseover="msg1 = '守備力+50 売り値：250G' " v-on:mouseleave="msg1 = ''">・鋼の盾</div>
+              </div>
+              <div class="menu" v-show="SwitchOn && NonBClist === 'Sell_Item'">
+                <div class="command" @click=" Action= Item_sell; Item_sell('薬草',25);" v-show="Yakusou_stock >= 1" v-on:mouseover="msg1 = '体力を40回復する　　　　　所持数：'+Yakusou_stock +'　売り値：25G'" v-on:mouseleave="msg1 = ''">・薬草</div>
+                <div class="command" @click=" Action= Item_sell; Item_sell('毒消し',15);" v-show="Dokukesi_stock >= 1" v-on:mouseover="msg1 = '体力を40回復する　　　　　所持数：'+Yakusou_stock +'　売り値：15G'" v-on:mouseleave="msg1 = ''">・毒消し</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Seisui_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Seisui_stock " v-on:mouseleave="msg1 = ''">・聖水</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Bannouyaku_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Bannouyaku_stock " v-on:mouseleave="msg1 = ''">・万能薬</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Coffee_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Coffee_stock " v-on:mouseleave="msg1 = ''">・コーヒー</div>
+                <div class="command" v-show="a() <= 1" v-on:mouseover="msg1 = 'やさしく攻撃する' " v-on:mouseleave="msg1 = ''">・yasasii</div>
+                <div class="command" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">・かっこいい</div>
+                <div class="command" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">・良い</div>
+              </div>
+              <!--　ここまで売るリスト-->
               <!--　ここから買うリスト-->
               <div class="Maincommand" v-show="SwitchOn && BClist === 'confirm' && NonBCommand === 'Buy'">
                 <div class="command" @click=" NonBCommand = 'main'; NonBClist = '';" v-show="a() <= 1" v-on:mouseover="msg1 = '通常攻撃　稀に会心の一撃を繰り出す' " v-on:mouseleave="msg1 = ''">・戻る</div>
@@ -1192,7 +1221,38 @@
                       this.msg2=a;
                       a+=1;
                     },
-                    Item_buy: function(item,gold){//武器か防具を買う
+                    WeponShield_sell: function(item,gold){//武器か防具を売る
+                        command = [this.Name+"は"+item+"を売って"+gold+"Gを手に入れた！",];
+
+                      this.SwitchOn= false;
+                      //this.Action= this.WeponShield_buy(item,gold);
+                      if(a === 0){
+                        const p = this.UseWeponShield.indexOf(item);
+                        this.UseWeponShield.splice(p,1);//持っているリストから削除
+                        //
+                        this.AllWeponShield.push(item);//持っていないリストに追加
+                        //
+                        this.Gold += gold;//お金を足す
+                      }
+                      if(item === this.Wepon){//売った武器が装備中だった場合、装備を外す
+                        this.Wepon = "";
+                        this.WeponATk = 0;
+                        console.log("Wepon is sold.");
+                      }
+                      if(item === this.Shield){//売った防具が装備中だった場合、装備を外す
+                        this.Shield = "";
+                        this.WeponDEf = 0;
+                        console.log("Shield is sold.");
+                      }
+                      if(a === command.length){
+                        a= -1;
+                        this.SwitchOn= true;//ターンを渡す
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Item_buy: function(item,gold){//道具を買う
                         command = [this.Name+"は"+gold+"G払って"+item+"を手に入れた！",];
 
                       this.SwitchOn= false;
@@ -1215,6 +1275,38 @@
                         }
                         //
                         this.Gold -= gold;//お金を差し引く
+                      }
+                      if(a === command.length){
+                        a= -1;
+                        this.SwitchOn= true;//ターンを渡す
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Item_sell: function(item,gold){//道具を売る
+                        command = [this.Name+"は"+item+"を売って"+gold+"Gを手に入れた！",];
+
+                      this.SwitchOn= false;
+                      //this.Action= this.WeponShield_buy(item,gold);
+                      if(a === 0){
+                        if(item === '薬草'){//リファクタしたい箇所
+                          this.Yakusou_stock -= 1;
+                        }
+                        else if(item === '毒消し'){
+                          this.Dokukesi_stock -= 1;
+                        }
+                        else if(item === '聖水'){
+                          this.Seisui_stock -= 1;
+                        }
+                        else if(item === '万能薬'){
+                          this.Bannouyaku_stock -= 1;
+                        }
+                        else if(item === 'コーヒー'){
+                          this.Coffee_stock -= 1;
+                        }
+                        //
+                        this.Gold += gold;//お金を足す
                       }
                       if(a === command.length){
                         a= -1;
