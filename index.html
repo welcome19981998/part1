@@ -245,15 +245,18 @@
               </div>
               <div class="Maincommand" v-show="SwitchOn && BClist !== 'confirm'">
                 <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Pattack; Pattack();" v-show="a() <= 1" v-on:mouseover="msg1 = '通常攻撃　稀に会心の一撃を繰り出す' " v-on:mouseleave="msg1 = ''">・攻撃</div>
-                <div class="command" @click="BClist = 'Skill'" v-show="a() <= 1" v-on:mouseover="msg1 = '凄まじく攻撃する' " v-on:mouseleave="msg1 = ''">・クリック！</div>
+                <div class="command" @click="BClist = 'Skill'" v-show="a() <= 1" v-on:mouseover="msg1 = '凄まじく攻撃する' " v-on:mouseleave="msg1 = ''">・特技</div>
                 <div class="command" @click="BClist = 'Magic'" v-show="a() <= 1" v-on:mouseover="msg1 = 'MPを使って魔法を唱える' " v-on:mouseleave="msg1 = ''">・魔法</div>
                 <div class="command" @click="BClist = 'Item'"v-show="a() <= 1" v-on:mouseover="msg1 = '道具を使って回復する' " v-on:mouseleave="msg1 = ''">・回復</div>
               </div>
               <div class ="text" style="white-space:pre-wrap; word-wrap:break-word;" v-show="SwitchOn === false" v-bind:class="{hurueru1: huruerufun===1, hurueru2: huruerufun===2,}">{{text}}</div>
               <div class="menu Unusable" v-show="BClist === 'Skill'">
                 <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= aaa1; aaa1();" v-show="a() <= 1" v-on:mouseover="msg1 = '凄まじく攻撃する' " v-on:mouseleave="msg1 = ''">・クリック！</div>
-                <div v-bind:class="{command: Mp >=3}" v-show="Useskill.includes('回復斬り')" v-on:mouseover="msg1 = '与えたダメージの1/4分、HPを回復する　（消費MP3/ダメージ倍率0.8倍）' " v-on:mouseleave="msg1 = ''">・回復斬り</div>
-                <div v-bind:class="{command: Mp >=5}" v-show="a() <= 1" v-on:mouseover="msg1 = '（消費MP5/ダメージ倍率0.8倍）' " v-on:mouseleave="msg1 = ''">・good</div>
+                <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Kabutowari; Skill_Kabutowari();" v-show="Useskill.includes('かぶと割り')" v-on:mouseover="msg1 = '相手の守備力を半分にすることがある　（消費MP3/ダメージ倍率0.8倍）' " v-on:mouseleave="msg1 = ''">・かぶと割り</div>
+                <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Kaihukugiri; Skill_Kaihukugiri();" v-show="Useskill.includes('回復斬り')" v-on:mouseover="msg1 = '与えたダメージの1/4分、HPを回復する　（消費MP3/ダメージ倍率0.8倍）' " v-on:mouseleave="msg1 = ''">・回復斬り</div>
+                <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Maryokugari; Skill_Maryokugari();" v-show="Useskill.includes('魔力狩り')" v-on:mouseover="msg1 = '与えたダメージの1/4分、MPを回復する　（消費MP3/ダメージ倍率0.8倍）' " v-on:mouseleave="msg1 = ''">・魔力狩り</div>
+                <div v-bind:class="{command: Mp >=5}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Nidangiri; Skill_Nidangiri();" v-show="a() <= 1" v-on:mouseover="msg1 = '（消費MP5/ダメージ倍率0.7倍✖️2）' " v-on:mouseleave="msg1 = ''">・二段斬り</div>
+                <div v-bind:class="{command: Mp >=5}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Midareduki; Skill_Midareduki();" v-show="a() <= 1" v-on:mouseover="msg1 = '（消費MP5/ダメージ倍率0.4倍✖️3~5）' " v-on:mouseleave="msg1 = ''">・乱れ突き</div>
                 <div class="command" v-show="a() <= 1" v-on:mouseover="msg1 = '雑に、攻撃する' " v-on:mouseleave="msg1 = ''">・まあまあ</div>
                 <div class="command" v-show="a() <= 1" v-on:mouseover="msg1 = '雑に、攻撃する' " v-on:mouseleave="msg1 = ''">・やばい</div>
                 <div class="command" @click="SwitchOn= !SwitchOn; aaa2" v-show=" 1 <= 1"v-on:mouseover="msg1 = '雑に攻撃する' " v-on:mouseleave="msg1 = ''">・酷い</div>
@@ -290,10 +293,14 @@
                 <div class="command" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">・かっこいい</div>
                 <div class="command" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">・良い</div>
                 <div v-bind:class="{command: Mp >=2}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_mirror; Magic_mirror(); Mp -= 2;" v-show="a() <= 1" v-on:mouseover="msg1 = '使ったターン相手の呪文を跳ね返す　消費MP:2' " v-on:mouseleave="msg1 = ''">・ミラー</div>
+                <div v-bind:class="{command: Mp >=4}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_charge; Magic_charge(); Mp -= 4;" v-show="a() <= 1" v-on:mouseover="msg1 = '自分の攻撃力を1.5倍にする　消費MP:4' " v-on:mouseleave="msg1 = ''">・チャージ</div>
+                <div v-bind:class="{command: Mp >=4}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_build; Magic_build(); Mp -= 4;" v-show="a() <= 1" v-on:mouseover="msg1 = '自分の守備力を1.5倍にする　消費MP:4' " v-on:mouseleave="msg1 = ''">・ビルド</div>
+                <div v-bind:class="{command: Mp >=2}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_spoil; Magic_spoil(); Mp -= 2;" v-show="a() <= 1" v-on:mouseover="msg1 = '相手の攻撃力を3/4にする　消費MP:2' " v-on:mouseleave="msg1 = ''">・スポイル</div>
+                <div v-bind:class="{command: Mp >=2}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_melt; Magic_melt(); Mp -= 2;" v-show="a() <= 1" v-on:mouseover="msg1 = '相手の守備力を3/4にする　消費MP:2' " v-on:mouseleave="msg1 = ''">・メルト</div>
               </div>
               <div class="menu text" v-show="BClist === 'confirm' && NonBCommand === 'main' && SwitchOn === true ">
                 <div>{{confirmmsg}}</div>
-                <div class="command" v-show=" Confirmtype === '次の行動'" @click="BattleE('ガブ',70,10,20,[{action: EMagic_fire, per: 80},{action: Eheal80, per: 0}],['火弱'],'ゴブリン.PNG',1200,12);" v-on:mouseover= "msg1 = 'やさしく攻撃する'" v-on:mouseleave="msg1 = ''">前に進む</div>
+                <div class="command" v-show=" Confirmtype === '次の行動'" @click="BattleE('ガブ',70,40,20,[{action: EKaisin, per: 80},{action: Eheal80, per: 0}],['火弱'],'ゴブリン.PNG',1200,12);" v-on:mouseover= "msg1 = 'やさしく攻撃する'" v-on:mouseleave="msg1 = ''">前に進む</div>
                 <div class="command" v-show=" Confirmtype === '次の行動'" @click="Goahead();" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">周囲を調べる</div>
                 <div class="command" v-show=" Confirmtype === '次の行動'" @click="NonBCommand = 'item_nonbattle' " v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">道具</div>
                 <div class="command" v-show=" Confirmtype === '次の行動'" @click="Takarabakohakken('ミミック',100,100,100,[{action: EPoisonattack, per: 10},{action: ESleep, per: 80}],'','ミミック.png',1200,12);" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">街に戻る</div>
@@ -302,7 +309,7 @@
                 <div class="command" v-show=" Confirmtype === '買い物'" @click="NonBCommand = 'Buy'" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">物を買う</div>
                 <div class="command" v-show=" Confirmtype === '買い物'" @click="NonBCommand = 'Sell'" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">物を売る</div>
                 <div class="command" v-show=" Confirmtype === '買い物'" @click="NonBCommand = 'item_nonbattle' " v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">持ち物を確認する</div>
-                <div class="command" v-show=" Confirmtype === '買い物'" @click="NoAction" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">村を出る</div>
+                <div class="command" v-show=" Confirmtype === '買い物'" @click="Goahead()" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">村を出る</div>
 
               </div>
               <div class="Maincommand center ml-3vw" v-show=" SwitchOn && BClist === 'confirm' && NonBCommand === 'item_nonbattle' ||SwitchOn && BClist === 'confirm' && NonBCommand !== 'main'">
@@ -344,7 +351,7 @@
               <div class="menu" v-show="SwitchOn && NonBClist === 'Item'">
                 <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_yakusou; Item_yakusou();" v-show="Yakusou_stock >= 1" v-on:mouseover="msg1 = '体力を40回復する　　　　　所持数：'+Yakusou_stock " v-on:mouseleave="msg1 = ''">・薬草</div>
                 <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Dokukesi_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Dokukesi_stock " v-on:mouseleave="msg1 = ''">・毒消し</div>
-                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Seisui_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Seisui_stock " v-on:mouseleave="msg1 = ''">・聖水</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Seisui; Item_Seisui();" v-show="Seisui_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Seisui_stock " v-on:mouseleave="msg1 = ''">・聖水</div>
                 <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Bannouyaku_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Bannouyaku_stock " v-on:mouseleave="msg1 = ''">・万能薬</div>
                 <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Coffee_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Coffee_stock " v-on:mouseleave="msg1 = ''">・コーヒー</div>
                 <div class="command" v-show="a() <= 1" v-on:mouseover="msg1 = 'やさしく攻撃する' " v-on:mouseleave="msg1 = ''">・yasasii</div>
@@ -439,13 +446,16 @@
               }
 
               let a=0;
+              let counter =0;
               let command ="";
+              let dual =0;
                 var app = new Vue({
                   el: '#app',
                   data: {
                     msg1: command[a],
                     msg2:a,
                     num1:0,
+                    num2:0,
                     confirmmsg:"行動を選んでください",
                     text: command[a],
                     Github: 'https://github.com/f-scratch/zelda-action4th/pull/4095/files',
@@ -503,6 +513,8 @@
                    EMaxHp :100,
                    EMaxHp :100,
                    EHp:100,
+                   EBaseATk:40,
+                   EBaseDEf:20,
                    EATk:40,
                    EDEf:20,
                    EEXp:0,
@@ -515,7 +527,7 @@
                    Stage:1,//現在のステージ
                    //覚えられる特技、魔法関連
                    Allskill:['鉄壁',"二段斬り","まひるみ打ち","ためる","乱れ突き","諸刃の剣","回復斬り","かぶと割り"],
-                   Useskill:[],
+                   Useskill:['魔力狩り','かぶと割り'],
                    Allmagic:['ファイア','フレイム','アイス','ブリザード','スパーク','サンダー',],
                    Usemagic:['ファイア','アイス','スパーク'],
                    //持っていない全ての武器、持っている武器
@@ -530,7 +542,7 @@
                    //Itemの数
                    Yakusou_stock:5,
                    Dokukesi_stock:3,
-                   Seisui_stock:0,
+                   Seisui_stock:1,
                    Bannouyaku_stock:0,
                    Coffee_stock:0,
                   },
@@ -636,6 +648,178 @@
                       }
                       this.Mirror = true;//呪文反射オン
                       this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Magic_charge: function(){
+                      if(a === 0){
+                       command = ["プレイヤーは呪文「チャージ」を唱えた！",];
+                       this.SwitchOn= false;
+                      }
+                      if(a === 1){
+                        console.log(111);
+                        let Up = Math.floor(this.ATk/2);//今の攻撃力の1/2
+                        if(Up + this.ATk > this.BaseATk*5){//基礎攻撃力の5倍になる場合は、上昇量を減らす
+                          const q = Up + this.ATk - this.BaseATk*5;
+                          Up -= q;
+                        }
+                        if(Up > 0){
+                          this.ATk += Up;
+                          this.num1 = Up;
+                          command.push(`${this.Name}の攻撃力が${this.num1}上がった！`);
+                          console.log(1161);
+                        }
+                        else{//これ以上上がらない場合
+                          command.push(`${this.Name}の攻撃力はこれ以上上がらないようだ`);
+                        }
+                      }
+                      if(a === command.length){
+                        a= -1;
+                        this.SwitchOn= true;
+                        this.Resetfun();
+                        this.Enemyturn();
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Magic_build: function(){
+                      if(a === 0){
+                       command = ["プレイヤーは呪文「ビルド」を唱えた！",];
+                       this.SwitchOn= false;
+                      }
+                      if(a === 1){
+                        console.log(111);
+                        let Up = Math.floor(this.DEf/2);//今の守備力の1/2
+                        if(Up + this.DEf > this.BaseDEf*5){//基礎守備力の5倍になる場合は、上昇量を減らす
+                          const q = Up + this.DEf - this.BaseDEf*5;
+                          Up -= q;
+                        }
+                        if(Up > 0){
+                          this.DEf += Up;
+                          this.num1 = Up;
+                          command.push(`${this.Name}の守備力が${this.num1}上がった！`);
+                          console.log(1161);
+                        }
+                        else{//これ以上上がらない場合
+                          command.push(`${this.Name}の守備力はこれ以上上がらないようだ`);
+                        }
+                      }
+                      if(a === command.length){
+                        a= -1;
+                        this.SwitchOn= true;
+                        this.Resetfun();
+                        this.Enemyturn();
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Magic_spoil: function(){
+                      if(a <= 0){
+                        command = [this.Name+"は呪文「スポイル」を唱えた！",];
+                      }
+                        this.SwitchOn= false;
+                      if(a === 0 ){
+                        if(this.Eunique.includes("呪文反射")){//呪文を敵が跳ね返す場合
+                          command.push(`しかし、${this.EName}は呪文を跳ね返した！`);
+                          let Down = Math.floor(this.ATk/4);
+                          if(this.ATk - Down < Math.floor(this.BaseATk/4)){//基礎攻撃力の1/4以下になる場合
+                            Down = this.ATk - Math.floor(this.BaseATk/4);//下がる量を調整する
+                          }
+                          if(Down > 0){//下がる場合
+                            this.num1 = Down;
+                            this.ATk -= Down;
+                            command.push(`${this.Name}の攻撃力が${this.num1}下がってしまった！`);
+                          }
+                          else{//下がらない場合
+                            command.push(`${this.Name}の攻撃力はこれ以上下がらないようだ`);
+                          }
+
+                        }
+                        else{//呪文が効く場合
+                          let Down = Math.floor(this.EATk/4);
+                          if(this.EATk - Down < Math.floor(this.EBaseATk/4)){//基礎攻撃力の1/4以下になる場合
+                            Down = this.EATk - Math.floor(this.EBaseATk/4);//下がる量を調整する
+                          }
+                          if(Down > 0){//下がる場合
+                            this.num1 = Down;
+                            this.EATk -= Down;
+                            command.push(`${this.EName}の攻撃力が${this.num1}下がった！`);
+                          }
+                          else{//下がらない場合
+                            command.push(`${this.EName}の攻撃力はこれ以上下がらないようだ`);
+                          }
+                        }
+                      }
+                      if(a ===1 && command.includes(`${this.EName}の攻撃力が${this.num1}下がった！`)){//敵が下がる場合、魔法陣のエフェクト
+                        this.Scale();
+                      }
+                      if(a === 2 && this.Eunique.includes("呪文反射") && command.includes(`${this.Name}の攻撃力が${this.num1}下がってしまった！`)){
+                        this.Hurueru();//跳ね返された際に震えるように
+                      }
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        this.Enemyturn();
+                      }
+                      this.text=command[a];
+                      this.EfectImage="青魔法陣.png"
+                      console.log(a+"2");
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Magic_melt: function(){
+                      if(a <= 0){
+                        command = [this.Name+"は呪文「メルト」を唱えた！",];
+                      }
+                        this.SwitchOn= false;
+                      if(a === 0 ){
+                        if(this.Eunique.includes("呪文反射")){//呪文を敵が跳ね返す場合
+                          command.push(`しかし、${this.EName}は呪文を跳ね返した！`);
+                          let Down = Math.floor(this.DEf/4);
+                          if(this.DEf - Down < Math.floor(this.BaseDEf/4)){//基礎守備力の1/4以下になる場合
+                            Down = this.DEf - Math.floor(this.BaseDEf/4);//下がる量を調整する
+                          }
+                          if(Down > 0){//下がる場合
+                            this.num1 = Down;
+                            this.DEf -= Down;
+                            command.push(`${this.Name}の守備力が${this.num1}下がってしまった！`);
+                          }
+                          else{//下がらない場合
+                            command.push(`${this.Name}の守備力はこれ以上下がらないようだ`);
+                          }
+
+                        }
+                        else{//呪文が効く場合
+                          let Down = Math.floor(this.EDEf/4);
+                          if(this.EDEf - Down < Math.floor(this.EBaseDEf/4)){//基礎攻撃力の1/4以下になる場合
+                            Down = this.EDEf - Math.floor(this.EBaseDEf/4);//下がる量を調整する
+                          }
+                          if(Down > 0){//下がる場合
+                            this.num1 = Down;
+                            this.EDEf -= Down;
+                            command.push(`${this.EName}の守備力が${this.num1}下がった！`);
+                          }
+                          else{//下がらない場合
+                            command.push(`${this.EName}の守備力はこれ以上下がらないようだ`);
+                          }
+                        }
+                      }
+                      if(a ===1 && command.includes(`${this.EName}の守備力が${this.num1}下がった！`)){//敵が下がる場合、魔法陣のエフェクト
+                        this.Scale();
+                      }
+                      if(a === 2 && this.Eunique.includes("呪文反射") && command.includes(`${this.Name}の守備力が${this.num1}下がってしまった！`)){
+                        this.Hurueru();//跳ね返された際に震えるように
+                      }
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        this.Enemyturn();
+                      }
+                      this.text=command[a];
+                      this.EfectImage="青魔法陣.png"
+                      console.log(a+"2");
                       this.msg2=a;
                       a+=1;
                     },
@@ -823,6 +1007,193 @@
                       this.msg2=a;
                       a+=1;
                     },
+                    Skill_Nidangiri: function(){
+                      if(a === 0){
+                        command = [this.Name+"の連続攻撃！",];
+                      }
+                      this.SwitchOn= false;
+                      this.Action= this.Skill_Nidangiri;
+                        //ダメージ計算
+                      if(a >=1 && a<=2 && this.EHp >0 ){//相手を倒さない限り2回攻撃する
+                        const Damage = Math.floor(this.ATk*0.7) + Math.floor(Math.random() * 10) - this.EDEf;//一撃は0.7のダメージ量
+                         if(Damage>0){
+                          this.EHp -= Damage;
+                          this.num1 = Damage;
+                          this.Tennmetu();
+                          command.push(`${this.EName}に${this.num1}ダメージ！`);
+                          console.log(a);
+                      }
+                        else{
+                          command.push(`ミス、${this.EName}にダメージを与えられない！`);
+                        }
+                      }
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        this.Enemyturn();//ターンを渡す
+                      }
+                      this.text=command[a];
+                      console.log(a+"2");
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Skill_Kaihukugiri: function(){
+                      if(a === 0){
+                        command = [this.Name+"の回復斬り！",];
+                      }
+                      this.SwitchOn= false;
+                      this.Action= this.Skill_Kaihukugiri;
+                        //ダメージ計算
+                      if(a === 1 ){
+                        const Damage = Math.floor(this.ATk*0.8) + Math.floor(Math.random() * 10) - this.EDEf;//一撃は0.8のダメージ量
+                        if(Damage>0){
+                          this.EHp -= Damage;
+                          this.num1 = Damage;
+                          this.Tennmetu();
+                          command.push(`${this.EName}に${this.num1}ダメージ！`);
+                          let Heal = Math.floor(Damage/4 +1);//ダメージの1/4の回復量
+                          if(Heal+this.Hp>this.MaxHp){//最大HPよりも多く回復する場合、回復量を削る
+                            const q = Heal+this.Hp-this.MaxHp
+                            Heal -= q;
+                          }
+                          if(this.Hp < this.MaxHp){//体力が満タンでない場合、回復する
+                           this.num2 = Heal;
+                           this.Hp += Heal;
+                           command.push(`${this.Name}は体力を${this.num2}回復！`);
+                          }
+                          else if(this.Hp === this.MaxHp){//満タンなら回復しない
+                            command.push(`${this.Name}の体力はすでに満タンのようだ`);
+                          }
+
+                          console.log(a);
+                        }
+                        else{
+                          command.push(`ミス、${this.EName}にダメージを与えられない！`);
+                        }
+                      }
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        this.Enemyturn();//ターンを渡す
+                      }
+                      this.text=command[a];
+                      console.log(a+"2");
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Skill_Maryokugari: function(){
+                      if(a === 0){
+                        command = [this.Name+"の魔力狩り！",];
+                      }
+                      this.SwitchOn= false;
+                      this.Action= this.Skill_Maryokugari;
+                        //ダメージ計算
+                      if(a === 1 ){
+                        const Damage = Math.floor(this.ATk*0.8) + Math.floor(Math.random() * 10) - this.EDEf;//一撃は0.8のダメージ量
+                        if(Damage>0){
+                          this.EHp -= Damage;
+                          this.num1 = Damage;
+                          this.Tennmetu();
+                          command.push(`${this.EName}に${this.num1}ダメージ！`);
+                          let Heal = Math.floor(Damage/4 +1);//ダメージの1/4の回復量
+                          if(Heal+this.Mp>this.MaxMp){//最大MPよりも多く回復する場合、回復量を削る
+                            const q = Heal+this.Mp-this.MaxMp
+                            Heal -= q;
+                          }
+                          if(this.Mp < this.MaxMp){//魔力が満タンでない場合、回復する
+                           this.num2 = Heal;
+                           this.Mp += Heal;
+                           command.push(`${this.Name}魔力を${this.num2}回復！`);
+                          }
+                          else if(this.Mp === this.MaxMp){//満タンなら回復しない
+                            command.push(`${this.Name}の魔力はすでに満タンのようだ`);
+                          }
+
+                          console.log(a);
+                        }
+                        else{
+                          command.push(`ミス、${this.EName}にダメージを与えられない！`);
+                        }
+                      }
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        this.Enemyturn();//ターンを渡す
+                      }
+                      this.text=command[a];
+                      console.log(a+"2");
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Skill_Kabutowari: function(){
+                      if(a === 0){
+                        command = [this.Name+"のかぶと割り！",];
+                      }
+                      this.SwitchOn= false;
+                      this.Action= this.Skill_Kabutowari;
+                        //ダメージ計算
+                      if(a === 1 ){
+                        const Damage = Math.floor(this.ATk*0.8) + Math.floor(Math.random() * 10) - this.EDEf;//一撃は0.8のダメージ量
+                        if(Damage>0){
+                          this.EHp -= Damage;
+                          this.num1 = Damage;
+                          this.Tennmetu();
+                          command.push(`${this.EName}に${this.num1}ダメージ！`);
+                        }
+                        else{
+                          command.push(`ミス、${this.EName}にダメージを与えられない！`);
+                        }
+                        const p = Math.floor(Math.random()*2);
+                        if(p ===1 && this.EHp > 0){//1/2の確率で相手の守備力を下げる(相手を倒したなら処理を飛ばす)
+                          const Down = Math.floor(this.EDEf/2);
+                          if(Down >= 1){//守備力が0でない限り下げる
+                            this.EDEf -= Down;
+                            command.push(`${this.EName}の守備力が${Down}下がった！`);
+                          }
+                        }
+                      }
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        this.Enemyturn();//ターンを渡す
+                      }
+                      this.text=command[a];
+                      console.log(a+"2");
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Skill_Midareduki: function(){
+                      if(a === 0){
+                        command = [this.Name+"の連続攻撃！",];
+                        counter = Math.floor(Math.random() * 3) + 3;//3-5の数値を決定
+                      }
+                      this.SwitchOn= false;
+                      this.Action= this.Skill_Midareduki;
+                        //ダメージ計算
+                      if(a >=1 && counter > 0 && this.EHp >0 ){//相手を倒さない限り3-5回攻撃する
+                        counter -= 1;//カウンターを-1
+                        const Damage = Math.floor(this.ATk*0.4) + Math.floor(Math.random() * 10) - this.EDEf;//一撃は0.7のダメージ量
+                         if(Damage>0){
+                          this.EHp -= Damage;
+                          this.num1 = Damage;
+                          this.Tennmetu();
+                          command.push(`${this.EName}に${this.num1}ダメージ！`);
+                          console.log(a);
+                      }
+                        else{
+                          command.push(`ミス、${this.EName}にダメージを与えられない！`);
+                        }
+                      }
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        this.Enemyturn();//ターンを渡す
+                      }
+                      this.text=command[a];
+                      console.log(a+"2");
+                      this.msg2=a;
+                      a+=1;
+                    },
                     Item_yakusou: function(){
                       if(a === 0){
                         command = [this.Name+"は薬草を使った！",this.Name+"は体力を40回復した！",];
@@ -889,7 +1260,41 @@
                             command[1]= this.Name+"は毒から回復した！";
                           }
                         }
-
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Item_Seisui: function(){
+                      if(a === 0){
+                        command = [this.Name+"は聖水を使った！",this.Name+"は魔力を40回復した！",];
+                      }
+                      BClist = 0;
+                      this.SwitchOn= false;
+                      if(a === command.length){
+                        a= -1;
+                        if(this.NonBCommand === 'item_nonbattle'){//戦闘ではない場合
+                          this.BClist = "confirm";
+                          this.SwitchOn = true;
+                          console.log("kaihuku");
+                        }
+                        else{
+                          this.Resetfun();
+                          this.Enemyturn();
+                        }
+                      }
+                      if(a === 1){
+                        this.Seisui_stock -= 1;//聖水消費
+                        if(this.Mp === this.MaxMp){
+                          command[1]= this.Name+"の魔力はすでに満タンのようだ";
+                        }
+                        else{
+                          this.Mp += 40;
+                          if(this.Mp > this.MaxMp){//体力調整
+                            this.Mp = this.MaxMp;
+                            command[1]= this.Name+"の魔力は満タンになった！";
+                          }
+                        }
                       }
                       this.text=command[a];
                       this.msg2=a;
@@ -915,16 +1320,16 @@
                         let Asp = Math.floor(Math.random() * 100) + 1;//1-100の乱数
                         console.log("good"+Asp);
                         let p = 0;
-                        // this.flag = 0;
-                        while(p < this.EActions.length && Asp >= 0 && this.flag < 1){
+                         //this.flag = -1;//2回行動の実験
+                        while(p < this.EActions.length && Asp >= 0 && this.flag < 1){//EActionsが全て確認されるかflagがたつまで回す
                           console.log("good"+Asp);//
                           console.log("wellper"+this.EActions[p].per);//
                           Asp -= this.EActions[p].per;
                           console.log("good"+Asp);//
-                            if(Asp <= 0){
+                            if(Asp <= 0){//Aspが0になったらAction実行し、flag+=1になる
                               this.EActions[p].action();
                                 this.flag+= 1;
-                                Asp += this.EActions[p].per
+                                Asp += this.EActions[p].per//Aspを足し戻す
                                 console.log("good2");
                             }
                           p += 1;
@@ -1035,6 +1440,33 @@
                       this.msg2=a;
                       a+=1;
                     },
+                    EKaisin: function(){
+                      command = [this.EName+"の攻撃！","会心の一撃!",this.Name+"に"+this.num1+"ダメージ！",];
+                      this.SwitchOn= false;
+                      this.Action= this.EKaisin;
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        this.Endphase();
+                        //this.Playerturn();//ターンを渡す
+                      }
+                      if(a === 2 ){
+                        //ダメージ計算
+                        const Damage = this.EATk + Math.floor(Math.random() * 20) +1 ;
+
+                        if(Damage>0){
+                          this.Hp -= Damage;
+                          this.num1 = Damage;
+                          this.Hurueru();
+                          command[2]=this.Name+"に"+Damage+"ダメージ！";
+                          console.log(a);
+                        }
+                      }
+                      this.text=command[a];
+                      console.log(a+"2");
+                      this.msg2=a;
+                      a+=1;
+                    },
                     EPoisonattack: function(){
                       if(a <= 0){
                         command = [this.EName+"の毒攻撃！",this.Name+"に"+this.num1+"ダメージ！",];
@@ -1114,7 +1546,7 @@
                       a+=1;
                     },
                     ESleep: function(){
-                      if(this.Joutaihennka !== "なし" && a<= 0){
+                      if(this.Joutaihennka !== "なし" && a<= 0){//不要な時に飛ばす処理:TODO
                         a -= 1;
                         this.flag -= 1;
                       }
@@ -1323,16 +1755,21 @@
                       }
                     },
                     Stage1: function(){
-                      const p = Math.floor(Math.random() * this.Gopoint) + 1;
-                      if(p <= 0){
-                        this.BattleE('ピヨピヨバード',40,10,20,[{action: this.Eheal, per: 0},],'','ピヨ鳥.png',100,12);
+                      this.BClist = "confirm";//フィールドでのコマンドにする
+                      this.Confirmtype = '次の行動';//フィールドでのコマンドにする
+                      if(this.BackImage !== "stage1"){//背景をstageに即したものにする
+                        this.BackImage = "stage1";
                       }
-                      else if(p <= 0){
+                      const p = Math.floor(Math.random() * this.Gopoint) + 1;
+                      if(p <= 1){
+                        this.BattleE('ピヨピヨバード',40,10,20,[{action: this.EKaisin, per: 90},],'','ピヨ鳥.png',100,12);
+                      }
+                      else if(p <= 2){
                         this.BattleE('ガブ',70,10,20,[{action: this.Eheal, per: 80},{action: this.Eheal80, per: 0}],["火弱"],'ゴブリン.PNG',1200,12);
                       }
-                      else if(p <= 0){
+                      else if(p <= 3){
                         this.BattleE('キングフロッグ',100,30,40,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],['呪文反射'],'蛙.png',1200,12);
-                      }else if(p <= 4){
+                      }else if(p <= 10){
                         this.Yado();
                       }
                     },
@@ -1342,7 +1779,9 @@
                       this.EMaxHp = ehp;
                       this.EHp = ehp;
                       this.EATk = eatk;
+                      this.EBaseATk = eatk;
                       this.EDEf = edef;
+                      this.EBaseDEf = edef;
                       this.Image = image;
                       this.EEXp = eexp;
                       this.EGold = egold;
@@ -1368,6 +1807,8 @@
                       this.EHp = ehp;
                       this.EATk = eatk;
                       this.EDEf = edef;
+                      this.EBaseATk = eatk;
+                      this.EBaseDEf = edef;
                       this.MimicImage = image;
                       this.EEXp = eexp;
                       this.EGold = egold;
