@@ -61,6 +61,9 @@
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
+            /*文字の空白で改行する*/
+            white-space: pre-wrap;
+            word-wrap: break-word;
             border-radius: 10px;
             border: 5px solid rgb(134, 132, 129);
           }
@@ -95,7 +98,7 @@
             width: 19vw;
           }
           .stage1{
-            background-image:url("stage2.jpeg");
+            background-image:url("stage1.jpeg");
             background-repeat: no-repeat;
             background-size:cover;
           }
@@ -244,18 +247,20 @@
                 <div  v-on:mouseover="msg1 = ''" v-on:mouseleave="msg1 = ''"> 状態変化：{{Joutaihennka}}</div>
               </div>
               <div class="Maincommand" v-show="SwitchOn && BClist !== 'confirm'">
-                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Pattack; Pattack();" v-show="a() <= 1" v-on:mouseover="msg1 = '通常攻撃　稀に会心の一撃を繰り出す' " v-on:mouseleave="msg1 = ''">・攻撃</div>
-                <div class="command" @click="BClist = 'Skill'" v-show="a() <= 1" v-on:mouseover="msg1 = '凄まじく攻撃する' " v-on:mouseleave="msg1 = ''">・特技</div>
-                <div class="command" @click="BClist = 'Magic'" v-show="a() <= 1" v-on:mouseover="msg1 = 'MPを使って魔法を唱える' " v-on:mouseleave="msg1 = ''">・魔法</div>
-                <div class="command" @click="BClist = 'Item'"v-show="a() <= 1" v-on:mouseover="msg1 = '道具を使って回復する' " v-on:mouseleave="msg1 = ''">・回復</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Pattack; Pattack();"  v-on:mouseover="msg1 = '通常攻撃　稀に会心の一撃を繰り出す' " v-on:mouseleave="msg1 = ''">・攻撃</div>
+                <div class="command" @click="BClist = 'Skill'" v-on:mouseover="msg1 = '凄まじく攻撃する' " v-on:mouseleave="msg1 = ''">・特技</div>
+                <div class="command" @click="BClist = 'Magic'" v-on:mouseover="msg1 = 'MPを使って魔法を唱える' " v-on:mouseleave="msg1 = ''">・魔法</div>
+                <div class="command" @click="BClist = 'Item'" v-on:mouseover="msg1 = '道具を使って回復する' " v-on:mouseleave="msg1 = ''">・回復</div>
               </div>
               <div class ="text" style="white-space:pre-wrap; word-wrap:break-word;" v-show="SwitchOn === false" v-bind:class="{hurueru1: huruerufun===1, hurueru2: huruerufun===2,}">{{text}}</div>
               <div class="menu Unusable" v-show="BClist === 'Skill'">
                 <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= aaa1; aaa1();" v-show="a() <= 1" v-on:mouseover="msg1 = '凄まじく攻撃する' " v-on:mouseleave="msg1 = ''">・クリック！</div>
-                <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Kabutowari; Skill_Kabutowari();" v-show="Useskill.includes('かぶと割り')" v-on:mouseover="msg1 = '相手の守備力を半分にすることがある　（消費MP3/ダメージ倍率0.8倍）' " v-on:mouseleave="msg1 = ''">・かぶと割り</div>
-                <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Kaihukugiri; Skill_Kaihukugiri();" v-show="Useskill.includes('回復斬り')" v-on:mouseover="msg1 = '与えたダメージの1/4分、HPを回復する　（消費MP3/ダメージ倍率0.8倍）' " v-on:mouseleave="msg1 = ''">・回復斬り</div>
-                <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Maryokugari; Skill_Maryokugari();" v-show="Useskill.includes('魔力狩り')" v-on:mouseover="msg1 = '与えたダメージの1/4分、MPを回復する　（消費MP3/ダメージ倍率0.8倍）' " v-on:mouseleave="msg1 = ''">・魔力狩り</div>
-                <div v-bind:class="{command: Mp >=5}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Nidangiri; Skill_Nidangiri();" v-show="a() <= 1" v-on:mouseover="msg1 = '（消費MP5/ダメージ倍率0.7倍✖️2）' " v-on:mouseleave="msg1 = ''">・二段斬り</div>
+                <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Kabutowari; Skill_Kabutowari();" v-show="Useskill.includes('かぶと割り')" v-on:mouseover="msg1 =Tx_Kabutowari" v-on:mouseleave="msg1 = ''">・かぶと割り</div>
+                <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Yaibakudaki; Skill_Yaibakudaki();" v-show="Useskill.includes('刃砕き')" v-on:mouseover="msg1 =Tx_Yaibakudaki" v-on:mouseleave="msg1 = ''">・刃砕き</div>
+                <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Kaihukugiri; Skill_Kaihukugiri();" v-show="Useskill.includes('回復斬り')" v-on:mouseover="msg1 =Tx_Kaihukugiri" v-on:mouseleave="msg1 = ''">・回復斬り</div>
+                <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Maryokugari; Skill_Maryokugari();" v-show="Useskill.includes('魔力狩り')" v-on:mouseover="msg1 = '与えたダメージの1/4分、　MPを回復する　（消費MP3/ダメージ倍率0.8倍）' " v-on:mouseleave="msg1 = ''">・魔力狩り</div>
+                <div v-bind:class="{command: Hp <=MaxHp/4}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Kisikaisei; Skill_Kisikaisei();" v-show="Useskill.includes('起死回生')" v-on:mouseover="msg1 =Tx_Kisikaisei" v-on:mouseleave="msg1 = ''">・起死回生</div>
+                <div v-bind:class="{command: Mp >=5}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Nidangiri; Skill_Nidangiri();" v-show="a() <= 1" v-on:mouseover="msg1 =Tx_Nidangiri" v-on:mouseleave="msg1 = ''">・二段斬り</div>
                 <div v-bind:class="{command: Mp >=5}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Midareduki; Skill_Midareduki();" v-show="a() <= 1" v-on:mouseover="msg1 = '（消費MP5/ダメージ倍率0.4倍✖️3~5）' " v-on:mouseleave="msg1 = ''">・乱れ突き</div>
                 <div class="command" v-show="a() <= 1" v-on:mouseover="msg1 = '雑に、攻撃する' " v-on:mouseleave="msg1 = ''">・まあまあ</div>
                 <div class="command" v-show="a() <= 1" v-on:mouseover="msg1 = '雑に、攻撃する' " v-on:mouseleave="msg1 = ''">・やばい</div>
@@ -300,8 +305,8 @@
               </div>
               <div class="menu text" v-show="BClist === 'confirm' && NonBCommand === 'main' && SwitchOn === true ">
                 <div>{{confirmmsg}}</div>
-                <div class="command" v-show=" Confirmtype === '次の行動'" @click="BattleE('ガブ',70,40,20,[{action: EKaisin, per: 80},{action: Eheal80, per: 0}],['火弱'],'ゴブリン.PNG',1200,12);" v-on:mouseover= "msg1 = 'やさしく攻撃する'" v-on:mouseleave="msg1 = ''">前に進む</div>
-                <div class="command" v-show=" Confirmtype === '次の行動'" @click="Goahead();" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">周囲を調べる</div>
+                <div class="command" v-show=" Confirmtype === '次の行動'" @click="Goahead();" v-on:mouseover="msg1 = '前にすすむ' " v-on:mouseleave="msg1 = ''">前に進む</div>
+                <div class="command" v-show=" Confirmtype === '次の行動'" @click="Lookaround();" v-on:mouseover="msg1 = '周囲を調べる' " v-on:mouseleave="msg1 = ''">周囲を調べる</div>
                 <div class="command" v-show=" Confirmtype === '次の行動'" @click="NonBCommand = 'item_nonbattle' " v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">道具</div>
                 <div class="command" v-show=" Confirmtype === '次の行動'" @click="Takarabakohakken('ミミック',100,100,100,[{action: EPoisonattack, per: 10},{action: ESleep, per: 80}],'','ミミック.png',1200,12);" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">街に戻る</div>
                 <div class="command" v-show=" Confirmtype === 'はいいいえ'" @click="YesAction" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">はい</div>
@@ -522,12 +527,18 @@
                    EActions:"",//敵の行動選択肢
                    Eunique:"",//敵の特性
                    flag:0,
+                   //Eskill
+                   texta:'',damage1:40,per1:0,mp1:0,perm:0,Atk1:0,per2:0,Dfe:0,per3:0,State:'',per4:0,
+                   hansyadamage:0,//反射ダメージがあった場合に点滅させるため作成
+                   EAttack2flag:0,//EAttack2で攻撃があたったか否かを判定
                    //
                    Gopoint:1,//進み具合
+                   Noivent:0,//周囲を調べ尽くした際のカウンター
+                   Doneivent:0,//行われたイベント
                    Stage:1,//現在のステージ
                    //覚えられる特技、魔法関連
                    Allskill:['鉄壁',"二段斬り","まひるみ打ち","ためる","乱れ突き","諸刃の剣","回復斬り","かぶと割り"],
-                   Useskill:['魔力狩り','かぶと割り'],
+                   Useskill:['魔力狩り','かぶと割り','刃砕き','起死回生'],
                    Allmagic:['ファイア','フレイム','アイス','ブリザード','スパーク','サンダー',],
                    Usemagic:['ファイア','アイス','スパーク'],
                    //持っていない全ての武器、持っている武器
@@ -545,6 +556,25 @@
                    Seisui_stock:1,
                    Bannouyaku_stock:0,
                    Coffee_stock:0,
+                   //説明文
+Tx_Kabutowari:`1/2の確率で、　
+相手の守備力を半分にする
+消費MP：3
+ダメージ倍率：0.8倍` ,
+Tx_Yaibakudaki:`1/2の確率で、　
+相手の攻撃力を3/4にする
+消費MP：3
+ダメージ倍率：0.8倍` ,
+Tx_Kaihukugiri:`与えたダメージの1/4分、　
+体力を回復する
+消費MP：3
+ダメージ倍率：0.8倍` ,
+Tx_Nidangiri:`2回攻撃する
+消費MP：5
+ダメージ倍率：0.7倍✖️2` ,
+Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
+消費MP：0
+ダメージ倍率：2倍`,
                   },
                   methods: {
                     a:function(){
@@ -866,7 +896,7 @@
                         this.Hurueru();//跳ね返された際に震えるように
                       }
                       this.text=command[a];
-                      this.EfectImage="炎.png"
+                      this.EfectImage="炎2.png"
                       console.log(a+"2");
                       this.msg2=a;
                       a+=1;
@@ -911,7 +941,7 @@
                         this.Hurueru();//跳ね返された際に震えるように
                       }
                       this.text=command[a];
-                      this.EfectImage="氷.png"
+                      this.EfectImage="氷2.png"
                       console.log(a+"2");
                       this.msg2=a;
                       a+=1;
@@ -956,7 +986,7 @@
                         this.Hurueru();//跳ね返された際に震えるように
                       }
                       this.text=command[a];
-                      this.EfectImage="雷.png"
+                      this.EfectImage="電撃.png"
                       console.log(a+"2");
                       this.msg2=a;
                       a+=1;
@@ -1001,6 +1031,36 @@
                       if(a === 2 ){//会心の時のアニメーション
                         this.Tennmetu();
                         console.log("会心");
+                      }
+                      this.text=command[a];
+                      console.log(a+"2");
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Skill_Kisikaisei: function(){
+                      if(a === 0){
+                        command = [this.Name+"は起死回生の一撃を放った！",this.EName+"に"+this.num1+"ダメージ！",];
+                      }
+                      this.SwitchOn= false;
+                      this.Action= this.Skill_Kisikaisei;
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        this.Enemyturn();//ターンを渡す
+                      }
+                        //ダメージ計算
+                      const Damage = this.ATk * 2 + Math.floor(Math.random() * 20) - this.EDEf;//2倍のダメージ
+                      if(a === 1 ){
+                         if(Damage>0){
+                          this.EHp -= Damage;
+                          this.num1 = Damage;
+                          this.Tennmetu();
+                          command[1]=this.EName+"に"+Damage+"ダメージ！";
+                          console.log(a);
+                        }
+                        else{
+                          command[1]="しかし"+this.EName+"にダメージを与えられない！";
+                        }
                       }
                       this.text=command[a];
                       console.log(a+"2");
@@ -1162,6 +1222,50 @@
                       this.msg2=a;
                       a+=1;
                     },
+                    Skill_Yaibakudaki: function(){
+                      if(a === 0){
+                        command = [this.Name+"の刃砕き！",];
+                      }
+                      this.SwitchOn= false;
+                      this.Action= this.Skill_Yaibakudaki;
+                        //ダメージ計算
+                      if(a === 1 ){
+                        const Damage = Math.floor(this.ATk*0.8) + Math.floor(Math.random() * 10) - this.EDEf;//一撃は0.8のダメージ量
+                        if(Damage>0){
+                          this.EHp -= Damage;
+                          this.num1 = Damage;
+                          this.Tennmetu();
+                          command.push(`${this.EName}に${this.num1}ダメージ！`);
+                        }
+                        else{
+                          command.push(`ミス、${this.EName}にダメージを与えられない！`);
+                        }
+                        const p = Math.floor(Math.random()*2);
+                        if(p ===1 && this.EHp > 0){//1/2の確率で相手の攻撃力を下げる(相手を倒したなら処理を飛ばす)
+                          let Down = Math.floor(this.EATk/4);
+                          if(this.EATk - Down < Math.floor(this.EBaseATk/4)){//基礎攻撃力の1/4以下になる場合
+                            Down = this.EATk - Math.floor(this.EBaseATk/4);//下がる量を調整する
+                          }
+                          if(Down > 0){//下がる場合
+                            this.num1 = Down;
+                            this.EATk -= Down;
+                            command.push(`${this.EName}の攻撃力が${this.num1}下がった！`);
+                          }
+                          else{//下がらない場合
+                            command.push(`${this.EName}の攻撃力はこれ以上下がらないようだ`);
+                          }
+                        }
+                      }
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        this.Enemyturn();//ターンを渡す
+                      }
+                      this.text=command[a];
+                      console.log(a+"2");
+                      this.msg2=a;
+                      a+=1;
+                    },
                     Skill_Midareduki: function(){
                       if(a === 0){
                         command = [this.Name+"の連続攻撃！",];
@@ -1309,6 +1413,7 @@
                       else{
                         this.BClist= "";
                         this.SwitchOn= true;
+                        console.log('!!!');
                       }
                     },
                     Enemyturn: function(){
@@ -1341,21 +1446,27 @@
                         }
                       }
                     },
-                    Endphase: function(){
-                      this.flag = 0;//行動制限リセット
-                      this.Mirror = false;//呪文反射解除
-                      if(this.Hp > 0 && this.Joutaihennka === "毒"){//毒のスリップダメージ
-                          this.Poisondamage();
-                          console.log("doku1");
+                    Endphase: function(){　console.log("end");
+                      if(this.Eunique.includes('2回行動')　&& dual<1){
+                        this.flag = 0;//行動制限リセット
+                        dual += 1;
+                        this.Enemyturn();//2回行動特性は2回行動させる
                       }
-                      else if(this.Hp > 0 && this.Joutaihennka === "眠り"){//毒のスリップダメージ
-                          this.Sleepturn();
-                      }
-                      else{
-                        this.Playerturn();//ターンを渡す
-                      }
-                      //this.Playerturn();//ターンを渡す
-
+                      else{//ターン終了時の処理
+                        this.flag = 0;//行動制限リセット
+                        dual =0;//2回行動制限リセット
+                        this.Mirror = false;//呪文反射解除
+                        if(this.Hp > 0 && this.Joutaihennka === "毒"){//毒のスリップダメージ
+                            this.Poisondamage();
+                            console.log("doku1");
+                        }
+                        else if(this.Hp > 0 && this.Joutaihennka === "眠り"){//毒のスリップダメージ
+                            this.Sleepturn();
+                        }
+                        else{
+                          this.Playerturn();//ターンを渡す
+                        }
+                      }//this.Playerturn();//ターンを渡す
                     },
                     Poisondamage: function(){
                       command = [this.Name+"は毒に侵されている",this.Name+"に"+this.num1+"ダメージ！",];
@@ -1439,6 +1550,491 @@
                       console.log(a+"2");
                       this.msg2=a;
                       a+=1;
+                    },
+                    EAttack2: function(texta,damage,per1,mp1,perm,Atk,per2,Dfe,per3,State,per4){
+                      if(a===-1){
+                      this.texta=texta;
+                      this.damage1=damage;
+                      this.per1=per1;
+                      this.mp1=mp1;
+                      this.perm=perm;
+                      this.Atk1=Atk;
+                      this.per2=per2;
+                      this.Dfe=Dfe;
+                      this.per3=per3;
+                      this.State=State;
+                      this.per4=per4;
+                      this.EAttack2flag=0;//
+                      console.log("???qqq");
+                      command = [`${this.EName}${this.texta}`,];//繰り返しにしない
+                      }
+                      this.SwitchOn= false;
+                      this.Action= this.EAttack2;
+                      console.log("???");
+                      if(a === 1 ){
+                        console.log(112372);
+                        const Per_1 = this.per1 - Math.floor(Math.random() * 100);//per1が0より大きくなれば成功
+                        const Damage_1 = this.damage1+this.EATk+ Math.floor(Math.random() * 20) - this.DEf;//攻撃力-守備力
+                        if(Per_1 > 0 && Damage_1 > 0){//あたった場合
+                         this.Hp -= Damage_1;
+                         this.Hurueru();
+                         this.num1 = Damage_1;
+                         console.log(11232);
+                         command.push(`${this.Name}に${this.num1}ダメージ！`);
+                         this.EAttack2flag =1;//当たり判定
+                        }
+                        else {//当たらない場合
+                          command.push(`${this.Name}は攻撃から身を守った！`);
+                        }
+                      }
+                      if(a === 1 && this.Hp > 0 && this.EAttack2flag >0){//攻撃が当たって生きている場合、MPが減る
+                        console.log(112372);
+                        const Per_M = this.perm - Math.floor(Math.random() * 100);//perMが0より大きくなれば成功
+                        if(Per_M > 0){//成功した場合
+                          let Down = this.mp1;
+                          if(this.Mp < Down ){//MPが尽きる、または尽きている場合
+                            Down = this.Mp;//下がる量を調整する
+                          }
+                          if(Down > 0){//下がる場合
+                            this.num1 = Down;
+                            this.Mp -= Down;
+                            command.push(`${this.Name}はMPを${this.num1}失った！`);
+                          }
+                          else{//下がらない場合
+                            command.push(`${this.Name}のMPはすでに尽きている`);
+                          }
+                        }
+                      }
+                      if(a === 1 && this.Hp > 0 && this.EAttack2flag >0){//攻撃が当たって生きている場合、攻撃力が下がる
+                        const Per2 = this.per2 - Math.floor(Math.random() * 100);//per2が0より大きくなれば成功
+                        if(Per2 > 0){//成功した場合
+                          let Down = this.Atk1;
+                          if(this.ATk - Down < Math.floor(this.BaseATk/4)){//基礎攻撃力の1/4以下になる場合
+                            Down = this.ATk - Math.floor(this.BaseATk/4);//下がる量を調整する
+                          }
+                          if(Down > 0){//下がる場合
+                            this.num1 = Down;
+                            this.ATk -= Down;
+                            command.push(`${this.Name}の攻撃力が${this.num1}下がった！`);
+                          }
+                          else{//下がらない場合
+                            command.push(`${this.Name}の攻撃力はこれ以上下がらないようだ`);
+                          }
+                        }
+                      }
+                      if(a === 1 && this.Hp > 0 && this.EAttack2flag >0){//攻撃が当たって生きている場合、守備力が下がる
+                        let Per3 = this.per3 - Math.floor(Math.random() * 100);//per2が0より大きくなれば成功
+                        if(Per3 > 0){//成功した場合
+                          let Down = this.Dfe;
+                          if(this.DEf - Down < Math.floor(this.BaseDEf/4)){//基礎攻撃力の1/4以下になる場合
+                            Down = this.DEf - Math.floor(this.BaseDEf/4);//下がる量を調整する
+                          }
+                          console.log('aas');
+                          if(Down > 0){//下がる場合
+                            this.num1 = Down;
+                            this.DEf -= Down;
+                            command.push(`${this.Name}の守備力が${this.num1}下がった！`);
+                          }
+                          else{//下がらない場合
+                            command.push(`${this.Name}の守備力はこれ以上下がらないようだ`);
+                          }
+
+                        }
+                      }
+                      if(a === 1 && this.Hp > 0 && this.EAttack2flag >0){//攻撃が当たって生きている場合、状態異常になる
+                        const Per4 = this.per4 - Math.floor(Math.random() * 100);//per4が0より大きくなれば成功
+                        if(Per4 > 0){//成功した場合
+                          if(this.Joutaihennka === "なし" && this.State === "毒"){
+                           command.push(this.Name+"は毒に侵された！");
+                           this.Joutaihennka = "毒";//状態変化がなければ毒状態にする
+                          }
+                          if(this.Joutaihennka === "なし" && this.State === "眠り"){
+                           command.push(this.Name+"は眠ってしまった！");
+                           this.Joutaihennka = "眠り";//状態変化がなければ毒状態にする
+                           this.Sleep = Math.floor(Math.random() * 4) +1;//眠るターンを決める
+                          }
+                        }
+                      }
+                      if(a === command.length){//TODO:
+                        a= -1;
+                        this.Resetfun();
+                        this.Endphase();
+                      }
+                      this.text=command[a];
+                      console.log(command);
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    huiuti: function(){
+                      if(this.Joutaihennka !== "なし" ){//不要な時に飛ばす処理:TODO
+                        //a -= 1;
+                        this.flag -= 1;
+                      }
+                      else{
+                       this.EAttack2('の不意打ち攻撃！',10,100,5,100,100,100,10,50,'眠り',50)
+                      }
+                    },
+                    Eskill: function(texta,damage,per1,mp1,perm,Atk,per2,Dfe,per3,State,per4){
+                      if(a===-1){
+                      this.texta=texta;
+                      this.damage1=damage;
+                      this.per1=per1;
+                      this.mp1=mp1;
+                      this.perm=perm;
+                      this.Atk1=Atk;
+                      this.per2=per2;
+                      this.Dfe=Dfe;
+                      this.per3=per3;
+                      this.State=State;
+                      this.per4=per4;
+                      console.log("???qqq");
+                      command = [`${this.EName}${this.texta}`,];//繰り返しにしない
+                      }
+                      this.SwitchOn= false;
+                      this.Action= this.Eskill;
+                      console.log("???");
+                      if(a === 1 ){
+                        console.log(112372);
+                        const Per_1 = this.per1 - Math.floor(Math.random() * 100);//per1が0より大きくなれば成功
+                        if(Per_1 > 0 ){//あたった場合
+                         const Damage_1 = this.damage1+ Math.floor(Math.random() * 20) +1;
+                         this.Hp -= Damage_1;
+                         this.Hurueru();
+                         this.num1 = Damage_1;
+                         console.log(11232);
+                         command.push(`${this.Name}に${this.num1}ダメージ！`);
+                        }
+                      }
+                      if(a === 1 && this.Hp > 0){//生きている場合、MPが減る
+                        console.log(112372);
+                        const Per_M = this.perm - Math.floor(Math.random() * 100);//perMが0より大きくなれば成功
+                        if(Per_M > 0){//成功した場合
+                          let Down = this.mp1;
+                          if(this.Mp < Down ){//MPが尽きる、または尽きている場合
+                            Down = this.Mp;//下がる量を調整する
+                          }
+                          if(Down > 0){//下がる場合
+                            this.num1 = Down;
+                            this.Mp -= Down;
+                            command.push(`${this.Name}はMPを${this.num1}失った！`);
+                          }
+                          else{//下がらない場合
+                            command.push(`${this.Name}のMPはすでに尽きている`);
+                          }
+                        }
+                      }
+                      if(a === 1 && this.Hp > 0){//生きている場合、攻撃力が下がる
+                        const Per2 = this.per2 - Math.floor(Math.random() * 100);//per2が0より大きくなれば成功
+                        if(Per2 > 0){//成功した場合
+                          let Down = this.Atk1;
+                          if(this.ATk - Down < Math.floor(this.BaseATk/4)){//基礎攻撃力の1/4以下になる場合
+                            Down = this.ATk - Math.floor(this.BaseATk/4);//下がる量を調整する
+                          }
+                          if(Down > 0){//下がる場合
+                            this.num1 = Down;
+                            this.ATk -= Down;
+                            command.push(`${this.Name}の攻撃力が${this.num1}下がった！`);
+                          }
+                          else{//下がらない場合
+                            command.push(`${this.Name}の攻撃力はこれ以上下がらないようだ`);
+                          }
+                        }
+                      }
+                      if(a === 1 && this.Hp > 0){//生きている場合、守備力が下がる
+                        let Per3 = this.per3 - Math.floor(Math.random() * 100);//per2が0より大きくなれば成功
+                        if(Per3 > 0){//成功した場合
+                          let Down = this.Dfe;
+                          if(this.DEf - Down < Math.floor(this.BaseDEf/4)){//基礎攻撃力の1/4以下になる場合
+                            Down = this.DEf - Math.floor(this.BaseDEf/4);//下がる量を調整する
+                          }
+                          console.log('aas');
+                          if(Down > 0){//下がる場合
+                            this.num1 = Down;
+                            this.DEf -= Down;
+                            command.push(`${this.Name}の守備力が${this.num1}下がった！`);
+                          }
+                          else{//下がらない場合
+                            command.push(`${this.Name}の守備力はこれ以上下がらないようだ`);
+                          }
+
+                        }
+                      }
+                      if(a === 1 && this.Hp > 0){//生きている場合、状態異常になる
+                        const Per4 = this.per4 - Math.floor(Math.random() * 100);//per4が0より大きくなれば成功
+                        if(Per4 > 0){//成功した場合
+                          if(this.Joutaihennka === "なし" && this.State === "毒"){
+                           command.push(this.Name+"は毒に侵された！");
+                           this.Joutaihennka = "毒";//状態変化がなければ毒状態にする
+                          }
+                          if(this.Joutaihennka === "なし" && this.State === "眠り"){
+                           command.push(this.Name+"は眠ってしまった！");
+                           this.Joutaihennka = "眠り";//状態変化がなければ毒状態にする
+                           this.Sleep = Math.floor(Math.random() * 4) +1;//眠るターンを決める
+                          }
+                        }
+                      }
+                      if(a === 1 && command.length === 1){//何も起こらなかった場合
+                        command.push(this.Name+"には効かなかった！");
+                      }
+                      if(a === command.length){//TODO:
+                        a= -1;
+                        this.Resetfun();
+                        this.Endphase();
+                      }
+                      this.text=command[a];
+                      console.log(command);
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    tyohatu: function(){
+                      this.Eskill("は挑発した！",30,100,9,100,10,100,100,50,0,0)
+                    },
+                    hono60: function(){
+                      this.Eskill("は炎を吐き出した！",60,100,0,0,0,0,0,0,0,0)
+                    },
+                    EBaff: function(texta,damage,per1,Atk,per2,Dfe,per3,){
+                      if(a===-1){
+                      this.texta=texta;
+                      this.damage1=damage;
+                      this.per1=per1;
+                      this.Atk1=Atk;
+                      this.per2=per2;
+                      this.Dfe=Dfe;
+                      this.per3=per3;
+                      console.log("???qqq");
+                      command = [`${this.EName}${this.texta}`,];//繰り返しにしない
+                      }
+                      this.SwitchOn= false;
+                      this.Action= this.EBaff;
+                      console.log("???");
+                      if(a === 1 ){
+                        console.log(112372);
+                        const Per_1 = this.per1 - Math.floor(Math.random() * 100);//per1が0より大きくなれば成功
+                        if(Per_1 > 0 ){//成功した場合
+                          let Heal = this.damage1;
+                          if(this.EHp + Heal > this.EMaxHp){//最大HPより回復量が多くなる場合
+                            Heal = this.EMaxHp - this.EHp;//回復量を調整する
+                          }
+                          if(Heal > 0){//回復する場合
+                            this.num1 = Heal;
+                            this.EHp += Heal;
+                            command.push(`${this.EName}は体力を${this.num1}回復！`);
+                          }
+                          else{//しない場合
+                            command.push(`${this.Name}の体力はすでに満タンのようだ`);
+                          }
+                        }
+                      }
+                      if(a === 1 && this.Hp > 0){//生きている場合、攻撃力が上がる
+                        const Per2 = this.per2 - Math.floor(Math.random() * 100);//per2が0より大きくなれば成功
+                        if(Per2 > 0){//成功した場合
+                          let Up = this.Atk1;
+                          if(this.EATk + Up > this.EBaseATk * 3) {//基礎攻撃力の3倍以上になる場合
+                            Up = this.EBaseATk * 3 - this.EATk;//上がる量を調整する
+                          }
+                          if(Up > 0){//上がる場合
+                            this.num1 = Up;
+                            this.EATk += Up;
+                            command.push(`${this.EName}の攻撃力が${this.num1}上がった！`);
+                          }
+                          else{//上がらない場合
+                            command.push(`${this.EName}の攻撃力はこれ以上上がらないようだ`);
+                          }
+                        }
+                      }
+                      if(a === 1 && this.Hp > 0){//生きている場合、守備力が上がる
+                        let Per3 = this.per3 - Math.floor(Math.random() * 100);//per2が0より大きくなれば成功
+                        if(Per3 > 0){//成功した場合
+                          let Up = this.Dfe;
+                          if(this.EDEf + Up > this.EBaseDEf * 3) {//基礎守備力の3倍以上になる場合
+                            Up = this.EBaseDEf * 3 - this.EDEf;//上がる量を調整する
+                          }
+                          if(Up > 0){//上がる場合
+                            this.num1 = Up;
+                            this.EDEf += Up;
+                            command.push(`${this.EName}の守備力が${this.num1}上がった！`);
+                          }
+                          else{//上がらない場合
+                            command.push(`${this.EName}の守備力はこれ以上上がらないようだ`);
+                          }
+                        }
+                      }
+                      if(a === 1 && command.length === 1){//何も起こらなかった場合
+                        command.push("しかし何も起こらなかった！");
+                      }
+                      if(a === command.length){//
+                        a= -1;
+                        this.Resetfun();
+                        this.Endphase();
+                      }
+                      this.text=command[a];
+                      console.log(command);
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Einoru: function(){
+                      if(this.EATk > this.DEf || this.EATk > this.EBaseATk*2){//不要な時に飛ばす処理
+                        this.flag -= 1;
+                      }
+                      else{
+                        this.EBaff('は祈りを捧げた！',100,100,60,100,100,100)                      }
+                    },
+                    EMagic: function(texta,damage,per1,Atk,per2,Dfe,per3,State,per4){
+                      if(a===-1){
+                      this.texta=texta;
+                      this.damage1=damage;
+                      this.per1=per1;
+                      this.Atk1=Atk;
+                      this.per2=per2;
+                      this.Dfe=Dfe;
+                      this.per3=per3;
+                      this.State=State;
+                      this.per4=per4;
+                      this.hansyadamage = 0;//反射ダメージリセット
+                      console.log("???qqq");
+                      command = [`${this.EName}${this.texta}`,];//繰り返しにしない
+                      }
+                      if(a === 2 && this.Mirror === true && this.hansyadamage >= 1){//反射して敵がダメージを受ける時
+                        this.Tennmetu();
+                        console.log("tenmetu");
+                      }
+                      this.SwitchOn= false;
+                      this.Action= this.EMagic;
+                      console.log("???");
+                      if(a === 1 && this.Mirror === true){//反射時
+                        command.push(`${this.Name}は呪文を跳ね返した！`);
+                        console.log(112372);
+                        const Per_1 = this.per1 - Math.floor(Math.random() * 100);//per1が0より大きくなれば成功
+                        if(Per_1 > 0 ){//あたった場合
+                         const Damage_1 = this.damage1 + Math.floor(Math.random() * 20) +1;
+                         this.EHp -= Damage_1;
+                         //this.Hurueru();反射した時は震えない
+                         this.num1 = Damage_1;
+                         console.log(11232);
+                         command.push(`${this.EName}に${this.num1}ダメージ！`);
+                         this.hansyadamage = Damage_1;
+                        }
+                      }
+                      else if(a === 1 ){//反射しない場合
+                        console.log(112372);
+                        const Per_1 = this.per1 - Math.floor(Math.random() * 100);//per1が0より大きくなれば成功
+                        if(Per_1 > 0 ){//あたった場合
+                         const Damage_1 = this.damage1 + Math.floor(Math.random() * 20) +1;
+                         this.Hp -= Damage_1;
+                         this.Hurueru();
+                         this.num1 = Damage_1;
+                         console.log(11232);
+                         command.push(`${this.Name}に${this.num1}ダメージ！`);
+                        }
+                      }//////
+
+                      if(a === 1 && this.EHp > 0 && this.Mirror === true){//反射して敵が生きている場合、攻撃力が下がる
+                        const Per2 = this.per2 - Math.floor(Math.random() * 100);//per2が0より大きくなれば成功
+                        if(Per2 > 0){//成功した場合
+                          let Down = this.Atk1;
+                          if(this.EATk - Down < Math.floor(this.EBaseATk/4)){//基礎攻撃力の1/4以下になる場合
+                            Down = this.EATk - Math.floor(this.EBaseATk/4);//下がる量を調整する
+                          }
+                          if(Down > 0){//下がる場合
+                            this.num1 = Down;
+                            this.EATk -= Down;
+                            command.push(`${this.EName}の攻撃力が${this.num1}下がった！`);
+                          }
+                          else{//下がらない場合
+                            command.push(`${this.EName}の攻撃力はこれ以上下がらないようだ`);
+                          }
+
+                        }
+                      }
+                      else if(a === 1 && this.Hp > 0){//反射せず生きている場合、攻撃力が下がる
+                        const Per2 = this.per2 - Math.floor(Math.random() * 100);//per2が0より大きくなれば成功
+                        if(Per2 > 0){//成功した場合
+                          let Down = this.Atk1;
+                          if(this.ATk - Down < Math.floor(this.BaseATk/4)){//基礎攻撃力の1/4以下になる場合
+                            Down = this.ATk - Math.floor(this.BaseATk/4);//下がる量を調整する
+                          }
+                          if(Down > 0){//下がる場合
+                            this.num1 = Down;
+                            this.ATk -= Down;
+                            command.push(`${this.Name}の攻撃力が${this.num1}下がった！`);
+                          }
+                          else{//下がらない場合
+                            command.push(`${this.Name}の攻撃力はこれ以上下がらないようだ`);
+                          }
+
+                        }
+                      }//////
+                      if(a === 1 && this.EHp > 0 && this.Mirror === true){//反射して敵が生きている場合、守備力が下がる
+                        let Per3 = this.per3 - Math.floor(Math.random() * 100);//per2が0より大きくなれば成功
+                        if(Per3 > 0){//成功した場合
+                          let Down = this.Dfe;
+                          if(this.EDEf - Down < Math.floor(this.EBaseDEf/4)){//基礎攻撃力の1/4以下になる場合
+                            Down = this.EDEf - Math.floor(this.EBaseDEf/4);//下がる量を調整する
+                          }
+                          console.log('aas');
+                          if(Down > 0){//下がる場合
+                            this.num1 = Down;
+                            this.DEf -= Down;
+                            command.push(`${this.EName}の守備力が${this.num1}下がった！`);
+                          }
+                          else{//下がらない場合
+                            command.push(`${this.EName}の守備力はこれ以上下がらないようだ`);
+                          }
+
+                        }
+                      }
+                      else if(a === 1 && this.Hp > 0){//反射せず自分が生きている場合、守備力が下がる
+                        let Per3 = this.per3 - Math.floor(Math.random() * 100);//per2が0より大きくなれば成功
+                        if(Per3 > 0){//成功した場合
+                          let Down = this.Dfe;
+                          if(this.DEf - Down < Math.floor(this.BaseDEf/4)){//基礎攻撃力の1/4以下になる場合
+                            Down = this.DEf - Math.floor(this.BaseDEf/4);//下がる量を調整する
+                          }
+                          console.log('aas');
+                          if(Down > 0){//下がる場合
+                            this.num1 = Down;
+                            this.DEf -= Down;
+                            command.push(`${this.Name}の守備力が${this.num1}下がった！`);
+                          }
+                          else{//下がらない場合
+                            command.push(`${this.Name}の守備力はこれ以上下がらないようだ`);
+                          }
+
+                        }
+                      }//////
+                      if(a === 1 && this.Hp > 0 && this.Mirror === false){//反射せず、生きている場合、状態異常になる
+                        const Per4 = this.per4 - Math.floor(Math.random() * 100);//per4が0より大きくなれば成功
+                        if(Per4 > 0){//成功した場合
+                          if(this.Joutaihennka === "なし" && this.State === "毒"){
+                           command.push(this.Name+"は毒に侵された！");
+                           this.Joutaihennka = "毒";//状態変化がなければ毒状態にする
+                          }
+                          if(this.Joutaihennka === "なし" && this.State === "眠り"){
+                           command.push(this.Name+"は眠ってしまった！");
+                           this.Joutaihennka = "眠り";//状態変化がなければ毒状態にする
+                           this.Sleep = Math.floor(Math.random() * 4) +1;//眠るターンを決める
+                          }
+                        }
+                      }
+                      if(a === 1 && command.length === 1){//何も起こらなかった場合
+                        command.push(this.Name+"には効かなかった！");
+                      }
+                      else if(a === 1 && command.length === 2 && this.Mirror === true){//敵に反射して何も起こらなかった場合
+                        command.push(this.EName+"には効かなかった！");
+                      }
+                      if(a === command.length){//TODO:
+                        a= -1;
+                        this.Resetfun();
+                        this.Endphase();
+                      }
+                      this.text=command[a];
+                      console.log(command);
+                      console.log('a='+a),
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    EMagic_test: function(){
+                      this.EMagic("はエニグマを唱えた！",0,0,20,100,20,100,"毒",100)
                     },
                     EKaisin: function(){
                       command = [this.EName+"の攻撃！","会心の一撃!",this.Name+"に"+this.num1+"ダメージ！",];
@@ -1750,8 +2346,20 @@
                     },
                     Goahead: function(){
                       this.Gopoint += 1;
+                      this.Noivent = 0;//Noiventsを解除
                       if(this.Stage === 1){//Stage毎にアクションは変わる
                         this.Stage1();
+                      }
+                    },
+                    Lookaround: function(){
+                      const p = Math.floor(Math.random() * 3);
+                      if(p < 1 || this.Noivent >= 1){//1/3の確率でNoiventsになる
+                        this.Noivents();
+                        console.log("NOaction");
+                      }
+                      else{
+                        this.Gopoint -= 1;//前には進まないようにする
+                        this.Goahead();
                       }
                     },
                     Stage1: function(){
@@ -1761,16 +2369,31 @@
                         this.BackImage = "stage1";
                       }
                       const p = Math.floor(Math.random() * this.Gopoint) + 1;
-                      if(p <= 1){
-                        this.BattleE('ピヨピヨバード',40,10,20,[{action: this.EKaisin, per: 90},],'','ピヨ鳥.png',100,12);
+                      if(this.Gopoint === 7 && this.Doneivent !== "Stage1_Bossmae"){//まだボス前イベントしてない時
+                        this.Bossmae();
+                        this.Doneivent = "Stage1_Bossmae";
                       }
+                      else if(this.Gopoint === 8){
+                        this.Gopoint+=1;//ボスには一度しか当たらないようにする
+                        this.BattleE('ジャイアントオーガ',300,80,30,[{action: this.EKaisin, per: 20},{action: this.EMagic_fire, per: 10}],[''],'オーガ.png',1000,1000);
+                      }
+                      else if(this.Gopoint === 10){
+                        this.Yado();
+                      }
+                       else if(p <= 1){
+                        this.BattleE('ピヨピヨバード',40,10,20,[{action: this.EKaisin, per: 90},],['2回行動'],'ミイラ.png',100,12);
+                       }
                       else if(p <= 2){
-                        this.BattleE('ガブ',70,10,20,[{action: this.Eheal, per: 80},{action: this.Eheal80, per: 0}],["火弱"],'ゴブリン.PNG',1200,12);
+                        this.BattleE('ガブ',70,10,20,[{action: this.Eheal, per: 80},{action: this.Eheal80, per: 0}],["火弱"],'オーク.PNG',1200,12);
                       }
                       else if(p <= 3){
-                        this.BattleE('キングフロッグ',100,30,40,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],['呪文反射'],'蛙.png',1200,12);
-                      }else if(p <= 10){
-                        this.Yado();
+                        this.BattleE('キングフロッグ',100,30,40,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],['呪文反射'],'魔導.png',1200,12);
+                      }
+                      else if(p <= 8){
+                        this.BattleE('猫剣士',100,40,60,[{action: this.Einoru, per: 100},{action: this.EMagic_test, per: 10},{action: this.ESleep, per: 10}],[''],'ゴーレム.png',1200,12);
+                      }
+                      else if(p <= 10){
+                        Takarabakohakken('ミミック',100,100,100,[{action: this.EPoisonattack, per: 10},{action: ESleep, per: 80}],'','ミミック.png',1200,12);
                       }
                     },
                     BattleE: function(ename,ehp,eatk,edef,actions,eunique,image,eexp,egold){
@@ -1836,6 +2459,41 @@
                       else{
                        this.YesAction = this.TakarabakoBattleE;
                       }
+                    },
+                    Bossmae: function(){
+                      command = ['前方にただならぬ気配を感じる','万全の準備をして望んだ方が良さそうだ'];
+                      this.SwitchOn= false;
+                      this.Action= this.Bossmae;
+                      if(a === command.length){
+                        a= -1;
+                        this.SwitchOn= true;//選択画面に戻る
+                        this.BClist='confirm';
+                        this.confirmmsg　="行動を選んでください";
+                        this.Confirmtype = "次の行動";
+                        this.ImageOn = false;//画像非表示
+                      }
+                      this.text=command[a];
+                      console.log(a+"2");
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Noivents: function(){
+                      command = ['周囲には何もなさそうだ',];
+                      this.SwitchOn= false;
+                      this.Action= this.Noivents;
+                      this.Noivent = 1;//周囲を調べても何も出ないようにする
+                      if(a === command.length){
+                        a= -1;
+                        this.SwitchOn= true;//選択画面に戻る
+                        this.BClist='confirm';
+                        this.confirmmsg　="行動を選んでください";
+                        this.Confirmtype = "次の行動";
+                        this.ImageOn = false;//画像非表示
+                      }
+                      this.text=command[a];
+                      console.log(a+"2");
+                      this.msg2=a;
+                      a+=1;
                     },
                     Takarabakoakenai: function(){
                       command = [this.Name+"は宝箱を放っておいた",];
@@ -1985,7 +2643,7 @@
                           console.log("yado");
                       }
                       if(a === 1){
-                        this.Image = "婆さん.png";
+                        this.Image = "娘.png";
                         this.ImageOn = true;//画像表示
 
                       }
