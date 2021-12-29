@@ -255,53 +255,46 @@
               <div class ="text" style="white-space:pre-wrap; word-wrap:break-word;" v-show="SwitchOn === false" v-bind:class="{hurueru1: huruerufun===1, hurueru2: huruerufun===2,}">{{text}}</div>
               <div class="menu Unusable" v-show="BClist === 'Skill'">
                 <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= aaa1; aaa1();" v-show="a() <= 1" v-on:mouseover="msg1 = '凄まじく攻撃する' " v-on:mouseleave="msg1 = ''">・クリック！</div>
-                <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Kabutowari; Skill_Kabutowari();" v-show="Useskill.includes('かぶと割り')" v-on:mouseover="msg1 =Tx_Kabutowari" v-on:mouseleave="msg1 = ''">・かぶと割り</div>
-                <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Yaibakudaki; Skill_Yaibakudaki();" v-show="Useskill.includes('刃砕き')" v-on:mouseover="msg1 =Tx_Yaibakudaki" v-on:mouseleave="msg1 = ''">・刃砕き</div>
+                <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Kabutowari; Skill_Kabutowari();Mp -= 3;" v-show="Useskill.includes('かぶと割り')" v-on:mouseover="msg1 =Tx_Kabutowari" v-on:mouseleave="msg1 = ''">・かぶと割り</div>
+                <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Yaibakudaki; Skill_Yaibakudaki();Mp -= 3;" v-show="Useskill.includes('刃砕き')" v-on:mouseover="msg1 =Tx_Yaibakudaki" v-on:mouseleave="msg1 = ''">・刃砕き</div>
                 <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Kaihukugiri; Skill_Kaihukugiri();" v-show="Useskill.includes('回復斬り')" v-on:mouseover="msg1 =Tx_Kaihukugiri" v-on:mouseleave="msg1 = ''">・回復斬り</div>
-                <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Maryokugari; Skill_Maryokugari();" v-show="Useskill.includes('魔力狩り')" v-on:mouseover="msg1 = '与えたダメージの1/4分、　MPを回復する　（消費MP3/ダメージ倍率0.8倍）' " v-on:mouseleave="msg1 = ''">・魔力狩り</div>
                 <div v-bind:class="{command: Hp <=MaxHp/4}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Kisikaisei; Skill_Kisikaisei();" v-show="Useskill.includes('起死回生')" v-on:mouseover="msg1 =Tx_Kisikaisei" v-on:mouseleave="msg1 = ''">・起死回生</div>
-                <div v-bind:class="{command: Mp >=5}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Nidangiri; Skill_Nidangiri();" v-show="a() <= 1" v-on:mouseover="msg1 =Tx_Nidangiri" v-on:mouseleave="msg1 = ''">・二段斬り</div>
-                <div v-bind:class="{command: Mp >=5}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Midareduki; Skill_Midareduki();" v-show="a() <= 1" v-on:mouseover="msg1 = '（消費MP5/ダメージ倍率0.4倍✖️3~5）' " v-on:mouseleave="msg1 = ''">・乱れ突き</div>
-                <div class="command" v-show="a() <= 1" v-on:mouseover="msg1 = '雑に、攻撃する' " v-on:mouseleave="msg1 = ''">・まあまあ</div>
-                <div class="command" v-show="a() <= 1" v-on:mouseover="msg1 = '雑に、攻撃する' " v-on:mouseleave="msg1 = ''">・やばい</div>
-                <div class="command" @click="SwitchOn= !SwitchOn; aaa2" v-show=" 1 <= 1"v-on:mouseover="msg1 = '雑に攻撃する' " v-on:mouseleave="msg1 = ''">・酷い</div>
-                <div class="command" v-show="a() <= 2"v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">・かっこいい</div>
-                <div class="command" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">・良い</div>
-                <div class="command" v-on:mouseover="msg1 = '凄まじく攻撃する' " v-on:mouseleave="msg1 = ''">・susamajii</div>
-                <div class="command" v-on:mouseover="msg1 = 'やさしく攻撃する' " v-on:mouseleave="msg1 = ''">・yasasii</div>
-                <div class="command" v-on:mouseover="msg1 = '雑に、攻撃する' " v-on:mouseleave="msg1 = ''">・やばい</div>
-                <div class="command" v-show="a() <= 2" v-on:mouseover="msg1 = '雑に攻撃する' " v-on:mouseleave="msg1 = ''">・酷い</div>
-                <div class="command" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">・かっこいい</div>
-                <div class="command" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">・良い</div>
-                <div class="command" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">・良い</div>
-                <div class="command" v-on:mouseover="msg1 = '凄まじく攻撃する' " v-on:mouseleave="msg1 = ''">・susamajii</div>
-                <div class="command" v-on:mouseover="msg1 = 'やさしく攻撃する' " v-on:mouseleave="msg1 = ''">・yasasii</div>
-                <div class="command" v-on:mouseover="msg1 = '雑に、攻撃する' " v-on:mouseleave="msg1 = ''">・やばい</div>
+                <div v-bind:class="{command: Mp >=5}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Nidangiri; Skill_Nidangiri();" v-show="Useskill.includes('二段斬り')" v-on:mouseover="msg1 =Tx_Nidangiri" v-on:mouseleave="msg1 = ''">・二段斬り</div>
+                <div v-bind:class="{command: Mp >=5}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Midareduki; Skill_Midareduki();" v-show="Useskill.includes('乱れ突き')" v-on:mouseover="msg1 = '（消費MP5/ダメージ倍率0.4倍✖️3~5）' " v-on:mouseleave="msg1 = ''">・乱れ突き</div>
+                <div v-bind:class="{command: Mp >=4}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Huiuti; Skill_Huiuti();Mp -= 4;" v-show="Useskill.includes('不意打ち')" v-on:mouseover="msg1 =Tx_Kisikaisei" v-on:mouseleave="msg1 = ''">・不意打ち</div>
+                <div v-bind:class="{command: Mp >=40}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Kaisinhittyu; Skill_Kaisinhittyu();Mp -= 40;" v-show="Useskill.includes('会心必中')" v-on:mouseover="msg1 =Tx_Kisikaisei" v-on:mouseleave="msg1 = ''">・会心必中</div>
               </div>
               <div class="menu" v-show="BClist === 'Item'">
                 <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_yakusou; Item_yakusou();" v-show="Yakusou_stock >= 1" v-on:mouseover="msg1 = '体力を40回復する　　　　　所持数：'+Yakusou_stock " v-on:mouseleave="msg1 = ''">・薬草</div>
                 <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Dokukesi_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Dokukesi_stock " v-on:mouseleave="msg1 = ''">・毒消し</div>
-                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Seisui_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Seisui_stock " v-on:mouseleave="msg1 = ''">・聖水</div>
-                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Bannouyaku_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Bannouyaku_stock " v-on:mouseleave="msg1 = ''">・万能薬</div>
-                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Coffee_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Coffee_stock " v-on:mouseleave="msg1 = ''">・コーヒー</div>
-                <div class="command" v-show="a() <= 1" v-on:mouseover="msg1 = 'やさしく攻撃する' " v-on:mouseleave="msg1 = ''">・yasasii</div>
-                <div class="command" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">・かっこいい</div>
-                <div class="command" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">・良い</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Seisui; Item_Seisui();" v-show="Seisui_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Seisui_stock " v-on:mouseleave="msg1 = ''">・聖水</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Bannouyaku; Item_Bannouyaku();" v-show="Bannouyaku_stock >= 1" v-on:mouseover="msg1 = '体力を半分回復し、毒からも回復する　　　　　所持数：'+Bannouyaku_stock " v-on:mouseleave="msg1 = ''">・万能薬</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Coffee; Item_Coffee();" v-show="Coffee_stock >= 1" v-on:mouseover="msg1 = '飲んだ分だけ眠りにくくなる　　所持数：'+Coffee_stock " v-on:mouseleave="msg1 = ''">・コーヒー</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Kisekinomizu; Item_Kisekinomizu();" v-show="Kisekinomizu_stock >= 1" v-on:mouseover="msg1 = '体力を全回復し、毒からも回復する　　所持数：'+Kisekinomizu_stock" v-on:mouseleave="msg1 = ''">・奇跡の水</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Seireinosakazuki; Item_Seireinosakazuki();" v-show="Seireinosakazuki_stock >= 1" v-on:mouseover="msg1 = 'MPを全回復する　　所持数：'+Seireinosakazuki_stock" v-on:mouseleave="msg1 = ''">・精霊の杯</div>
+                <!--<div class="Unusable" v-show="Migawaridama_stock >= 1" v-on:mouseover="msg1 = '一度だけ瀕死から回復できる　　所持数：'+Migawaridama_stock" v-on:mouseleave="msg1 = ''">・身代わり珠</div> -->
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Tikaranokajitu; Item_Tikaranokajitu();" v-show="Tikaranokajitu_stock >= 1" v-on:mouseover="msg1 = '不思議な果実　　所持数：'+Tikaranokajitu_stock" v-on:mouseleave="msg1 = ''">・力の果実</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Mamorinokajitu; Item_Mamorinokajitu();" v-show="Mamorinokajitu_stock >= 1" v-on:mouseover="msg1 = '不思議な果実　　所持数：'+Mamorinokajitu_stock" v-on:mouseleave="msg1 = ''">・守りの果実</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Inotinokajitu; Item_Inotinokajitu();" v-show="Inotinokajitu_stock >= 1" v-on:mouseover="msg1 = '不思議な果実　　所持数：'+Inotinokajitu_stock" v-on:mouseleave="msg1 = ''">・命の果実</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Maryokunokajitu; Item_Maryokunokajitu();" v-show="Maryokunokajitu_stock >= 1" v-on:mouseover="msg1 = '不思議な果実　　所持数：'+Maryokunokajitu_stock" v-on:mouseleave="msg1 = ''">・魔力の果実</div>
               </div>
               <div class="menu Unusable" v-show="BClist === 'Magic'">
-                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= aaa2; aaa2();" v-show="a() <= 1" v-on:mouseover="msg1 = '念入りに攻撃する' " v-on:mouseleave="msg1 = ''">・クリック！</div>
+                <!-- <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= aaa2; aaa2();" v-show="a() <= 1" v-on:mouseover="msg1 = '念入りに攻撃する' " v-on:mouseleave="msg1 = ''">・クリック！</div> -->
                 <div v-bind:class="{command: Mp >=2}" v-show="Usemagic.includes('ファイア')" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_fire; Magic_fire(); Mp -= 2;" v-on:mouseover="msg1 = '火の玉で攻撃する　消費MP：2' " v-on:mouseleave="msg1 = ''">・ファイア</div>
                 <div v-bind:class="{command: Mp >=4}" v-show="Usemagic.includes('アイス')" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_ice; Magic_ice(); Mp -= 4;" v-on:mouseover="msg1 = '氷で攻撃する　消費MP：4' " v-on:mouseleave="msg1 = ''">・アイス</div>
                 <div v-bind:class="{command: Mp >=3}" v-show="Usemagic.includes('スパーク')" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_spark; Magic_spark(); Mp -= 3;" v-on:mouseover="msg1 = '雷で攻撃する　消費MP：3' " v-on:mouseleave="msg1 = ''">・スパーク</div>
-                <div class="command" v-show="Usemagic.includes('アイス')" v-on:mouseover="msg1 = 'やさしく攻撃する' " v-on:mouseleave="msg1 = ''">・アイス</div>
-                <div class="command" v-show="Usemagic.includes('エレキ')" v-on:mouseover="msg1 = 'やさしく攻撃する' " v-on:mouseleave="msg1 = ''">・エレキ</div>
-                <div class="command" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">・かっこいい</div>
-                <div class="command" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">・良い</div>
-                <div v-bind:class="{command: Mp >=2}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_mirror; Magic_mirror(); Mp -= 2;" v-show="a() <= 1" v-on:mouseover="msg1 = '使ったターン相手の呪文を跳ね返す　消費MP:2' " v-on:mouseleave="msg1 = ''">・ミラー</div>
-                <div v-bind:class="{command: Mp >=4}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_charge; Magic_charge(); Mp -= 4;" v-show="a() <= 1" v-on:mouseover="msg1 = '自分の攻撃力を1.5倍にする　消費MP:4' " v-on:mouseleave="msg1 = ''">・チャージ</div>
-                <div v-bind:class="{command: Mp >=4}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_build; Magic_build(); Mp -= 4;" v-show="a() <= 1" v-on:mouseover="msg1 = '自分の守備力を1.5倍にする　消費MP:4' " v-on:mouseleave="msg1 = ''">・ビルド</div>
-                <div v-bind:class="{command: Mp >=2}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_spoil; Magic_spoil(); Mp -= 2;" v-show="a() <= 1" v-on:mouseover="msg1 = '相手の攻撃力を3/4にする　消費MP:2' " v-on:mouseleave="msg1 = ''">・スポイル</div>
-                <div v-bind:class="{command: Mp >=2}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_melt; Magic_melt(); Mp -= 2;" v-show="a() <= 1" v-on:mouseover="msg1 = '相手の守備力を3/4にする　消費MP:2' " v-on:mouseleave="msg1 = ''">・メルト</div>
+                <div v-bind:class="{command: Mp >=2}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_mirror; Magic_mirror(); Mp -= 2;" v-show="Usemagic.includes('ミラー')" v-on:mouseover="msg1 = '使ったターン相手の呪文を跳ね返す　消費MP:2' " v-on:mouseleave="msg1 = ''">・ミラー</div>
+                <div v-bind:class="{command: Mp >=16}" v-show="Usemagic.includes('バーニング')" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_burning; Magic_burning(); Mp -= 16;" v-on:mouseover="msg1 = '炎で攻撃する　消費MP：16' " v-on:mouseleave="msg1 = ''">・バーニング</div>
+                <div v-bind:class="{command: Mp >=12}" v-show="Usemagic.includes('ブリザード')" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_blizzard; Magic_blizzard(); Mp -= 12;" v-on:mouseover="msg1 = '氷で攻撃する　消費MP：12' " v-on:mouseleave="msg1 = ''">・ブリザード</div>
+                <div v-bind:class="{command: Mp >=14}" v-show="Usemagic.includes('テンペスト')" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_tempest; Magic_tempest(); Mp -= 14;" v-on:mouseover="msg1 = '雷で攻撃する　消費MP：14' " v-on:mouseleave="msg1 = ''">・テンペスト</div>
+                <div v-bind:class="{command: Mp >=1}" v-show="Usemagic.includes('ファイナル')" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_final; Magic_final();" v-on:mouseover="msg1 = 'ファイナル　消費MP：全てのMP' " v-on:mouseleave="msg1 = ''">・ファイナル</div>
+                <div v-bind:class="{command: Mp >=2}" v-show="Usemagic.includes('フレッシュ')" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_fresh; Magic_fresh(); Mp -= 2;" v-on:mouseover="msg1 = '毒から回復する　消費MP：2' " v-on:mouseleave="msg1 = ''">・フレッシュ</div>
+                <div v-bind:class="{command: Mp >=10}" v-show="Usemagic.includes('サブヒール')" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_subheal; Magic_subheal(); Mp -= 10;" v-on:mouseover="msg1 = '体力を半分回復する　消費MP：10' " v-on:mouseleave="msg1 = ''">・サブヒール</div>
+                <div v-bind:class="{command: Mp >=20}" v-show="Usemagic.includes('フルヒール')" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_fullheal; Magic_fullheal(); Mp -= 20;" v-on:mouseover="msg1 = '体力を全回復し、毒からも回復する　消費MP：20' " v-on:mouseleave="msg1 = ''">・フルヒール</div>
+                <div v-bind:class="{command: Mp >=4}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_charge; Magic_charge(); Mp -= 4;" v-show="Usemagic.includes('チャージ')" v-on:mouseover="msg1 = '自分の攻撃力を1.5倍にする　消費MP:4' " v-on:mouseleave="msg1 = ''">・チャージ</div>
+                <div v-bind:class="{command: Mp >=4}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_build; Magic_build(); Mp -= 4;" v-show="Usemagic.includes('ビルド')" v-on:mouseover="msg1 = '自分の守備力を1.5倍にする　消費MP:4' " v-on:mouseleave="msg1 = ''">・ビルド</div>
+                <div v-bind:class="{command: Mp >=2}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_spoil; Magic_spoil(); Mp -= 2;" v-show="Usemagic.includes('スポイル')" v-on:mouseover="msg1 = '相手の攻撃力を3/4にする　消費MP:2' " v-on:mouseleave="msg1 = ''">・スポイル</div>
+                <div v-bind:class="{command: Mp >=2}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Magic_melt; Magic_melt(); Mp -= 2;" v-show="Usemagic.includes('メルト')" v-on:mouseover="msg1 = '相手の守備力を3/4にする　消費MP:2' " v-on:mouseleave="msg1 = ''">・メルト</div>
               </div>
               <div class="menu text" v-show="BClist === 'confirm' && NonBCommand === 'main' && SwitchOn === true ">
                 <div>{{confirmmsg}}</div>
@@ -334,34 +327,38 @@
                 <div class="command" @click="NonBClist = 'Item'"v-show="a() <= 1" v-on:mouseover="msg1 = '道具を使って回復する' " v-on:mouseleave="msg1 = ''">・道具</div>
               </div>
               <div class="menu Unusable" v-show="SwitchOn && NonBClist === 'Wepon'">
-                <div class="command" @click=" WeponATk = 10;Wepon = '木刀'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('木刀')" v-on:mouseover="msg1 = '攻撃力+10' " v-on:mouseleave="msg1 = ''">・木刀</div>
-                <div class="command" @click=" WeponATk = 30;Wepon = '銅の剣'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('銅の剣')" v-on:mouseover="msg1 = '攻撃力+30' " v-on:mouseleave="msg1 = ''">・銅の剣</div>
-                <div class="command" @click=" WeponATk = 30;Wepon = '鋼の剣'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('鋼の剣')" v-on:mouseover="msg1 = '攻撃力+30' " v-on:mouseleave="msg1 = ''">・鋼の剣</div>
-                <div class="command" @click=" WeponATk = 30;Wepon = '会心の剣'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('会心の剣')" v-on:mouseover="msg1 = '攻撃力+30' " v-on:mouseleave="msg1 = ''">・会心の剣</div>
-                <div class="command" @click=" WeponATk = 30;Wepon = '妖刀村正'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('妖刀村正')" v-on:mouseover="msg1 = '攻撃力+30' " v-on:mouseleave="msg1 = ''">・妖刀村正</div>
-                <div class="command" @click=" WeponATk = 30;Wepon = '力の剣'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('力の剣')" v-on:mouseover="msg1 = '攻撃力+30' " v-on:mouseleave="msg1 = ''">・力の剣</div>
-                <div v-bind:class="{command: Mp >=3}" v-show="Useskill.includes('回復斬り')" v-on:mouseover="msg1 = '与えたダメージの1/4分、HPを回復する　（消費MP3/ダメージ倍率0.8倍）' " v-on:mouseleave="msg1 = ''">・鉄の剣</div>
-                <div class="command" v-show="a() <= 1" v-on:mouseover="msg1 = '雑に、攻撃する' " v-on:mouseleave="msg1 = ''">・まあまあ</div>
-                <div class="command" v-show="a() <= 1" v-on:mouseover="msg1 = '雑に、攻撃する' " v-on:mouseleave="msg1 = ''">・やばい</div>
-                <div class="command" @click="SwitchOn= !SwitchOn; aaa2" v-show=" 1 <= 1"v-on:mouseover="msg1 = '雑に攻撃する' " v-on:mouseleave="msg1 = ''">・酷い</div>
+                <div class="command" @click=" WeponATk = 10;Wepon = '木刀'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('木刀')" v-on:mouseover="msg1 = Tx_Bokutou " v-on:mouseleave="msg1 = ''">・木刀</div>
+                <div class="command" @click=" WeponATk = 30;Wepon = '銅の剣'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('銅の剣')" v-on:mouseover="msg1 = Tx_Dounoken " v-on:mouseleave="msg1 = ''">・銅の剣</div>
+                <div class="command" @click=" WeponATk = 50;Wepon = '鋼の剣'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('鋼の剣')" v-on:mouseover="msg1 = Tx_Haganenoken " v-on:mouseleave="msg1 = ''">・鋼の剣</div>
+                <div class="command" @click=" WeponATk = 70;Wepon = '黄金の剣'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('黄金の剣')" v-on:mouseover="msg1 = Tx_Ougonnoken " v-on:mouseleave="msg1 = ''">・黄金の剣</div>
+                <div class="command" @click=" WeponATk = 50;Wepon = '会心の剣'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('会心の剣')" v-on:mouseover="msg1 = Tx_Kaisinnoken " v-on:mouseleave="msg1 = ''">・会心の剣</div>
+                <div class="command" @click=" WeponATk = 70;Wepon = '妖刀村正'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('妖刀村正')" v-on:mouseover="msg1 = Tx_Muramasa " v-on:mouseleave="msg1 = ''">・妖刀村正</div>
+                <div class="command" @click=" WeponATk = 70;Wepon = '力の剣'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('力の剣')" v-on:mouseover="msg1 = Tx_Tikara " v-on:mouseleave="msg1 = ''">・力の剣</div>
+                <div class="command" @click=" WeponATk = 120;Wepon = '伝説の剣'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('伝説の剣')" v-on:mouseover="msg1 = Tx_Densetunoken " v-on:mouseleave="msg1 = ''">・伝説の剣</div>
 
               </div>
               <div class="menu Unusable" v-show="SwitchOn && NonBClist === 'Shield'">
-                <div class="command" @click=" WeponDEf = 10;Shield = '鍋ぶた'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('鍋ぶた')" v-on:mouseover="msg1 = '守備力+10' " v-on:mouseleave="msg1 = ''">・鍋ぶた</div>
-                <div class="command" @click=" WeponDEf = 20;Shield = '銅の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('銅の盾')" v-on:mouseover="msg1 = '守備力+20' " v-on:mouseleave="msg1 = ''">・銅の盾</div>
-                <div class="command" @click=" WeponDEf = 30;Shield = '鋼の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('鋼の盾')" v-on:mouseover="msg1 = '守備力+30' " v-on:mouseleave="msg1 = ''">・鋼の盾</div>
-                <div class="command" @click=" WeponDEf = 20;Shield = '魔力の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('魔力の盾')" v-on:mouseover="msg1 = '守備力+20 毎ターンMPを回復する' " v-on:mouseleave="msg1 = ''">・魔力の盾</div>
-
+                <div class="command" @click=" WeponDEf = 10;Shield = '鍋ぶた'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('鍋ぶた')" v-on:mouseover="msg1 = Tx_Nabehuta " v-on:mouseleave="msg1 = ''">・鍋ぶた</div>
+                <div class="command" @click=" WeponDEf = 20;Shield = '銅の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('銅の盾')" v-on:mouseover="msg1 = Tx_Dounotate " v-on:mouseleave="msg1 = ''">・銅の盾</div>
+                <div class="command" @click=" WeponDEf = 30;Shield = '鋼の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('鋼の盾')" v-on:mouseover="msg1 = Tx_Haganenotate " v-on:mouseleave="msg1 = ''">・鋼の盾</div>
+                <div class="command" @click=" WeponDEf = 40;Shield = '黄金の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('黄金の盾')" v-on:mouseover="msg1 = Tx_Ougonnotate " v-on:mouseleave="msg1 = ''">・黄金の盾</div>
+                <div class="command" @click=" WeponDEf = 20;Shield = '魔力の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('魔力の盾')" v-on:mouseover="msg1 = Tx_Maryokunotate " v-on:mouseleave="msg1 = ''">・魔力の盾</div>
+                <div class="command" @click=" WeponDEf = 50;Shield = '癒しの盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('癒しの盾')" v-on:mouseover="msg1 = Tx_Iyasinotate " v-on:mouseleave="msg1 = ''">・癒しの盾</div>
+                <div class="command" @click=" WeponDEf = 40;Shield = '守護の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('守護の盾')" v-on:mouseover="msg1 = Tx_Syugonotate " v-on:mouseleave="msg1 = ''">・守護の盾</div>
+                <div class="command" @click=" WeponDEf = 70;Shield = '伝説の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('伝説の盾')" v-on:mouseover="msg1 = Tx_Densetunotate " v-on:mouseleave="msg1 = ''">・伝説の盾</div>
               </div>
               <div class="menu" v-show="SwitchOn && NonBClist === 'Item'">
-                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_yakusou; Item_yakusou();" v-show="Yakusou_stock >= 1" v-on:mouseover="msg1 = '体力を40回復する　　　　　所持数：'+Yakusou_stock " v-on:mouseleave="msg1 = ''">・薬草</div>
-                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Dokukesi_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Dokukesi_stock " v-on:mouseleave="msg1 = ''">・毒消し</div>
-                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Seisui; Item_Seisui();" v-show="Seisui_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Seisui_stock " v-on:mouseleave="msg1 = ''">・聖水</div>
-                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Bannouyaku_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Bannouyaku_stock " v-on:mouseleave="msg1 = ''">・万能薬</div>
-                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Coffee_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Coffee_stock " v-on:mouseleave="msg1 = ''">・コーヒー</div>
-                <div class="command" v-show="a() <= 1" v-on:mouseover="msg1 = 'やさしく攻撃する' " v-on:mouseleave="msg1 = ''">・yasasii</div>
-                <div class="command" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">・かっこいい</div>
-                <div class="command" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">・良い</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_yakusou; Item_yakusou();" v-show="Yakusou_stock >= 1" v-on:mouseover="msg1 = Tx_Yakusou + Yakusou_stock +uri+''" v-on:mouseleave="msg1 = ''">・薬草</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Dokukesi_stock >= 1" v-on:mouseover="msg1 = Tx_Dokukesi + Dokukesi_stock +uri+''" v-on:mouseleave="msg1 = ''">・毒消し</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Seisui; Item_Seisui();" v-show="Seisui_stock >= 1" v-on:mouseover="msg1 = Tx_Seisui + Seisui_stock +uri+''" v-on:mouseleave="msg1 = ''">・聖水</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Bannouyaku; Item_Bannouyaku();" v-show="Bannouyaku_stock >= 1" v-on:mouseover="msg1 = Tx_Bannouyaku + Bannouyaku_stock +uri+''" v-on:mouseleave="msg1 = ''">・万能薬</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Coffee; Item_Coffee();" v-show="Coffee_stock >= 1" v-on:mouseover="msg1 = Tx_Coffee + Coffee_stock +uri+''" v-on:mouseleave="msg1 = ''">・コーヒー</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Kisekinomizu; Item_Kisekinomizu();" v-show="Kisekinomizu_stock >= 1" v-on:mouseover="msg1 = Tx_Kisekinomizu + Kisekinomizu_stock +uri+''" v-on:mouseleave="msg1 = ''">・奇跡の水</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Seireinosakazuki; Item_Seireinosakazuki();" v-show="Seireinosakazuki_stock >= 1" v-on:mouseover="msg1 = Tx_Seireinosakazuki + Seireinosakazuki_stock +uri+''" v-on:mouseleave="msg1 = ''">・精霊の杯</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Tikaranokajitu; Item_Tikaranokajitu();" v-show="Tikaranokajitu_stock >= 1" v-on:mouseover="msg1 = Tx_Tikaranokajitu + Tikaranokajitu_stock +uri+''"v-on:mouseleave="msg1 = ''">・力の果実</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Mamorinokajitu; Item_Mamorinokajitu();" v-show="Mamorinokajitu_stock >= 1" v-on:mouseover="msg1 = Tx_Mamorinokajitu + Mamorinokajitu_stock +uri+''" v-on:mouseleave="msg1 = ''">・守りの果実</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Inotinokajitu; Item_Inotinokajitu();" v-show="Inotinokajitu_stock >= 1" v-on:mouseover="msg1 = Tx_Inotinokajitu + Inotinokajitu_stock +uri+''" v-on:mouseleave="msg1 = ''">・命の果実</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Maryokunokajitu; Item_Maryokunokajitu();" v-show="Maryokunokajitu_stock >= 1" v-on:mouseover="msg1 = Tx_Maryokunokajitu + Maryokunokajitu_stock +uri+''" v-on:mouseleave="msg1 = ''">・魔力の果実</div>
               </div>
               <!--　ここまで持ち物確認リスト-->
                <!--　ここから売るリスト-->
@@ -372,20 +369,37 @@
                 <div class="command" @click="NonBClist = 'Sell_Item'"v-show="a() <= 1" v-on:mouseover="msg1 = '道具を売る' " v-on:mouseleave="msg1 = ''">・道具</div>
               </div>
               <div class="menu Unusable" v-show="SwitchOn && NonBClist === 'Sell_Wepon'">
-                <div class="command" @click=" WeponATk = 10;Wepon = '木刀'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('木刀')" v-on:mouseover="msg1 = '攻撃力+10' " v-on:mouseleave="msg1 = ''">・木刀</div>
-                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('銅の剣',150); " v-show="UseWeponShield.includes('銅の剣')" v-on:mouseover="msg1 = '攻撃力+30 売り値：150G' " v-on:mouseleave="msg1 = ''">・銅の剣</div>
-                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('鋼の剣',250); " v-show="UseWeponShield.includes('鋼の剣')" v-on:mouseover="msg1 = '攻撃力+50 売り値：250G' " v-on:mouseleave="msg1 = ''">・鋼の剣</div>
+                <div v-show="UseWeponShield.includes('木刀')" v-on:mouseover="msg1 = Tx_Bokutou+'売り値：0G（ 売れない）'" v-on:mouseleave="msg1 = ''">・木刀</div>
+                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('銅の剣',150); " v-show="UseWeponShield.includes('銅の剣')" v-on:mouseover="msg1 = Tx_Dounoken+'売り値：150G' " v-on:mouseleave="msg1 = ''">・銅の剣</div>
+                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('鋼の剣',250); " v-show="UseWeponShield.includes('鋼の剣')" v-on:mouseover="msg1 = Tx_Haganenoken+'売り値：250G' " v-on:mouseleave="msg1 = ''">・鋼の剣</div>
+                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('黄金の剣',500); " v-show="UseWeponShield.includes('黄金の剣')" v-on:mouseover="msg1 = Tx_Ougonnoken+'売り値：500G' " v-on:mouseleave="msg1 = ''">・黄金の剣</div>
+                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('会心の剣',800); " v-show="UseWeponShield.includes('会心の剣')" v-on:mouseover="msg1 = Tx_Kaisinnoken+'売り値：800G' " v-on:mouseleave="msg1 = ''">・会心の剣</div>
+                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('妖刀村正',800); " v-show="UseWeponShield.includes('妖刀村正')" v-on:mouseover="msg1 = Tx_Muramasa+'売り値：800G' " v-on:mouseleave="msg1 = ''">・妖刀村正</div>
+                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('力の剣',800); " v-show="UseWeponShield.includes('力の剣')" v-on:mouseover="msg1 = Tx_Tikara+'売り値：800G' " v-on:mouseleave="msg1 = ''">・力の剣</div>
+                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('伝説の剣',1200); " v-show="UseWeponShield.includes('伝説の剣')" v-on:mouseover="msg1 = Tx_Densetunoken+'売り値：1200G' " v-on:mouseleave="msg1 = ''">・伝説の剣</div>
               </div>
               <div class="menu Unusable" v-show="SwitchOn && NonBClist === 'Sell_Shield'">
-                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('銅の盾',150); " v-show="UseWeponShield.includes('銅の盾')" v-on:mouseover="msg1 = '守備力+20 売り値：150G' " v-on:mouseleave="msg1 = ''">・銅の盾</div>
-                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('鋼の盾',250); " v-show="UseWeponShield.includes('鋼の盾')" v-on:mouseover="msg1 = '守備力+50 売り値：250G' " v-on:mouseleave="msg1 = ''">・鋼の盾</div>
+                <div v-show="UseWeponShield.includes('鍋ぶた')" v-on:mouseover="msg1 = Tx_Nabehuta+'売り値：0G（ 売れない）'" v-on:mouseleave="msg1 = ''">・鍋ぶた</div>
+                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('銅の盾',150); " v-show="UseWeponShield.includes('銅の盾')" v-on:mouseover="msg1 = Tx_Dounotate+'売り値：150G' " v-on:mouseleave="msg1 = ''">・銅の盾</div>
+                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('鋼の盾',250); " v-show="UseWeponShield.includes('鋼の盾')" v-on:mouseover="msg1 = Tx_Haganenotate+'売り値：250G' " v-on:mouseleave="msg1 = ''">・鋼の盾</div>
+                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('黄金の盾',500); " v-show="UseWeponShield.includes('黄金の盾')" v-on:mouseover="msg1 = Tx_Ougonnotate+'売り値：500G' " v-on:mouseleave="msg1 = ''">・黄金の盾</div>
+                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('魔力の盾',400); " v-show="UseWeponShield.includes('魔力の盾')" v-on:mouseover="msg1 = Tx_Maryokunotate+'売り値：400G' " v-on:mouseleave="msg1 = ''">・魔力の盾</div>
+                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('癒しの盾',800); " v-show="UseWeponShield.includes('癒しの盾')" v-on:mouseover="msg1 = Tx_Iyasinotate+'売り値：800G' " v-on:mouseleave="msg1 = ''">・癒しの盾</div>
+                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('守護の盾',800); " v-show="UseWeponShield.includes('守護の盾')" v-on:mouseover="msg1 = Tx_Syugonotate+'売り値：800G' " v-on:mouseleave="msg1 = ''">・守護の盾</div>
+                <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('伝説の盾',1200); " v-show="UseWeponShield.includes('伝説の盾')" v-on:mouseover="msg1 = Tx_Densetunotate+'売り値：1200G' " v-on:mouseleave="msg1 = ''">・伝説の盾</div>
               </div>
               <div class="menu" v-show="SwitchOn && NonBClist === 'Sell_Item'">
-                <div class="command" @click=" Action= Item_sell; Item_sell('薬草',25);" v-show="Yakusou_stock >= 1" v-on:mouseover="msg1 = '体力を40回復する　　　　　所持数：'+Yakusou_stock +'　売り値：25G'" v-on:mouseleave="msg1 = ''">・薬草</div>
-                <div class="command" @click=" Action= Item_sell; Item_sell('毒消し',15);" v-show="Dokukesi_stock >= 1" v-on:mouseover="msg1 = '体力を40回復する　　　　　所持数：'+Yakusou_stock +'　売り値：15G'" v-on:mouseleave="msg1 = ''">・毒消し</div>
-                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Seisui_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Seisui_stock " v-on:mouseleave="msg1 = ''">・聖水</div>
-                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Bannouyaku_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Bannouyaku_stock " v-on:mouseleave="msg1 = ''">・万能薬</div>
-                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Coffee_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Coffee_stock " v-on:mouseleave="msg1 = ''">・コーヒー</div>
+                <div class="command" @click=" Action= Item_sell; Item_sell('薬草',25);" v-show="Yakusou_stock >= 1" v-on:mouseover="msg1 = Tx_Yakusou + Yakusou_stock +uri+'売り値：25G'" v-on:mouseleave="msg1 = ''">・薬草</div>
+                <div class="command" @click=" Action= Item_sell; Item_sell('毒消し',15);" v-show="Dokukesi_stock >= 1" v-on:mouseover="msg1 = Tx_Dokukesi + Dokukesi_stock +uri+'売り値：15G'" v-on:mouseleave="msg1 = ''">・毒消し</div>
+                <div class="command" @click=" Action= Item_sell; Item_sell('聖水',50);" v-show="Seisui_stock >= 1" v-on:mouseover="msg1 = Tx_Seisui + Seisui_stock +uri+'売り値：50G'" v-on:mouseleave="msg1 = ''">・聖水</div>
+                <div class="command" @click=" Action= Item_sell; Item_sell('万能薬',35);" v-show="Bannouyaku_stock >= 1" v-on:mouseover="msg1 = Tx_Bannouyaku + Bannouyaku_stock +uri+'売り値：35G'" v-on:mouseleave="msg1 = ''">・万能薬</div>
+                <div class="command" @click=" Action= Item_sell; Item_sell('コーヒー',35);" v-show="Coffee_stock >= 1" v-on:mouseover="msg1 = Tx_Coffee + Coffee_stock +uri+'売り値：35G'" v-on:mouseleave="msg1 = ''">・コーヒー</div>
+                <div class="command" @click=" Action= Item_sell; Item_sell('奇跡の水',150);" v-show="Kisekinomizu_stock >= 1" v-on:mouseover="msg1 = Tx_Kisekinomizu + Kisekinomizu_stock +uri+'売り値：150G'" v-on:mouseleave="msg1 = ''">・奇跡の水</div>
+                <div class="command" @click=" Action= Item_sell; Item_sell('精霊の杯',300);" v-show="Seireinosakazuki_stock >= 1" v-show="Seireinosakazuki_stock >= 1" v-on:mouseover="msg1 = Tx_Seireinosakazuki + Seireinosakazuki_stock +uri+'売り値：300G'" v-on:mouseleave="msg1 = ''">・精霊の杯</div>
+                <div class="command" @click=" Action= Item_sell; Item_sell('力の果実',200);" v-show="Tikaranokajitu_stock >= 1" v-on:mouseover="msg1 = Tx_Tikaranokajitu + Tikaranokajitu_stock +uri+'売り値：200G'"v-on:mouseleave="msg1 = ''">・力の果実</div>
+                <div class="command" @click=" Action= Item_sell; Item_sell('守りの果実',200);" v-show="Mamorinokajitu_stock >= 1" v-on:mouseover="msg1 = Tx_Mamorinokajitu + Mamorinokajitu_stock +uri+'売り値：200G'" v-on:mouseleave="msg1 = ''">・守りの果実</div>
+                <div class="command" @click=" Action= Item_sell; Item_sell('命の果実',200);" v-show="Inotinokajitu_stock >= 1" v-on:mouseover="msg1 = Tx_Inotinokajitu + Inotinokajitu_stock +uri+'売り値：200G'" v-on:mouseleave="msg1 = ''">・命の果実</div>
+                <div class="command" @click=" Action= Item_sell; Item_sell('魔力の果実',200);" v-show="Maryokunokajitu_stock >= 1" v-on:mouseover="msg1 = Tx_Maryokunokajitu + Maryokunokajitu_stock +uri+'売り値：200G'" v-on:mouseleave="msg1 = ''">・魔力の果実</div>
                 <div class="command" v-show="a() <= 1" v-on:mouseover="msg1 = 'やさしく攻撃する' " v-on:mouseleave="msg1 = ''">・yasasii</div>
                 <div class="command" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">・かっこいい</div>
                 <div class="command" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">・良い</div>
@@ -399,24 +413,24 @@
                 <div class="command" @click="NonBClist = 'Buy_Item'"v-show="a() <= 1" v-on:mouseover="msg1 = '道具を買う' " v-on:mouseleave="msg1 = ''">・道具</div>
               </div>
               <div class="menu Unusable" v-show="SwitchOn && NonBClist === 'Buy_Wepon'">
-                <div class="command" @click=" WeponATk = 10;Wepon = '木刀'; Action= Wepon_change; Wepon_change();" v-show="AllWeponShield.includes('木刀')" v-on:mouseover="msg1 = '攻撃力+10' " v-on:mouseleave="msg1 = ''">・木刀</div>
-                <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('銅の剣',300); " v-show="AllWeponShield.includes('銅の剣')" v-on:mouseover="msg1 = '攻撃力+30 値段：300G' " v-on:mouseleave="msg1 = ''">・銅の剣</div>
-                <div v-bind:class="{command: Gold >=500}" @click="Action= WeponShield_buy; WeponShield_buy('鋼の剣',500); " v-show="AllWeponShield.includes('鋼の剣')" v-on:mouseover="msg1 = '攻撃力+30 値段：500G' " v-on:mouseleave="msg1 = ''">・鋼の剣</div>
+                <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('銅の剣',300); " v-show="AllWeponShield.includes('銅の剣')" v-on:mouseover="msg1 = Tx_Dounoken+'値段：300G' " v-on:mouseleave="msg1 = ''">・銅の剣</div>
+                <div v-bind:class="{command: Gold >=500}" @click="Action= WeponShield_buy; WeponShield_buy('鋼の剣',500); " v-show="AllWeponShield.includes('鋼の剣')" v-on:mouseover="msg1 = Tx_Haganenoken+'値段：500G' " v-on:mouseleave="msg1 = ''">・鋼の剣</div>
+                <div v-bind:class="{command: Gold >=500}" @click="Action= WeponShield_buy; WeponShield_buy('黄金の剣',1000); " v-show="AllWeponShield.includes('黄金の剣')" v-on:mouseover="msg1 = Tx_Ougonnoken+'値段：1000G' " v-on:mouseleave="msg1 = ''">・黄金の剣</div>
 
               </div>
               <div class="menu Unusable" v-show="SwitchOn && NonBClist === 'Buy_Shield'">
-                <div class="command" @click=" WeponDEf = 10;Shield = '鍋ぶた'; Action= Wepon_change; Wepon_change();" v-show="AllWeponShield.includes('鍋ぶた')" v-on:mouseover="msg1 = '守備力+10' " v-on:mouseleave="msg1 = ''">・鍋ぶた</div>
                 <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('銅の盾',300); " v-show="AllWeponShield.includes('銅の盾')" v-on:mouseover="msg1 = '守備力+20 値段：300G' " v-on:mouseleave="msg1 = ''">・銅の盾</div>
-                <div class="command" @click=" WeponDEf = 30;Shield = '鋼の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('鋼の盾')" v-on:mouseover="msg1 = '守備力+30' " v-on:mouseleave="msg1 = ''">・鋼の盾</div>
-                <div class="command" @click=" WeponDEf = 20;Shield = '魔力の盾'; Action= Wepon_change; Wepon_change();" v-show="UseWeponShield.includes('魔力の盾')" v-on:mouseover="msg1 = '守備力+20 毎ターンMPを回復する' " v-on:mouseleave="msg1 = ''">・魔力の盾</div>
+                <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('鋼の盾',500); " v-show="AllWeponShield.includes('鋼の盾')" v-on:mouseover="msg1 = Tx_Haganenotate " v-on:mouseleave="msg1 = ''">・鋼の盾</div>
+                <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('黄金の盾',1000); " v-show="AllWeponShield.includes('黄金の盾')" v-on:mouseover="msg1 = Tx_Ougonnotate " v-on:mouseleave="msg1 = ''">・黄金の盾</div>
+                <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('魔力の盾',800); " v-show="AllWeponShield.includes('魔力の盾') && Level >= 20" v-on:mouseover="msg1 = Tx_Maryokunotate " v-on:mouseleave="msg1 = ''">・魔力の盾</div>
 
               </div>
               <div class="menu Unusable" v-show="SwitchOn && NonBClist === 'Buy_Item'">
-                <div v-bind:class="{command: Gold >=50}" @click=" Action= Item_buy; Item_buy('薬草',50);" v-on:mouseover="msg1 = '体力を40回復する　　　　　所持数：'+Yakusou_stock +'　値段：50G'" v-on:mouseleave="msg1 = ''">・薬草</div>
-                <div v-bind:class="{command: Gold >=30}" @click=" Action= Item_buy; Item_buy('毒消し',30);" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Dokukesi_stock +'　値段：30G'" v-on:mouseleave="msg1 = ''">・毒消し</div>
-                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Seisui_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Seisui_stock " v-on:mouseleave="msg1 = ''">・聖水</div>
-                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Bannouyaku_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Bannouyaku_stock " v-on:mouseleave="msg1 = ''">・万能薬</div>
-                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Coffee_stock >= 1" v-on:mouseover="msg1 = '毒から回復する　　　　　所持数：'+Coffee_stock " v-on:mouseleave="msg1 = ''">・コーヒー</div>
+                <div v-bind:class="{command: Gold >=50}" @click=" Action= Item_buy; Item_buy('薬草',50);" v-on:mouseover="msg1 = Tx_Yakusou + Yakusou_stock +uri+'値段：50G'" v-on:mouseleave="msg1 = ''">・薬草</div>
+                <div v-bind:class="{command: Gold >=30}" @click=" Action= Item_buy; Item_buy('毒消し',30);" v-on:mouseover="msg1 = Tx_Dokukesi + Dokukesi_stock +uri+'値段：30G'" v-on:mouseleave="msg1 = ''">・毒消し</div>
+                <div v-bind:class="{command: Gold >=100}" @click=" Action= Item_buy; Item_buy('聖水',100);" v-on:mouseover="msg1 = Tx_Seisui + Seisui_stock +uri+'値段：100G'" v-on:mouseleave="msg1 = ''">・聖水</div>
+                <div v-bind:class="{command: Gold >=70}" @click=" Action= Item_buy; Item_buy('万能薬',70);" v-on:mouseover="msg1 = Tx_Bannouyaku + Bannouyaku_stock +uri+'値段：70G'" v-on:mouseleave="msg1 = ''">・万能薬</div>
+                <div v-bind:class="{command: Gold >=70}" @click=" Action= Item_buy; Item_buy('コーヒー',70);" v-on:mouseover="msg1 = Tx_Coffee + Coffee_stock +uri+'値段：70G'" v-on:mouseleave="msg1 = ''">・コーヒー</div>
                 <div class="command" v-show="a() <= 1" v-on:mouseover="msg1 = 'やさしく攻撃する' " v-on:mouseleave="msg1 = ''">・yasasii</div>
                 <div class="command" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">・かっこいい</div>
                 <div class="command" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">・良い</div>
@@ -531,21 +545,22 @@
                    texta:'',damage1:40,per1:0,mp1:0,perm:0,Atk1:0,per2:0,Dfe:0,per3:0,State:'',per4:0,
                    hansyadamage:0,//反射ダメージがあった場合に点滅させるため作成
                    EAttack2flag:0,//EAttack2で攻撃があたったか否かを判定
+                   turnflug:1,//武具の効果発動が1ターンに一回になるよう制御
                    //
                    Gopoint:1,//進み具合
                    Noivent:0,//周囲を調べ尽くした際のカウンター
                    Doneivent:0,//行われたイベント
                    Stage:1,//現在のステージ
                    //覚えられる特技、魔法関連
-                   Allskill:['鉄壁',"二段斬り","まひるみ打ち","ためる","乱れ突き","諸刃の剣","回復斬り","かぶと割り"],
-                   Useskill:['魔力狩り','かぶと割り','刃砕き','起死回生'],
-                   Allmagic:['ファイア','フレイム','アイス','ブリザード','スパーク','サンダー',],
-                   Usemagic:['ファイア','アイス','スパーク'],
+                   Allskill:["二段斬り","乱れ突き","回復斬り","かぶと割り",'刃砕き','起死回生','不意打ち','会心必中'],
+                   Useskill:[],
+                   Allmagic:['バーニング','ブリザード','テンペスト','サブヒール','フルヒール','フレッシュ','ファイナル','チャージ','ビルド','スポイル','メルト',],
+                   Usemagic:['ファイア','アイス','スパーク','ミラー',],
                    //持っていない全ての武器、持っている武器
-                   AllWeponShield:['銅の剣','鋼の剣','会心の剣','妖刀村正','力の剣','銅の盾','鋼の盾','魔力の盾'],
-                   UseWeponShield:['木刀','鍋ぶた',],
+                   AllWeponShield:['銅の剣','鋼の剣','黄金の剣','会心の剣','妖刀村正','力の剣','伝説の剣','銅の盾','鋼の盾','黄金の盾','癒しの盾','守護の盾','魔力の盾','伝説の盾'],
+                   UseWeponShield:['木刀','銅の剣','鋼の剣','黄金の剣','鍋ぶた','会心の剣','妖刀村正','力の剣','伝説の剣','銅の盾','鋼の盾','黄金の盾','癒しの盾','守護の盾','魔力の盾','伝説の盾'],
                    //宝箱で入手できる道具の全量
-                   AllItem:['薬草','毒消し','聖水','万能薬','コーヒー'],
+                   AllItem:['薬草','毒消し','聖水','万能薬','コーヒー','奇跡の水','精霊の杯','力の果実','守りの果実','命の果実','魔力の果実'],//',身代わり珠'],
                    //宝箱で入手したもの
                    Getting:"",
                    //入手するアイテムの数
@@ -553,10 +568,87 @@
                    //Itemの数
                    Yakusou_stock:5,
                    Dokukesi_stock:3,
-                   Seisui_stock:1,
-                   Bannouyaku_stock:0,
-                   Coffee_stock:0,
+                   Seisui_stock:2,
+                   Bannouyaku_stock:2,
+                   Coffee_stock:2,
+                   Kisekinomizu_stock:2,
+                   Seireinosakazuki_stock:2,
+                   Migawaridama_stock:2,
+                   Tikaranokajitu_stock:2,
+                   Mamorinokajitu_stock:2,
+                   Inotinokajitu_stock:2,
+                   Maryokunokajitu_stock:2,
                    //説明文
+Tx_Kaisinnoken:`攻撃力+50
+1/2の確率で、　
+通常攻撃が会心の一撃になる
+` ,
+Tx_Bokutou:`攻撃力+10
+`,
+Tx_Nabehuta:`守備力+10
+`,
+Tx_Haganenoken:`攻撃力+50
+`,
+Tx_Dounoken:`攻撃力+30
+`,
+Tx_Ougonnoken:`攻撃力+70
+`,
+Tx_Muramasa:`攻撃力+70
+毎ターン体力が、
+6〜10自動で回復する
+`,
+Tx_Tikara:`攻撃力+70
+毎ターン攻撃力が、
+6〜10自動で上昇する
+`,
+Tx_Densetunoken:`攻撃力+120
+`,
+Tx_Maryokunotate:`守備力+20
+毎ターンMPが、
+1〜5自動で回復する
+`,
+Tx_Iyasinotate:`守備力+50
+毎ターンHPが、
+6〜10自動で回復する
+`,
+Tx_Syugonotate:`守備力+40
+毎ターン守備力が、
+6〜10自動で上昇する
+`,
+Tx_Dounotate:`守備力+20
+`,
+Tx_Haganenotate:`守備力+30
+`,
+Tx_Ougonnotate:`守備力+40
+`,
+Tx_Densetunotate:`守備力+70
+`,
+uri:`
+`,
+Tx_Yakusou:`体力を40回復する
+所持数：`,
+Tx_Dokukesi:`毒から回復する
+所持数：`,
+Tx_Seisui:`MPを40回復する
+所持数：`,
+Tx_Bannouyaku:`体力を半分回復し、
+毒からも回復する
+所持数：`,
+Tx_Coffee:`飲んだ分だけ眠りにくくなる
+所持数：`,
+Tx_Kisekinomizu:`体力を全回復し、
+毒からも回復する
+所持数：`,
+Tx_Seireinosakazuki:`MPを全回復する
+所持数：`,
+Tx_Tikaranokajitu:`基礎攻撃力を5上げる
+所持数：`,
+Tx_Mamorinokajitu:`基礎守備力を5上げる
+所持数：`,
+Tx_Inotinokajitu:`最大HPを5上げる
+所持数：`,
+Tx_Maryokunokajitu:`最大MPを5上げる
+所持数：`,
 Tx_Kabutowari:`1/2の確率で、　
 相手の守備力を半分にする
 消費MP：3
@@ -721,8 +813,8 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
                       if(a === 1){
                         console.log(111);
                         let Up = Math.floor(this.DEf/2);//今の守備力の1/2
-                        if(Up + this.DEf > this.BaseDEf*5){//基礎守備力の5倍になる場合は、上昇量を減らす
-                          const q = Up + this.DEf - this.BaseDEf*5;
+                        if(Up + this.DEf > this.BaseDEf*3){//基礎守備力の3倍になる場合は、上昇量を減らす
+                          const q = Up + this.DEf - this.BaseDEf*3;
                           Up -= q;
                         }
                         if(Up > 0){
@@ -901,6 +993,53 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
                       this.msg2=a;
                       a+=1;
                     },
+                    Magic_burning: function(){
+                      if(a <= 0){
+                        command = [this.Name+"は呪文「バーニング」を唱えた！",this.EName+"に"+this.num1+"ダメージ！",];
+                      }
+                        this.SwitchOn= false;
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        this.Enemyturn();
+                      }
+                      if(a === 1 ){
+                        //ダメージ計算
+                        const Damage = Math.floor(Math.random() * 20) + 160 ;//160-179
+                        console.log("damage"+Damage);
+                        console.log("EAtk"+this.EATk);
+                        console.log("Def"+this.DEf);
+
+                        if(this.Eunique.includes("呪文反射")){//呪文を敵が跳ね返す場合
+                          command =[this.Name+"は呪文「バーニング」を唱えた！",this.EName+"は呪文を跳ね返した！",this.Name+"に"+Damage+"ダメージ！"];
+                          this.Hp -= Damage;
+                          this.num1 = Damage;
+                        }
+                        else if(this.Eunique.includes("火弱")){//火が弱点の場合ダメージ2倍
+                          this.EHp -= Damage+Damage;
+                          this.num1 = Damage+Damage;
+                          this.Tennmetu();
+                          this.Scale();
+                          command[1]=this.EName+"に"+this.num1+"ダメージ！";
+                          command.push(`${this.EName}は炎が弱点のようだ！`);
+                        }
+                        else{//呪文が効く場合
+                          this.EHp -= Damage;
+                          this.num1 = Damage;
+                          this.Tennmetu();
+                          this.Scale();
+                          command[1]=this.EName+"に"+Damage+"ダメージ！";
+                        }
+                      }
+                      if(a === 2 && this.Eunique.includes("呪文反射")){
+                        this.Hurueru();//跳ね返された際に震えるように
+                      }
+                      this.text=command[a];
+                      this.EfectImage="炎2.png"
+                      console.log(a+"2");
+                      this.msg2=a;
+                      a+=1;
+                    },
                     Magic_ice: function(){
                       if(a <= 0){
                         command = [this.Name+"は呪文「アイス」を唱えた！",this.EName+"に"+this.num1+"ダメージ！",];
@@ -918,6 +1057,50 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
 
                         if(this.Eunique.includes("呪文反射")){//呪文を敵が跳ね返す場合
                           command =[this.Name+"は呪文「アイス」を唱えた！",this.EName+"は呪文を跳ね返した！",this.Name+"に"+Damage+"ダメージ！"];
+                          this.Hp -= Damage;
+                          this.num1 = Damage;
+                        }
+                        else if(this.Eunique.includes("氷弱")){//氷が弱点の場合ダメージ2倍
+                          this.EHp -= Damage+Damage;
+                          this.num1 = Damage+Damage;
+                          this.Tennmetu();
+                          this.Scale();
+                          command[1]=this.EName+"に"+this.num1+"ダメージ！";
+                          command.push(`${this.EName}は氷が弱点のようだ！`);
+                        }
+                        else{//呪文が効く場合
+                          this.EHp -= Damage;
+                          this.num1 = Damage;
+                          this.Tennmetu();
+                          this.Scale();
+                          command[1]=this.EName+"に"+Damage+"ダメージ！";
+                        }
+                      }
+                      if(a === 2 && this.Eunique.includes("呪文反射")){
+                        this.Hurueru();//跳ね返された際に震えるように
+                      }
+                      this.text=command[a];
+                      this.EfectImage="氷2.png"
+                      console.log(a+"2");
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Magic_blizzard: function(){
+                      if(a <= 0){
+                        command = [this.Name+"は呪文「ブリザード」を唱えた！",this.EName+"に"+this.num1+"ダメージ！",];
+                      }
+                        this.SwitchOn= false;
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        this.Enemyturn();
+                      }
+                      if(a === 1 ){
+                        //ダメージ計算
+                        const Damage = Math.floor(Math.random() * 20) + 120 ;//120-139
+
+                        if(this.Eunique.includes("呪文反射")){//呪文を敵が跳ね返す場合
+                          command =[this.Name+"は呪文「ブリザード」を唱えた！",this.EName+"は呪文を跳ね返した！",this.Name+"に"+Damage+"ダメージ！"];
                           this.Hp -= Damage;
                           this.num1 = Damage;
                         }
@@ -991,6 +1174,88 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
                       this.msg2=a;
                       a+=1;
                     },
+                    Magic_tempest: function(){
+                      if(a <= 0){
+                        command = [this.Name+"は呪文「テンペスト」を唱えた！",this.EName+"に"+this.num1+"ダメージ！",];
+                      }
+                        this.SwitchOn= false;
+                        //this.Action= this.Magic_fire;
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        this.Enemyturn();
+                      }
+                      if(a === 1 ){
+                        //ダメージ計算
+                        const Damage = Math.floor(Math.random() * 20) + 140 ;//140-159
+
+                        if(this.Eunique.includes("呪文反射")){//呪文を敵が跳ね返す場合
+                          command =[this.Name+"は呪文「テンペスト」を唱えた！",this.EName+"は呪文を跳ね返した！",this.Name+"に"+Damage+"ダメージ！"];
+                          this.Hp -= Damage;
+                          this.num1 = Damage;
+                        }
+                        else if(this.Eunique.includes("雷弱")){//氷が弱点の場合ダメージ2倍
+                          this.EHp -= Damage+Damage;
+                          this.num1 = Damage+Damage;
+                          this.Tennmetu();
+                          this.Scale();
+                          command[1]=this.EName+"に"+this.num1+"ダメージ！";
+                          command.push(`${this.EName}は雷が弱点のようだ！`);
+                        }
+                        else{//呪文が効く場合
+                          this.EHp -= Damage;
+                          this.num1 = Damage;
+                          this.Tennmetu();
+                          this.Scale();
+                          command[1]=this.EName+"に"+Damage+"ダメージ！";
+                        }
+                      }
+                      if(a === 2 && this.Eunique.includes("呪文反射")){
+                        this.Hurueru();//跳ね返された際に震えるように
+                      }
+                      this.text=command[a];
+                      this.EfectImage="電撃.png"
+                      console.log(a+"2");
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Magic_final: function(){
+                      if(a <= 0){
+                        command = [this.Name+"は全ての魔力を解き放った！",this.EName+"に"+this.num1+"ダメージ！",];
+                      }
+                        this.SwitchOn= false;
+                        //this.Action= this.Magic_fire;
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        this.Enemyturn();
+                      }
+                      if(a === 1 ){
+                        //ダメージ計算
+                        const Damage = this.Mp * 5 ;//消費MPの5倍
+                        this.Mp = 0;//MPを0にする
+                        if(this.Eunique.includes("呪文反射")){//呪文を敵が跳ね返す場合
+                          command =[this.Name+"は全ての魔力を解き放った！",this.EName+"は呪文を跳ね返した！",this.Name+"に"+Damage+"ダメージ！"];
+                          this.Hp -= Damage;
+                          this.num1 = Damage;
+                        }
+                        else {//呪文が効く場合
+                          this.EHp -= Damage;
+                          this.num1 = Damage;
+                          this.Tennmetu();
+                          this.Scale();
+                          command[1]=this.EName+"に"+Damage+"ダメージ！";
+                        }
+                      }
+                      if(a === 2 && this.Eunique.includes("呪文反射")){
+                        this.Hurueru();//跳ね返された際に震えるように
+                      }
+                      this.text=command[a];
+                      this.EfectImage="電撃.png"//:TODO アニメーション変えたい
+                      console.log(a+"2");
+                      this.msg2=a;
+                      a+=1;
+                    },
                     Pattack: function(){
                       if(a === 0){
                         command = [this.Name+"の攻撃！",this.EName+"に"+this.num1+"ダメージ！",];
@@ -1004,9 +1269,11 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
                       }
                         //ダメージ計算
                       const Damage = this.ATk + Math.floor(Math.random() * 20) - this.EDEf;
-                        const Kaisin = Math.floor(Math.random() * 10) + 1;
+                        let Kaisin = Math.floor(Math.random() * 10) + 1;
+                        if(this.Wepon === '会心の剣'){//会心の剣を装備時、1/2の確率で会心の一撃
+                          Kaisin += 3;
+                        }
                       if(a === 1 ){
-
                         console.log("damage"+Damage);
                         console.log("EAtk"+this.ATk);
                         console.log("Def"+this.DEf);
@@ -1050,6 +1317,66 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
                       }
                         //ダメージ計算
                       const Damage = this.ATk * 2 + Math.floor(Math.random() * 20) - this.EDEf;//2倍のダメージ
+                      if(a === 1 ){
+                         if(Damage>0){
+                          this.EHp -= Damage;
+                          this.num1 = Damage;
+                          this.Tennmetu();
+                          command[1]=this.EName+"に"+Damage+"ダメージ！";
+                          console.log(a);
+                        }
+                        else{
+                          command[1]="しかし"+this.EName+"にダメージを与えられない！";
+                        }
+                      }
+                      this.text=command[a];
+                      console.log(a+"2");
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Skill_Kaisinhittyu: function(){
+                      if(a === 0){
+                        command = [this.Name+"は会心必中の一撃を放った！",this.EName+"に"+this.num1+"ダメージ！",];
+                      }
+                      this.SwitchOn= false;
+                      this.Action= this.Skill_Kaisinhittyu;
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        this.Enemyturn();//ターンを渡す
+                      }
+                        //ダメージ計算
+                      const Damage = this.ATk + Math.floor(Math.random() * 20);//防御を貫通
+                      if(a === 1 ){
+                         if(Damage>0){
+                          this.EHp -= Damage;
+                          this.num1 = Damage;
+                          this.Tennmetu();
+                          command[1]=this.EName+"に"+Damage+"ダメージ！";
+                          console.log(a);
+                        }
+                        else{
+                          command[1]="しかし"+this.EName+"にダメージを与えられない！";
+                        }
+                      }
+                      this.text=command[a];
+                      console.log(a+"2");
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Skill_Huiuti: function(){
+                      if(a === 0){
+                        command = [this.Name+"の不意打ち！",this.EName+"に"+this.num1+"ダメージ！",];
+                      }
+                      this.SwitchOn= false;
+                      this.Action= this.Skill_Huiuti;
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        this.Enemyturn();//ターンを渡す
+                      }
+                        //ダメージ計算
+                      const Damage = Math.floor(this.ATk/5) + Math.floor(Math.random() * 5) +1;//防御を貫通するが、1/5の威力
                       if(a === 1 ){
                          if(Damage>0){
                           this.EHp -= Damage;
@@ -1334,6 +1661,215 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
                       this.msg2=a;
                       a+=1;
                     },
+                    Item_Bannouyaku: function(){
+                      if(a === 0){
+                        command = [this.Name+"は万能薬を使った！",this.Name+"は体力を40回復した！",];
+                        this.Bannouyaku_stock -= 1;//万能薬消費
+                      }
+                      BClist = 0;
+                      this.SwitchOn= false;
+                      if(a === command.length){
+                        a= -1;
+                        if(this.NonBCommand === 'item_nonbattle'){//戦闘ではない場合
+                          this.BClist = "confirm";
+                          this.SwitchOn = true;
+                          console.log("kaihuku");
+                        }
+                        else{
+                          this.Resetfun();
+                          this.Enemyturn();
+                        }
+                      }
+                      if(a === 1){
+                        if(this.Hp === this.MaxHp){
+                          command[1]= this.Name+"の体力はすでに満タンのようだ";
+                        }
+                        else{
+                          this.Hp += Math.ceil(this.MaxHp/2);//最大HPの半分を回復する(小数点切り上げ)
+                          command[1]= this.Name+"は体力を"+Math.ceil(this.MaxHp/2)+"回復した！";
+                          if(this.Hp > this.MaxHp){//体力調整
+                            this.Hp = this.MaxHp;
+                            command[1]= this.Name+"の体力は満タンになった！";
+                          }
+                        }
+                        if(this.Joutaihennka === "毒"){//毒から回復
+                          this.Joutaihennka = "なし";
+                          command.push(`${this.Name}は毒から回復した！`);
+                        }
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Item_Kisekinomizu: function(){
+                      if(a === 0){
+                        command = [this.Name+"は奇跡の水を使った！",this.Name+"の体力は満タンになった！",];
+                        this.Kisekinomizu_stock -= 1;//奇跡の水消費
+                      }
+                      BClist = 0;
+                      this.SwitchOn= false;
+                      if(a === command.length){
+                        a= -1;
+                        if(this.NonBCommand === 'item_nonbattle'){//戦闘ではない場合:TODO
+                          this.BClist = "confirm";
+                          this.SwitchOn = true;
+                          console.log("kaihuku");
+                        }
+                        else{
+                          this.Resetfun();
+                          this.Enemyturn();
+                        }
+                      }
+                      if(a === 1){
+                        if(this.Hp === this.MaxHp){
+                          command[1]= this.Name+"の体力はすでに満タンのようだ";
+                        }
+                        else{
+                          this.Hp = this.MaxHp;//体力を全回復する
+                        }
+                        if(this.Joutaihennka === "毒"){//回復
+                          this.Joutaihennka = "なし";
+                          command.push(`${this.Name}は毒から回復した！`);
+                        }
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Item_Seireinosakazuki: function(){
+                      if(a === 0){
+                        command = [this.Name+"は精霊の杯を使った！",this.Name+"のMPは満タンになった！",];
+                        this.Seireinosakazuki_stock -= 1;//精霊の杯消費
+                      }
+                      BClist = 0;
+                      this.SwitchOn= false;
+                      if(a === command.length){
+                        a= -1;
+                        if(this.NonBCommand === 'item_nonbattle'){//戦闘ではない場合
+                          this.BClist = "confirm";
+                          this.SwitchOn = true;
+                          console.log("kaihuku");
+                        }
+                        else{
+                          this.Resetfun();
+                          this.Enemyturn();
+                        }
+                      }
+                      if(a === 1){
+                        if(this.Mp === this.MaxMp){
+                          command[1]= this.Name+"のMPはすでに満タンのようだ";
+                        }
+                        else{
+                          this.Mp = this.MaxMp;//MPを全回復する
+                        }
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    ///回復呪文割り込み
+                    Magic_subheal: function(){
+                      if(a === 0){
+                        command = [this.Name+"は呪文「サブヒール」を唱えた！",this.Name+"は体力を40回復した！",];
+                      }
+                      BClist = 0;
+                      this.SwitchOn= false;
+                      if(a === command.length){
+                        a= -1;
+                        if(this.NonBCommand === 'item_nonbattle'){//戦闘ではない場合:TODO
+                          this.BClist = "confirm";
+                          this.SwitchOn = true;
+                          console.log("kaihuku");
+                        }
+                        else{
+                          this.Resetfun();
+                          this.Enemyturn();
+                        }
+                      }
+                      if(a === 1){
+                        if(this.Hp === this.MaxHp){
+                          command[1]= this.Name+"の体力はすでに満タンのようだ";
+                        }
+                        else{
+                          this.Hp += Math.ceil(this.MaxHp/2);//最大HPの半分を回復する(小数点切り上げ)
+                          command[1]= this.Name+"は体力を"+Math.ceil(this.MaxHp/2)+"回復した！";
+                          if(this.Hp > this.MaxHp){//体力調整
+                            this.Hp = this.MaxHp;
+                            command[1]= this.Name+"の体力は満タンになった！";
+                          }
+                        }
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Magic_fullheal: function(){
+                      if(a === 0){
+                        command = [this.Name+"は呪文「フルヒール」を唱えた！",this.Name+"の体力は満タンになった！",];
+                      }
+                      BClist = 0;
+                      this.SwitchOn= false;
+                      if(a === command.length){
+                        a= -1;
+                        if(this.NonBCommand === 'item_nonbattle'){//戦闘ではない場合:TODO
+                          this.BClist = "confirm";
+                          this.SwitchOn = true;
+                          console.log("kaihuku");
+                        }
+                        else{
+                          this.Resetfun();
+                          this.Enemyturn();
+                        }
+                      }
+                      if(a === 1){
+                        if(this.Hp === this.MaxHp){
+                          command[1]= this.Name+"の体力はすでに満タンのようだ";
+                        }
+                        else{
+                          this.Hp = this.MaxHp;//体力を全回復する
+                        }
+                        if(this.Joutaihennka === "毒"){//回復
+                          this.Joutaihennka = "なし";
+                          command.push(`${this.Name}は毒から回復した！`);
+                        }
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Magic_fresh: function(){
+                      if(a === 0){
+                        command = [this.Name+"は呪文「フレッシュ」を唱えた！",this.Name+"は毒から回復した！",];
+                      }
+                      BClist = 0;
+                      this.SwitchOn= false;
+                      if(a === command.length){
+                        a= -1;
+                        if(this.NonBCommand === 'item_nonbattle'){//戦闘ではない場合:TODO
+                          this.BClist = "confirm";
+                          this.SwitchOn = true;
+                          console.log("kaihuku");
+                        }
+                        else{
+                          this.Resetfun();
+                          this.Enemyturn();
+                        }
+                      }
+                      if(a === 1){
+                        if(this.Joutaihennka === "なし"){
+                          command[1]= "しかし何も起こらなかった";
+                        }
+                        else{
+                          if(this.Joutaihennka === "毒"){//回復
+                            this.Joutaihennka = "なし";
+                            command[1]= this.Name+"は毒から回復した！";
+                          }
+                        }
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
                     Item_Dokukesi: function(){
                       if(a === 0){
                         command = [this.Name+"は毒消しを使った！",this.Name+"は毒から回復した！",];
@@ -1358,7 +1894,6 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
                           command[1]= "しかし使っても効果はなかったようだ";
                         }
                         else{
-                          this.Hp += 40;
                           if(this.Joutaihennka === "毒"){//回復
                             this.Joutaihennka = "なし";
                             command[1]= this.Name+"は毒から回復した！";
@@ -1404,18 +1939,199 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
                       this.msg2=a;
                       a+=1;
                     },
+                    Item_Coffee: function(){
+                      if(a === 0){
+                        command = [this.Name+"はコーヒーを使った！",this.Name+"は眠気に強くなった！",];
+                      }
+                      BClist = 0;
+                      this.SwitchOn= false;
+                      if(a === command.length){
+                        a= -1;
+                        if(this.NonBCommand === 'item_nonbattle'){//戦闘ではない場合
+                          this.BClist = "confirm";
+                          this.SwitchOn = true;
+                          console.log("kaihuku");
+                        }
+                        else{
+                          this.Resetfun();
+                          this.Enemyturn();
+                        }
+                      }
+                      if(a === 1){
+                        this.Coffee_stock -= 1;//コーヒー消費
+                        if(this.Sleep <= -1){//すでにコーヒーを飲んでいる場合
+                          command[1]= this.Name+"はさらに眠気に強くなった！";
+                        }
+                        this.Sleep -= 5;//-5眠りに強くなる
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Item_Tikaranokajitu: function(){
+                      if(a === 0){
+                        command = [this.Name+"は力の果実を使った！",this.Name+"の基礎攻撃力が5上がった！",];
+                        this.Tikaranokajitu_stock -= 1;//力の果実消費
+                        this.BaseATk += 5;//基礎攻撃力+5
+                      }
+                      BClist = 0;
+                      this.SwitchOn= false;
+                      if(a === command.length){
+                        a= -1;
+                        if(this.NonBCommand === 'item_nonbattle'){//戦闘ではない場合
+                          this.BClist = "confirm";
+                          this.SwitchOn = true;
+                          console.log("kaihuku");
+                        }
+                        else{
+                          this.Resetfun();
+                          this.Enemyturn();
+                        }
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Item_Mamorinokajitu: function(){
+                      if(a === 0){
+                        command = [this.Name+"は守りの果実を使った！",this.Name+"の基礎守備力が5上がった！",];
+                        this.Mamorinokajitu_stock -= 1;//守りの果実消費
+                        this.BaseDEf += 5;//基礎守備力+5
+                      }
+                      BClist = 0;
+                      this.SwitchOn= false;
+                      if(a === command.length){
+                        a= -1;
+                        if(this.NonBCommand === 'item_nonbattle'){//戦闘ではない場合
+                          this.BClist = "confirm";
+                          this.SwitchOn = true;
+                          console.log("kaihuku");
+                        }
+                        else{
+                          this.Resetfun();
+                          this.Enemyturn();
+                        }
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Item_Inotinokajitu: function(){
+                      if(a === 0){
+                        command = [this.Name+"は命の果実を使った！",this.Name+"の最大HPが5上がった！",];
+                        this.Inotinokajitu_stock -= 1;//守りの果実消費
+                        this.MaxHp += 5;//最大HP+5
+                      }
+                      BClist = 0;
+                      this.SwitchOn= false;
+                      if(a === command.length){
+                        a= -1;
+                        if(this.NonBCommand === 'item_nonbattle'){//戦闘ではない場合
+                          this.BClist = "confirm";
+                          this.SwitchOn = true;
+                          console.log("kaihuku");
+                        }
+                        else{
+                          this.Resetfun();
+                          this.Enemyturn();
+                        }
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Item_Inotinokajitu: function(){
+                      if(a === 0){
+                        command = [this.Name+"は命の果実を使った！",this.Name+"の最大HPが5上がった！",];
+                        this.Inotinokajitu_stock -= 1;//守りの果実消費
+                        this.MaxHp += 5;//最大HP+5
+                      }
+                      BClist = 0;
+                      this.SwitchOn= false;
+                      if(a === command.length){
+                        a= -1;
+                        if(this.NonBCommand === 'item_nonbattle'){//戦闘ではない場合
+                          this.BClist = "confirm";
+                          this.SwitchOn = true;
+                          console.log("kaihuku");
+                        }
+                        else{
+                          this.Resetfun();
+                          this.Enemyturn();
+                        }
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Item_Maryokunokajitu: function(){
+                      if(a === 0){
+                        command = [this.Name+"は魔力の果実を使った！",this.Name+"の最大MPが5上がった！",];
+                        this.Maryokunokajitu_stock -= 1;//守りの果実消費
+                        this.MaxMp += 5;//最大HP+5
+                      }
+                      BClist = 0;
+                      this.SwitchOn= false;
+                      if(a === command.length){
+                        a= -1;
+                        if(this.NonBCommand === 'item_nonbattle'){//戦闘ではない場合
+                          this.BClist = "confirm";
+                          this.SwitchOn = true;
+                          console.log("kaihuku");
+                        }
+                        else{
+                          this.Resetfun();
+                          this.Enemyturn();
+                        }
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
                     Playerturn: function(){
                       console.log(this.EXp);
                       //生存確認
                       if(this.EHp<=0 ||this.Hp<=0){
                         this.BattleEnd();
                       }
+                      else if(this.Hp > 0 && this.EHp >0 && this.turnflug === 0){
+                        this.turnflug += 1;//重複を避ける:TODO
+                        this.Weponeffect();
+                      }
                       else{
+                        this.turnflug = 0;//武器の効果発動リセット:TODO
                         this.BClist= "";
                         this.SwitchOn= true;
                         console.log('!!!');
                       }
                     },
+                    ////
+                    Weponeffect: function(){
+                      if(this.Hp > 0 && this.EHp >0 && this.Wepon === '妖刀村正'){
+                        this.Wepon_Muramasa();
+                      }
+                      else if(this.Hp > 0 && this.EHp >0 && this.Wepon === '力の剣'){
+                        this.Wepon_Tikara();
+                      }
+                      else{
+                        this.Shieldeffect();//何もないならシールドエフェクトへ
+                      }
+                    },
+                    Shieldeffect: function(){
+                      if(this.Hp > 0 && this.EHp >0 && this.Shield === '癒しの盾'){
+                        this.Shield_Iyasi();
+                      }
+                      else if(this.Hp > 0 && this.EHp >0 && this.Shield === '守護の盾'){
+                        this.Shield_Syugo();
+                      }
+                      else if(this.Hp > 0 && this.EHp >0 && this.Shield === '魔力の盾'){
+                        this.Shield_Maryoku();
+                      }
+                      else{
+                        this.Playerturn();//次のターンへ
+                      }
+                    },
+                    /////
                     Enemyturn: function(){
                       //生存確認
                       if(this.EHp<=0 ||this.Hp<=0){
@@ -1447,6 +2163,9 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
                       }
                     },
                     Endphase: function(){　console.log("end");
+                      // if(this.Hp <=0 && this.Migawaridama_stock >=1){//HPが0の時身代わり珠発動
+                      //   this.Item_Migawaridama();
+                      // }
                       if(this.Eunique.includes('2回行動')　&& dual<1){
                         this.flag = 0;//行動制限リセット
                         dual += 1;
@@ -1492,6 +2211,191 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
                       this.msg2=a;
                       a+=1;
                     },
+                    Wepon_Muramasa: function(){
+                      command = ["妖刀村正が怪しく光った！",this.Name+"は体力を"+this.num1+"回復！",];
+                      this.SwitchOn= false;
+                      this.Action= this.Wepon_Muramasa;
+                      console.log("doku");
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        //:TODOこうするしかない？
+                        this.Shieldeffect();//シールドエフェクトに遷移する
+                      }
+                      if(a === 1 ){
+                        let Heal = Math.floor(Math.random() * 5) + 5;
+                        if(this.Hp + Heal > this.MaxHp){//最大HPより回復量が多くなる場合
+                            Heal = this.MaxHp - this.Hp;//回復量を調整する
+                          }
+                        if(Heal > 0){//回復する場合
+                          this.num1 = Heal;
+                          this.Hp += Heal;
+                          command[1]=this.Name+"は体力を"+this.num1+"回復！";
+                        }
+                        else{//しない場合
+                          command[1]= this.Name+"の体力はすでに満タンのようだ";
+                        }
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Wepon_Tikara: function(){
+                      command = ["力の剣が光り輝いた！",this.Name+"の攻撃力が"+this.num1+"上がった！",];
+                      this.SwitchOn= false;
+                      this.Action= this.Wepon_Tikara;
+                      console.log("doku");
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        //:TODOこうするしかない？
+                        this.Shieldeffect();//シールドエフェクトに遷移する
+                      }
+                      if(a === 1 ){
+                        console.log(111);
+                        let Up = Math.floor(Math.random() * 5) + 6;//6-10
+                        if(Up + this.ATk > this.BaseATk*5){//基礎攻撃力の5倍になる場合は、上昇量を減らす
+                          const q = Up + this.ATk - this.BaseATk*5;
+                          Up -= q;
+                        }
+                        if(Up > 0){
+                          this.ATk += Up;
+                          this.num1 = Up;
+                          command[1]=this.Name+"の攻撃力が"+this.num1+"上がった！";
+                          console.log(1161);
+                        }
+                        else{//これ以上上がらない場合
+                          command[1]=this.Name+"の攻撃力はこれ以上上がらないようだ";
+                        }
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Shield_Iyasi: function(){
+                      command = ["癒しの盾は波動を発した！",this.Name+"は体力を"+this.num1+"回復！",];
+                      this.SwitchOn= false;
+                      this.Action= this.Shield_Iyasi;
+                      console.log("doku");
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        //:TODOこうするしかない？
+                        this.Playerturn();//次のターンへ
+                      }
+                      if(a === 1 ){
+                        let Heal = Math.floor(Math.random() * 5) + 5;
+                        if(this.Hp + Heal > this.MaxHp){//最大HPより回復量が多くなる場合
+                            Heal = this.MaxHp - this.Hp;//回復量を調整する
+                          }
+                        if(Heal > 0){//回復する場合
+                          this.num1 = Heal;
+                          this.Hp += Heal;
+                          command[1]=this.Name+"は体力を"+this.num1+"回復！";
+                        }
+                        else{//しない場合
+                          command[1]= this.Name+"の体力はすでに満タンのようだ";
+                        }
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Shield_Syugo: function(){
+                      command = ["守護の盾が光り輝いた！",this.Name+"の守備力が"+this.num1+"上がった！",];
+                      this.SwitchOn= false;
+                      this.Action= this.Shield_Syugo;
+                      console.log("doku");
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        //:TODOこうするしかない？
+                        this.Playerturn();//シールドエフェクトに遷移する
+                      }
+                      if(a === 1 ){
+                        console.log(111);
+                        let Up = Math.floor(Math.random() * 5) + 6;//6-10
+                        if(Up + this.DEf > this.BaseDEf*3){//基礎守備力の3倍になる場合は、上昇量を減らす
+                          const q = Up + this.DEf - this.BaseDEf*3;
+                          Up -= q;
+                        }
+                        if(Up > 0){
+                          this.DEf += Up;
+                          this.num1 = Up;
+                          command[1]=this.Name+"の守備力が"+this.num1+"上がった！";
+                          console.log(1161);
+                        }
+                        else{//これ以上上がらない場合
+                          command[1]=this.Name+"の守備力はこれ以上上がらないようだ";
+                        }
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    Shield_Maryoku: function(){
+                      command = ["魔力の盾は波動を発した！",this.Name+"はMPを"+this.num1+"回復！",];
+                      this.SwitchOn= false;
+                      this.Action= this.Shield_Maryoku;
+                      console.log("doku");
+                      if(a === command.length){
+                        a= -1;
+                        this.Resetfun();
+                        //:TODOこうするしかない？
+                        this.Playerturn();//次のターンへ
+                      }
+                      if(a === 1 ){
+                        let Heal = Math.floor(Math.random() * 5) + 1;
+                        if(this.Mp + Heal > this.MaxMp){//最大MPより回復量が多くなる場合
+                            Heal = this.MaxMp - this.Mp;//回復量を調整する
+                          }
+                        if(Heal > 0){//回復する場合
+                          this.num1 = Heal;
+                          this.Mp += Heal;
+                          command[1]=this.Name+"はMPを"+this.num1+"回復！";
+                        }
+                        else{//しない場合
+                          command[1]= this.Name+"のMPはすでに満タンのようだ";
+                        }
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
+                    // Item_Migawaridama: function(){//HPがOの時自動で発動
+                    //   this.SwitchOn= false;
+                    //   this.Action= this.Item_Migawaridama;
+                    //   if(a === -1){//やむを得ない:TODO
+                    //     a = 0;//やむを得ない:TODO
+                    //     command = ["身代わり珠が瀕死の"+this.Name+"を救った！",this.Name+"はHPを"+this.num1+"回復！",];
+                    //     this.Migawaridama_stock -= 1;//身代わり珠消費
+                    //     console.log('migawari?');
+                    //   }
+                    //   console.log(command);
+                    //   console.log('a='+a);
+                    //   if(a === 0 ){//やむを得ない:TODO
+                    //     //ダメージ計算
+                    //     const Heal = Math.ceil(this.MaxHp/2 - this.Hp);//必ずHPを半分まで回復させる
+                    //     this.Hp += Heal;
+                    //     this.num1 = Heal;
+                    //     console.log('HP'+this.Hp);
+                    //     command[1]=this.Name+"はHPを"+this.num1+"回復！";
+                    //     if(this.Mp < Math.ceil(this.MaxMp/2)){//MPが半分以下の場合
+                    //       const MHeal = Math.ceil(this.MaxMp/2) - this.Mp;//必ずMPを半分まで回復させる
+                    //       this.Mp += MHeal;
+                    //       this.num1 = MHeal;
+                    //       command.push(`${this.Name}はMPを${this.num1}回復！`);
+                    //     }
+                    //   }
+                    //   if(a === command.length){
+                    //     a= -1;
+                    //     this.Resetfun();
+                    //     this.Endphase();//エンドフェイズに戻る、敵が2回行動なら、2回目の行動に入る
+                    //   }
+                    //   this.text=command[a];
+                    //   this.msg2=a;
+                    //   a+=1;
+                    // },
                     Sleepturn: function(){//眠っている時の挙動
                       if(a <= 0){
                         if(this.Sleep<= 0){
@@ -1651,7 +2555,7 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
                           if(this.Joutaihennka === "なし" && this.State === "眠り"){
                            command.push(this.Name+"は眠ってしまった！");
                            this.Joutaihennka = "眠り";//状態変化がなければ毒状態にする
-                           this.Sleep = Math.floor(Math.random() * 4) +1;//眠るターンを決める
+                           this.Sleep += Math.floor(Math.random() * 4) +1;//眠るターンを決める
                           }
                         }
                       }
@@ -1769,7 +2673,7 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
                           if(this.Joutaihennka === "なし" && this.State === "眠り"){
                            command.push(this.Name+"は眠ってしまった！");
                            this.Joutaihennka = "眠り";//状態変化がなければ毒状態にする
-                           this.Sleep = Math.floor(Math.random() * 4) +1;//眠るターンを決める
+                           this.Sleep += Math.floor(Math.random() * 4) +1;//眠るターンを決める
                           }
                         }
                       }
@@ -2012,7 +2916,7 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
                           if(this.Joutaihennka === "なし" && this.State === "眠り"){
                            command.push(this.Name+"は眠ってしまった！");
                            this.Joutaihennka = "眠り";//状態変化がなければ毒状態にする
-                           this.Sleep = Math.floor(Math.random() * 4) +1;//眠るターンを決める
+                           this.Sleep += Math.floor(Math.random() * 4) +1;//眠るターンを決める
                           }
                         }
                       }
@@ -2163,7 +3067,7 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
 
                         if(Per>5 && this.Joutaihennka === "なし"){
                           this.Joutaihennka = "眠り";
-                          this.Sleep = Math.floor(Math.random() * 4) +1;//眠るターンを決める
+                          this.Sleep += Math.floor(Math.random() * 4) +1;//眠るターンを決める
                         }
                         else{
                           command[1]=this.Name+"には効かなかった！";//眠らない場合
@@ -2301,6 +3205,24 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
                         else if(item === 'コーヒー'){
                           this.Coffee_stock += 1;
                         }
+                        else if(item === '奇跡の水'){
+                          this.Kisekinomizu_stock += 1;
+                        }
+                        else if(item === '精霊の杯'){
+                          this.Seireinosakazuki_stock += 1;
+                        }
+                        else if(item === '力の果実'){
+                          this.Tikaranokajitu_stock += 1;
+                        }
+                        else if(item === '守りの果実'){
+                          this.Mamorinokajitu_stock += 1;
+                        }
+                        else if(item === '命の果実'){
+                          this.Inotinokajitu_stock += 1;
+                        }
+                        else if(item === '魔力の果実'){
+                          this.Maryokunokajitu_stock += 1;
+                        }
                         //
                         this.Gold -= gold;//お金を差し引く
                       }
@@ -2332,6 +3254,24 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
                         }
                         else if(item === 'コーヒー'){
                           this.Coffee_stock -= 1;
+                        }
+                        else if(item === '奇跡の水'){
+                          this.Kisekinomizu_stock -= 1;
+                        }
+                        else if(item === '精霊の杯'){
+                          this.Seireinosakazuki_stock -= 1;
+                        }
+                        else if(item === '力の果実'){
+                          this.Tikaranokajitu_stock -= 1;
+                        }
+                        else if(item === '守りの果実'){
+                          this.Mamorinokajitu_stock -= 1;
+                        }
+                        else if(item === '命の果実'){
+                          this.Inotinokajitu_stock -= 1;
+                        }
+                        else if(item === '魔力の果実'){
+                          this.Maryokunokajitu_stock -= 1;
                         }
                         //
                         this.Gold += gold;//お金を足す
@@ -2368,32 +3308,36 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
                       if(this.BackImage !== "stage1"){//背景をstageに即したものにする
                         this.BackImage = "stage1";
                       }
-                      const p = Math.floor(Math.random() * this.Gopoint) + 1;
+                      const p = Math.floor(Math.random() * this.Gopoint) + 1;//進度
+                      const r = Math.floor(Math.random() * 100) + 1;//同pでの確率
                       if(this.Gopoint === 7 && this.Doneivent !== "Stage1_Bossmae"){//まだボス前イベントしてない時
                         this.Bossmae();
                         this.Doneivent = "Stage1_Bossmae";
                       }
                       else if(this.Gopoint === 8){
                         this.Gopoint+=1;//ボスには一度しか当たらないようにする
-                        this.BattleE('ジャイアントオーガ',300,80,30,[{action: this.EKaisin, per: 20},{action: this.EMagic_fire, per: 10}],[''],'オーガ.png',1000,1000);
+                        this.BattleE('ジャイアントオーガ',300,80,30,[{action: this.EKaisin, per: 20},{action: this.EMagic_fire, per: 10}],[''],'oga.png',1000,1000);
                       }
                       else if(this.Gopoint === 10){
                         this.Yado();
+                      }
+                      else if(r >= 75){//1/4の確率で宝箱
+                        this.Takarabakohakken('ミミック',100,100,100,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],'','ミミック.png',1200,12);
                       }
                        else if(p <= 1){
                         this.BattleE('ピヨピヨバード',40,10,20,[{action: this.EKaisin, per: 90},],['2回行動'],'ミイラ.png',100,12);
                        }
                       else if(p <= 2){
-                        this.BattleE('ガブ',70,10,20,[{action: this.Eheal, per: 80},{action: this.Eheal80, per: 0}],["火弱"],'https://github.com/welcome19981998/part1/blob/main/%E3%82%AA%E3%83%BC%E3%82%AB%E3%82%99.png?raw=true',1200,12);
+                        this.BattleE('ガブ',70,10,20,[{action: this.Eheal, per: 80},{action: this.Eheal80, per: 0}],["火弱"],'oku.png',120,12);
                       }
                       else if(p <= 3){
-                        this.BattleE('キングフロッグ',100,30,40,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],['呪文反射'],'魔導.png',1200,12);
+                        this.BattleE('キングフロッグ',100,30,40,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],['呪文反射'],'madou.png',1200,12);
                       }
                       else if(p <= 8){
-                        this.BattleE('猫剣士',100,40,60,[{action: this.Einoru, per: 100},{action: this.EMagic_test, per: 10},{action: this.ESleep, per: 10}],[''],'ゴーレム.png',1200,12);
+                        this.BattleE('猫剣士',100,40,60,[{action: this.Einoru, per: 100},{action: this.EMagic_test, per: 10},{action: this.ESleep, per: 10}],['火弱','氷弱','雷弱'],'goremu.png',1200,12);
                       }
                       else if(p <= 10){
-                        Takarabakohakken('ミミック',100,100,100,[{action: this.EPoisonattack, per: 10},{action: ESleep, per: 80}],'','ミミック.png',1200,12);
+                        this.Takarabakohakken('ミミック',100,100,100,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],'','ミミック.png',1200,12);
                       }
                     },
                     BattleE: function(ename,ehp,eatk,edef,actions,eunique,image,eexp,egold){
@@ -2417,6 +3361,7 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
                       this.ImageOn = true;//画像表示
                       this.text = this.EName+"が現れた！";
                       this.SwitchOn= false;
+                      this.turnflug = 1;//最初に誤発動しないように、武器の効果発動リセット:TODO
                       this.Action= this.Playerturn;//なぜかうまくいく
                     },
                     Takarabakohakken: function(ename,ehp,eatk,edef,actions,eunique,image,eexp,egold){
@@ -2450,10 +3395,10 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
                       if(p > 80){
                        this.YesAction = this.TakarabakoItem;//暫定的な対応
                       }
-                      else if(p > 60){
+                      else if(p > 60　&& this.AllWeponShield.length >= 1){
                        this.YesAction = this.TakarabakoWeponShield;//暫定的な対応
                       }
-                      else if(p > 40){
+                      else if(p > 40 && this.Allmagic.length >= 1){
                        this.YesAction = this.TakarabakoMagic;//暫定的な対応
                       }
                       else{
@@ -2620,6 +3565,30 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
                         else if(this.Getting === 'コーヒー'){
                           this.Coffee_stock += this.Getamount;
                         }
+                        else if(this.Getting === '奇跡の水'){
+                          this.Getamount = Math.ceil(Math.random() * 5);//入手量を1-5に制限
+                          this.Kisekinomizu_stock += this.Getamount;
+                        }
+                        else if(this.Getting === '精霊の杯'){
+                          this.Getamount = Math.ceil(Math.random() * 5);//入手量を1-5に制限
+                          this.Seireinosakazuki_stock += this.Getamount;
+                        }
+                        else if(this.Getting === '力の果実'){
+                          this.Getamount = Math.ceil(Math.random() * 5);//入手量を1-5に制限
+                          this.Tikaranokajitu_stock += this.Getamount;
+                        }
+                        else if(this.Getting === '守りの果実'){
+                          this.Getamount = Math.ceil(Math.random() * 5);//入手量を1-5に制限
+                          this.Mamorinokajitu_stock += this.Getamount;
+                        }
+                        else if(this.Getting === '命の果実'){
+                          this.Getamount = Math.ceil(Math.random() * 5);//入手量を1-5に制限
+                          this.Inotinokajitu_stock += this.Getamount;
+                        }
+                        else if(this.Getting === '魔力の果実'){
+                          this.Getamount = Math.ceil(Math.random() * 5);//入手量を1-5に制限
+                          this.Maryokunokajitu_stock += this.Getamount;
+                        }
                       }
                       this.text=command[a];
                       console.log(a+"2");
@@ -2682,7 +3651,21 @@ Tx_Kisikaisei:`体力が1/4以下の時のみ使用可
 MPが5上がった！
 攻撃力が5上がった！
 守備力が5上がった！`);
-                            if(this.Level%3 === 0 && this.Allskill.length>0 ){
+                            if(this.Level%3 === 0 && this.Allskill.length>0 && Math.random() > 0.5){//1/2の確率
+                              const p = Math.floor(Math.random() * this.Allskill.length)
+                              this.Useskill.push(this.Allskill[p]);
+                              command.push(`${this.Name}は特技「${this.Allskill[p]}」を覚えた！`);
+                              this.Allskill.splice( p, 1 );
+                              console.log(this.Allskill);
+                            }
+                            else if(this.Level%3 === 0 && this.Allmagic.length > 0 ){//1/2の確率で魔法覚える
+                              const p = Math.floor(Math.random() * this.Allmagic.length)
+                              this.Usemagic.push(this.Allmagic[p]);
+                              command.push(`${this.Name}は呪文「${this.Allmagic[p]}」を覚えた！`);
+                              this.Allmagic.splice( p, 1 );
+                              console.log(this.Allmagic);
+                            }
+                            else if(this.Level%3 === 0 && this.Allskill.length > 0 ){//魔法覚え尽くしている時は特技
                               const p = Math.floor(Math.random() * this.Allskill.length)
                               this.Useskill.push(this.Allskill[p]);
                               command.push(`${this.Name}は特技「${this.Allskill[p]}」を覚えた！`);
