@@ -457,7 +457,7 @@
               <div class="menu Unusable" v-show="SwitchOn && NonBClist === 'Buy_Wepon'">
                 <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('銅の剣',300); " v-show="AllWeponShield.includes('銅の剣')" v-on:mouseover="msg1 = Tx_Dounoken+'値段：300G' " v-on:mouseleave="msg1 = ''">・銅の剣</div>
                 <div v-bind:class="{command: Gold >=500}" @click="Action= WeponShield_buy; WeponShield_buy('鋼の剣',500); " v-show="AllWeponShield.includes('鋼の剣')" v-on:mouseover="msg1 = Tx_Haganenoken+'値段：500G' " v-on:mouseleave="msg1 = ''">・鋼の剣</div>
-                <div v-bind:class="{command: Gold >=500}" @click="Action= WeponShield_buy; WeponShield_buy('黄金の剣',1000); " v-show="AllWeponShield.includes('黄金の剣')" v-on:mouseover="msg1 = Tx_Ougonnoken+'値段：1000G' " v-on:mouseleave="msg1 = ''">・黄金の剣</div>
+                <div v-bind:class="{command: Gold >=1000}" @click="Action= WeponShield_buy; WeponShield_buy('黄金の剣',1000); " v-show="AllWeponShield.includes('黄金の剣')" v-on:mouseover="msg1 = Tx_Ougonnoken+'値段：1000G' " v-on:mouseleave="msg1 = ''">・黄金の剣</div>
 
               </div>
               <div class="menu Unusable" v-show="SwitchOn && NonBClist === 'Buy_Shield'">
