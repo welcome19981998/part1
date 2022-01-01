@@ -462,8 +462,8 @@
               </div>
               <div class="menu Unusable" v-show="SwitchOn && NonBClist === 'Buy_Shield'">
                 <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('銅の盾',300); " v-show="AllWeponShield.includes('銅の盾')" v-on:mouseover="msg1 = Tx_Dounotate+'値段：300G' " v-on:mouseleave="msg1 = ''">・銅の盾</div>
-                <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('鋼の盾',500); " v-show="AllWeponShield.includes('鋼の盾')" v-on:mouseover="msg1 = Tx_Haganenotate+'値段：500G' " v-on:mouseleave="msg1 = ''">・鋼の盾</div>
-                <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('黄金の盾',1000); " v-show="AllWeponShield.includes('黄金の盾')" v-on:mouseover="msg1 = Tx_Ougonnotate+'値段：1000G' " v-on:mouseleave="msg1 = ''">・黄金の盾</div>
+                <div v-bind:class="{command: Gold >=500}" @click="Action= WeponShield_buy; WeponShield_buy('鋼の盾',500); " v-show="AllWeponShield.includes('鋼の盾')" v-on:mouseover="msg1 = Tx_Haganenotate+'値段：500G' " v-on:mouseleave="msg1 = ''">・鋼の盾</div>
+                <div v-bind:class="{command: Gold >=1000}" @click="Action= WeponShield_buy; WeponShield_buy('黄金の盾',1000); " v-show="AllWeponShield.includes('黄金の盾')" v-on:mouseover="msg1 = Tx_Ougonnotate+'値段：1000G' " v-on:mouseleave="msg1 = ''">・黄金の盾</div>
                 <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('魔力の盾',800); " v-show="AllWeponShield.includes('魔力の盾') && Level >= 20" v-on:mouseover="msg1 = Tx_Maryokunotate+'値段：800G' " v-on:mouseleave="msg1 = ''">・魔力の盾</div>
 
               </div>
