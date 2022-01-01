@@ -270,7 +270,7 @@
     </head>
     <body>
       <div id="app">
-        <div class = "content" v-bind:class="{'syuraku': this.BackImage==='syuraku','stage1': this.BackImage==='stage1','stage2': this.BackImage==='stage2','stage3': this.BackImage==='stage3','stage4': this.BackImage==='stage4','stage5': this.BackImage==='stage5'}">
+        <div class = "content" v-bind:class="{'syuraku': this.BackImage==='syuraku','stage1': this.BackImage==='stage1','stage2': this.BackImage==='stage2','stage3': this.BackImage==='stage3','stage4': this.BackImage==='stage4','stage61': this.BackImage==='stage61','stage62': this.BackImage==='stage62'}">
           <div>{{"msg2"}}</div>
           <button name="myBtn" v-show="SwitchOn === false" class="z" v-on:click="Action" ></button>
 
@@ -292,17 +292,17 @@
                 <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= aaa1; aaa1();" v-show="a() <= 1" v-on:mouseover="msg1 = '凄まじく攻撃する' " v-on:mouseleave="msg1 = ''">・クリック！</div>
                 <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Kabutowari; Skill_Kabutowari();Mp -= 3;" v-show="Useskill.includes('かぶと割り')" v-on:mouseover="msg1 =Tx_Kabutowari" v-on:mouseleave="msg1 = ''">・かぶと割り</div>
                 <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Yaibakudaki; Skill_Yaibakudaki();Mp -= 3;" v-show="Useskill.includes('刃砕き')" v-on:mouseover="msg1 =Tx_Yaibakudaki" v-on:mouseleave="msg1 = ''">・刃砕き</div>
-                <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Kaihukugiri; Skill_Kaihukugiri();" v-show="Useskill.includes('回復斬り')" v-on:mouseover="msg1 =Tx_Kaihukugiri" v-on:mouseleave="msg1 = ''">・回復斬り</div>
+                <div v-bind:class="{command: Mp >=3}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Kaihukugiri; Skill_Kaihukugiri();Mp -= 3;" v-show="Useskill.includes('回復斬り')" v-on:mouseover="msg1 =Tx_Kaihukugiri" v-on:mouseleave="msg1 = ''">・回復斬り</div>
                 <div v-bind:class="{command: Hp <=MaxHp/4}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Kisikaisei; Skill_Kisikaisei();" v-show="Useskill.includes('起死回生')" v-on:mouseover="msg1 =Tx_Kisikaisei" v-on:mouseleave="msg1 = ''">・起死回生</div>
-                <div v-bind:class="{command: Mp >=5}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Nidangiri; Skill_Nidangiri();" v-show="Useskill.includes('二段斬り')" v-on:mouseover="msg1 =Tx_Nidangiri" v-on:mouseleave="msg1 = ''">・二段斬り</div>
+                <div v-bind:class="{command: Mp >=5}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Nidangiri; Skill_Nidangiri();Mp -= 5;" v-show="Useskill.includes('二段斬り')" v-on:mouseover="msg1 =Tx_Nidangiri" v-on:mouseleave="msg1 = ''">・二段斬り</div>
                 <div v-bind:class="{command: Mp >=5}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Midareduki; Skill_Midareduki();" v-show="Useskill.includes('乱れ突き')" v-on:mouseover="msg1 = Tx_Midareduki " v-on:mouseleave="msg1 = ''">・乱れ突き</div>
                 <div v-bind:class="{command: Mp >=4}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Huiuti; Skill_Huiuti();Mp -= 4;" v-show="Useskill.includes('不意打ち')" v-on:mouseover="msg1 =Tx_Huiuti" v-on:mouseleave="msg1 = ''">・不意打ち</div>
                 <div v-bind:class="{command: Mp >=40}" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Skill_Kaisinhittyu; Skill_Kaisinhittyu();Mp -= 40;" v-show="Useskill.includes('会心必中')" v-on:mouseover="msg1 =Tx_Kaisinhittyu" v-on:mouseleave="msg1 = ''">・会心必中</div>
               </div>
               <div class="menu" v-show="BClist === 'Item'">
-                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_yakusou; Item_yakusou();" v-show="Yakusou_stock >= 1" v-on:mouseover="msg1 = Tx_Yakusou + Yakusou_stock +uri+''" v-on:mouseleave="msg1 = ''">・薬草</div>
-                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Dokukesi_stock >= 1" v-on:mouseover="msg1 = Tx_Dokukesi + Dokukesi_stock +uri+''" v-on:mouseleave="msg1 = ''">・毒消し</div>
-                <div class="command" @click="SwitchOn= !SwitchOn; Action= Item_Seisui; Item_Seisui();" v-show="Seisui_stock >= 1" v-on:mouseover="msg1 = Tx_Seisui + Seisui_stock +uri+''" v-on:mouseleave="msg1 = ''">・聖水</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_yakusou; Item_yakusou();" v-show="Yakusou_stock >= 1" v-on:mouseover="msg1 = Tx_Yakusou + Yakusou_stock +uri+''" v-on:mouseleave="msg1 = ''">・薬草</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Dokukesi; Item_Dokukesi();" v-show="Dokukesi_stock >= 1" v-on:mouseover="msg1 = Tx_Dokukesi + Dokukesi_stock +uri+''" v-on:mouseleave="msg1 = ''">・毒消し</div>
+                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Seisui; Item_Seisui();" v-show="Seisui_stock >= 1" v-on:mouseover="msg1 = Tx_Seisui + Seisui_stock +uri+''" v-on:mouseleave="msg1 = ''">・聖水</div>
                 <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Bannouyaku; Item_Bannouyaku();" v-show="Bannouyaku_stock >= 1" v-on:mouseover="msg1 = Tx_Bannouyaku + Bannouyaku_stock +uri+''" v-on:mouseleave="msg1 = ''">・万能薬</div>
                 <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Coffee; Item_Coffee();" v-show="Coffee_stock >= 1" v-on:mouseover="msg1 = Tx_Coffee + Coffee_stock +uri+''" v-on:mouseleave="msg1 = ''">・コーヒー</div>
                 <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= Item_Kisekinomizu; Item_Kisekinomizu();" v-show="Kisekinomizu_stock >= 1" v-on:mouseover="msg1 = Tx_Kisekinomizu + Kisekinomizu_stock +uri+''" v-on:mouseleave="msg1 = ''">・奇跡の水</div>
@@ -408,7 +408,7 @@
               <!--　ここまで非戦闘時呪文リスト-->
                <!--　ここから売るリスト-->
                <div class="Maincommand" v-show="SwitchOn && BClist === 'confirm' && NonBCommand === 'Sell'">
-                <div class="command" @click=" NonBCommand = 'main'; NonBClist = '';" v-show="a() <= 1" v-on:mouseover="msg1 = '通常攻撃　稀に会心の一撃を繰り出す' " v-on:mouseleave="msg1 = ''">・戻る</div>
+                <div class="command" @click=" NonBCommand = 'main'; NonBClist = '';" v-show="a() <= 1" v-on:mouseover="msg1 = '' " v-on:mouseleave="msg1 = ''">・戻る</div>
                 <div class="command" @click="NonBClist = 'Sell_Wepon'" v-show="a() <= 1" v-on:mouseover="msg1 = '武器を売る' " v-on:mouseleave="msg1 = ''">・武器</div>
                 <div class="command" @click="NonBClist = 'Sell_Shield'" v-show="a() <= 1" v-on:mouseover="msg1 = '防具を売る' " v-on:mouseleave="msg1 = ''">・防具</div>
                 <div class="command" @click="NonBClist = 'Sell_Item'"v-show="a() <= 1" v-on:mouseover="msg1 = '道具を売る' " v-on:mouseleave="msg1 = ''">・道具</div>
@@ -434,7 +434,7 @@
                 <div class="command" @click="Action= WeponShield_sell; WeponShield_sell('伝説の盾',1200); " v-show="UseWeponShield.includes('伝説の盾')" v-on:mouseover="msg1 = Tx_Densetunotate+'売り値：1200G' " v-on:mouseleave="msg1 = ''">・伝説の盾</div>
               </div>
               <div class="menu" v-show="SwitchOn && NonBClist === 'Sell_Item'">
-                <div class="command" @click=" Action= Item_sell; Item_sell('薬草',25);" v-show="Yakusou_stock >= 1" v-on:mouseover="msg1 = Tx_Yakusou + Yakusou_stock +uri+'売り値：25G'" v-on:mouseleave="msg1 = ''">・薬草</div>
+                <div class="command" @click=" Action= Item_sell; Item_sell('薬草',15);" v-show="Yakusou_stock >= 1" v-on:mouseover="msg1 = Tx_Yakusou + Yakusou_stock +uri+'売り値：15G'" v-on:mouseleave="msg1 = ''">・薬草</div>
                 <div class="command" @click=" Action= Item_sell; Item_sell('毒消し',15);" v-show="Dokukesi_stock >= 1" v-on:mouseover="msg1 = Tx_Dokukesi + Dokukesi_stock +uri+'売り値：15G'" v-on:mouseleave="msg1 = ''">・毒消し</div>
                 <div class="command" @click=" Action= Item_sell; Item_sell('聖水',50);" v-show="Seisui_stock >= 1" v-on:mouseover="msg1 = Tx_Seisui + Seisui_stock +uri+'売り値：50G'" v-on:mouseleave="msg1 = ''">・聖水</div>
                 <div class="command" @click=" Action= Item_sell; Item_sell('万能薬',35);" v-show="Bannouyaku_stock >= 1" v-on:mouseover="msg1 = Tx_Bannouyaku + Bannouyaku_stock +uri+'売り値：35G'" v-on:mouseleave="msg1 = ''">・万能薬</div>
@@ -445,14 +445,11 @@
                 <div class="command" @click=" Action= Item_sell; Item_sell('守りの果実',200);" v-show="Mamorinokajitu_stock >= 1" v-on:mouseover="msg1 = Tx_Mamorinokajitu + Mamorinokajitu_stock +uri+'売り値：200G'" v-on:mouseleave="msg1 = ''">・守りの果実</div>
                 <div class="command" @click=" Action= Item_sell; Item_sell('命の果実',200);" v-show="Inotinokajitu_stock >= 1" v-on:mouseover="msg1 = Tx_Inotinokajitu + Inotinokajitu_stock +uri+'売り値：200G'" v-on:mouseleave="msg1 = ''">・命の果実</div>
                 <div class="command" @click=" Action= Item_sell; Item_sell('魔力の果実',200);" v-show="Maryokunokajitu_stock >= 1" v-on:mouseover="msg1 = Tx_Maryokunokajitu + Maryokunokajitu_stock +uri+'売り値：200G'" v-on:mouseleave="msg1 = ''">・魔力の果実</div>
-                <div class="command" v-show="a() <= 1" v-on:mouseover="msg1 = 'やさしく攻撃する' " v-on:mouseleave="msg1 = ''">・yasasii</div>
-                <div class="command" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">・かっこいい</div>
-                <div class="command" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">・良い</div>
               </div>
               <!--　ここまで売るリスト-->
               <!--　ここから買うリスト-->
               <div class="Maincommand" v-show="SwitchOn && BClist === 'confirm' && NonBCommand === 'Buy'">
-                <div class="command" @click=" NonBCommand = 'main'; NonBClist = '';" v-show="a() <= 1" v-on:mouseover="msg1 = '通常攻撃　稀に会心の一撃を繰り出す' " v-on:mouseleave="msg1 = ''">・戻る</div>
+                <div class="command" @click=" NonBCommand = 'main'; NonBClist = '';" v-show="a() <= 1" v-on:mouseover="msg1 = '' " v-on:mouseleave="msg1 = ''">・戻る</div>
                 <div class="command" @click="NonBClist = 'Buy_Wepon'" v-show="a() <= 1" v-on:mouseover="msg1 = '武器を買う' " v-on:mouseleave="msg1 = ''">・武器</div>
                 <div class="command" @click="NonBClist = 'Buy_Shield'" v-show="a() <= 1" v-on:mouseover="msg1 = '防具を買う' " v-on:mouseleave="msg1 = ''">・防具</div>
                 <div class="command" @click="NonBClist = 'Buy_Item'"v-show="a() <= 1" v-on:mouseover="msg1 = '道具を買う' " v-on:mouseleave="msg1 = ''">・道具</div>
@@ -464,28 +461,25 @@
 
               </div>
               <div class="menu Unusable" v-show="SwitchOn && NonBClist === 'Buy_Shield'">
-                <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('銅の盾',300); " v-show="AllWeponShield.includes('銅の盾')" v-on:mouseover="msg1 = '守備力+20 値段：300G' " v-on:mouseleave="msg1 = ''">・銅の盾</div>
-                <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('鋼の盾',500); " v-show="AllWeponShield.includes('鋼の盾')" v-on:mouseover="msg1 = Tx_Haganenotate " v-on:mouseleave="msg1 = ''">・鋼の盾</div>
-                <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('黄金の盾',1000); " v-show="AllWeponShield.includes('黄金の盾')" v-on:mouseover="msg1 = Tx_Ougonnotate " v-on:mouseleave="msg1 = ''">・黄金の盾</div>
-                <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('魔力の盾',800); " v-show="AllWeponShield.includes('魔力の盾') && Level >= 20" v-on:mouseover="msg1 = Tx_Maryokunotate " v-on:mouseleave="msg1 = ''">・魔力の盾</div>
+                <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('銅の盾',300); " v-show="AllWeponShield.includes('銅の盾')" v-on:mouseover="msg1 = Tx_Dounotate+'値段：300G' " v-on:mouseleave="msg1 = ''">・銅の盾</div>
+                <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('鋼の盾',500); " v-show="AllWeponShield.includes('鋼の盾')" v-on:mouseover="msg1 = Tx_Haganenotate+'値段：500G' " v-on:mouseleave="msg1 = ''">・鋼の盾</div>
+                <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('黄金の盾',1000); " v-show="AllWeponShield.includes('黄金の盾')" v-on:mouseover="msg1 = Tx_Ougonnotate+'値段：1000G' " v-on:mouseleave="msg1 = ''">・黄金の盾</div>
+                <div v-bind:class="{command: Gold >=300}" @click="Action= WeponShield_buy; WeponShield_buy('魔力の盾',800); " v-show="AllWeponShield.includes('魔力の盾') && Level >= 20" v-on:mouseover="msg1 = Tx_Maryokunotate+'値段：800G' " v-on:mouseleave="msg1 = ''">・魔力の盾</div>
 
               </div>
               <div class="menu Unusable" v-show="SwitchOn && NonBClist === 'Buy_Item'">
-                <div v-bind:class="{command: Gold >=50}" @click=" Action= Item_buy; Item_buy('薬草',50);" v-on:mouseover="msg1 = Tx_Yakusou + Yakusou_stock +uri+'値段：50G'" v-on:mouseleave="msg1 = ''">・薬草</div>
+                <div v-bind:class="{command: Gold >=30}" @click=" Action= Item_buy; Item_buy('薬草',30);" v-on:mouseover="msg1 = Tx_Yakusou + Yakusou_stock +uri+'値段：30G'" v-on:mouseleave="msg1 = ''">・薬草</div>
                 <div v-bind:class="{command: Gold >=30}" @click=" Action= Item_buy; Item_buy('毒消し',30);" v-on:mouseover="msg1 = Tx_Dokukesi + Dokukesi_stock +uri+'値段：30G'" v-on:mouseleave="msg1 = ''">・毒消し</div>
                 <div v-bind:class="{command: Gold >=100}" @click=" Action= Item_buy; Item_buy('聖水',100);" v-on:mouseover="msg1 = Tx_Seisui + Seisui_stock +uri+'値段：100G'" v-on:mouseleave="msg1 = ''">・聖水</div>
                 <div v-bind:class="{command: Gold >=70}" @click=" Action= Item_buy; Item_buy('万能薬',70);" v-on:mouseover="msg1 = Tx_Bannouyaku + Bannouyaku_stock +uri+'値段：70G'" v-on:mouseleave="msg1 = ''">・万能薬</div>
                 <div v-bind:class="{command: Gold >=70}" @click=" Action= Item_buy; Item_buy('コーヒー',70);" v-on:mouseover="msg1 = Tx_Coffee + Coffee_stock +uri+'値段：70G'" v-on:mouseleave="msg1 = ''">・コーヒー</div>
-                <div class="command" v-show="a() <= 1" v-on:mouseover="msg1 = 'やさしく攻撃する' " v-on:mouseleave="msg1 = ''">・yasasii</div>
-                <div class="command" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">・かっこいい</div>
-                <div class="command" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">・良い</div>
               </div>
               <!--　ここまで買うリスト-->
               <div class="menu" v-show="SwitchOn && NonBClist === 'Magic'">
-                <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= aaa2; aaa2();" v-show="a() <= 1" v-on:mouseover="msg1 = '念入りに攻撃する' " v-on:mouseleave="msg1 = ''">・クリック！</div>
+                <!-- <div class="command" @click="SwitchOn= !SwitchOn; BClist = ''; Action= aaa2; aaa2();" v-show="a() <= 1" v-on:mouseover="msg1 = '念入りに攻撃する' " v-on:mouseleave="msg1 = ''">・クリック！</div>
                 <div class="command" v-show="a() <= 1" v-on:mouseover="msg1 = 'やさしく攻撃する' " v-on:mouseleave="msg1 = ''">・yasasii</div>
                 <div class="command" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">・かっこいい</div>
-                <div class="command" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">・良い</div>
+                <div class="command" v-on:mouseover="msg1 = '雑攻撃する' " v-on:mouseleave="msg1 = ''">・良い</div> -->
               </div>
               <div class="Maincommand w-19vw" v-show="SwitchOn && BClist !== 'confirm' || SwitchOn && BClist === 'confirm' && NonBCommand === 'item_nonbattle' || SwitchOn && BClist === 'confirm' && NonBCommand !== 'main'">{{msg1}}</div>
           </div>
@@ -547,7 +541,7 @@
                    scalefun: 0,
                    scalefun2: true,//スケール
                    huruerufun: 0,
-                   Image:"ゴブリン.PNG",//image
+                   Image:'oku.png',//image
                    MimicImage:"",//ミミック登場用
                    EfectImage:"炎.png",//エフェクトのイメージ
                    BackImage:"stage1",//背景画像のクラス
@@ -570,9 +564,9 @@
                    DEf:0,
                    Mirror:false,//プレイヤーが呪文を跳ね返すための変数
                    Sleep:0,//スリープカウント
-                   EXp:0,
+                   EXp:0,//経験値、今はあえて1000レベル5にしている:TODO
                    Levelup:100,//this.Level*100,//levelupに必要な経験値
-                   Gold:1000,
+                   Gold:0,
                    ///敵の変数
                    EMaxHp :100,
                    EMaxHp :100,
@@ -592,15 +586,15 @@
                    EAttack2flag:0,//EAttack2で攻撃があたったか否かを判定
                    turnflug:1,//武具の効果発動が1ターンに一回になるよう制御
                    //
-                   Gopoint:1,//進み具合
+                   Gopoint:0,//進み具合,1から0に変更
                    Noivent:0,//周囲を調べ尽くした際のカウンター
                    Doneivent:0,//行われたイベント
                    Stage:1,//現在のステージ
                    //覚えられる特技、魔法関連
                    Allskill:["二段斬り","乱れ突き","回復斬り","かぶと割り",'刃砕き','起死回生','不意打ち','会心必中'],
-                   Useskill:["二段斬り","乱れ突き","回復斬り","かぶと割り",'刃砕き','起死回生','不意打ち','会心必中'],
+                   Useskill:[],//["二段斬り","乱れ突き","回復斬り","かぶと割り",'刃砕き','起死回生','不意打ち','会心必中'],
                    Allmagic:['バーニング','ブリザード','テンペスト','サブヒール','フルヒール','フレッシュ','ファイナル','チャージ','ビルド','スポイル','メルト',],
-                   Usemagic:['ファイア','アイス','スパーク','ミラー','バーニング','ブリザード','テンペスト','サブヒール','フルヒール','フレッシュ','ファイナル','チャージ','ビルド','スポイル','メルト',],
+                   Usemagic:['ファイア','アイス','スパーク','ミラー',],//'バーニング','ブリザード','テンペスト','サブヒール','フルヒール','フレッシュ','ファイナル','チャージ','ビルド','スポイル','メルト',],
                    //持っていない全ての武器、持っている武器
                    AllWeponShield:['銅の剣','鋼の剣','黄金の剣','会心の剣','妖刀村正','力の剣','伝説の剣','銅の盾','鋼の盾','黄金の盾','癒しの盾','守護の盾','魔力の盾','伝説の盾'],
                    UseWeponShield:['木刀','鍋ぶた',],
@@ -615,14 +609,14 @@
                    Dokukesi_stock:3,
                    Seisui_stock:2,
                    Bannouyaku_stock:2,
-                   Coffee_stock:2,
-                   Kisekinomizu_stock:2,
-                   Seireinosakazuki_stock:2,
-                   Migawaridama_stock:2,
-                   Tikaranokajitu_stock:2,
-                   Mamorinokajitu_stock:2,
-                   Inotinokajitu_stock:2,
-                   Maryokunokajitu_stock:2,
+                   Coffee_stock:1,
+                   Kisekinomizu_stock:0,
+                   Seireinosakazuki_stock:0,
+                   Migawaridama_stock:0,
+                   Tikaranokajitu_stock:0,
+                   Mamorinokajitu_stock:0,
+                   Inotinokajitu_stock:0,
+                   Maryokunokajitu_stock:0,
                    //説明文
 Tx_Kaisinnoken:`攻撃力+50
 1/2の確率で、　
@@ -758,7 +752,7 @@ Tx_Subheal:`HPを半分回復する
 `,
 Tx_Fullheal:`HPを全回復し、
 毒からも回復する
-消費MP：2
+消費MP：20
 `,
 Tx_Charge:`自分の攻撃力を1.5倍にする
 消費MP：4
@@ -1000,6 +994,7 @@ Tx_Melt:`相手の守備力を3/4にする
                     Magic_melt: function(){
                       if(a <= 0){
                         command = [this.Name+"は呪文「メルト」を唱えた！",];
+                        console.log('EDEf'+this.EDEf+'EBaseDEF'+this.EBaseDEf);
                       }
                         this.SwitchOn= false;
                       if(a === 0 ){
@@ -1824,6 +1819,7 @@ Tx_Melt:`相手の守備力を3/4にする
                         else{
                           this.Resetfun();
                           this.Enemyturn();
+                          console.log("kaihuku");
                         }
                       }
                       if(a === 1){
@@ -1839,6 +1835,7 @@ Tx_Melt:`相手の守備力を3/4にする
                         }
                       }
                       this.text=command[a];
+                      console.log('a='+a);
                       this.msg2=a;
                       a+=1;
                     },
@@ -2241,6 +2238,7 @@ Tx_Melt:`相手の守備力を3/4にする
                     Enemyturn: function(){
                       //生存確認
                       if(this.EHp<=0 ||this.Hp<=0){
+                        console.log("バトルエンド");
                         this.BattleEnd();
                       }
                       else{
@@ -2803,7 +2801,7 @@ Tx_Melt:`相手の守備力を3/4にする
                       this.Eskill("は炎を吐き出した！",60,100,0,0,0,0,0,0,0,0)
                     },
                     EBaff: function(texta,damage,per1,Atk,per2,Dfe,per3,){
-                      if(a===-1){
+                      if(a===-1){//-1を０にする
                       this.texta=texta;
                       this.damage1=damage;
                       this.per1=per1;
@@ -2839,6 +2837,8 @@ Tx_Melt:`相手の守備力を3/4にする
                         const Per2 = this.per2 - Math.floor(Math.random() * 100);//per2が0より大きくなれば成功
                         if(Per2 > 0){//成功した場合
                           let Up = this.Atk1;
+                          console.log('Up='+Up);
+                          console.log('EBaseATk='+this.EBaseATk+'EATk='+this.EATk);
                           if(this.EATk + Up > this.EBaseATk * 3) {//基礎攻撃力の3倍以上になる場合
                             Up = this.EBaseATk * 3 - this.EATk;//上がる量を調整する
                           }
@@ -3399,6 +3399,24 @@ Tx_Melt:`相手の守備力を3/4にする
                       if(this.Stage === 2){//Stage毎にアクションは変わる
                         this.Stage2();
                       }
+                      if(this.Stage === 3){//Stage毎にアクションは変わる
+                        this.Stage3();
+                      }
+                      if(this.Stage === 4){//Stage毎にアクションは変わる
+                        this.Stage4();
+                      }
+                      if(this.Stage === 5){//Stage毎にアクションは変わる
+                        this.Stage5();
+                      }
+                      if(this.Stage === 6){//Stage毎にアクションは変わる
+                        this.Stage6();
+                      }
+                      if(this.Stage === 7){//Stage毎にアクションは変わる
+                        this.Stage7();
+                      }
+                      if(this.Stage === 8){//Stage毎にアクションは変わる
+                        this.Stage8();
+                      }
                     },
                     Lookaround: function(){
                       const p = Math.floor(Math.random() * 3);
@@ -3425,69 +3443,334 @@ Tx_Melt:`相手の守備力を3/4にする
                       }
                       else if(this.Gopoint === 8){
                         this.Gopoint+=1;//ボスには一度しか当たらないようにする
-                        this.BattleE('ジャイアントオーガ',300,80,30,[{action: this.EKaisin, per: 20},{action: this.EMagic_fire, per: 10}],[''],'oga.png',1000,1000);
+                        this.BattleE('ジャイアントオーガ',200,50,20,[{action: this.EKaisin, per: 20},{action: this.EMagic_fire, per: 10}],[''],'oga.png',400,1000);
                       }
                       else if(this.Gopoint === 10){
                         this.Yado();
                       }
                       else if(r >= 75){//1/4の確率で宝箱
-                        this.Takarabakohakken('ミミック',100,100,100,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],'','ミミック.png',1200,12);
+                        this.Takarabakohakken('ミミック',100,this.DEf+10,0,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],'','ミミック.png',400,120);
                       }
                        else if(p <= 1){
-                        this.BattleE('ピヨピヨバード',40,10,20,[{action: this.EKaisin, per: 90},],['2回行動'],'ミイラ.png',100,12);
+                        this.BattleE('ゴブリン',60,30,20,[{action: this.E_Yakusou, per: 30},],["火弱"],'gobulin.png',120,30);
                        }
                       else if(p <= 2){
-                        this.BattleE('ガブ',70,10,20,[{action: this.Eheal, per: 80},{action: this.Eheal80, per: 0}],["火弱"],'oku.png',120,12);
+                        this.BattleE('ゴブリンツインズ',60,20,20,[{action: this.EKaisin, per: 10},],['2回行動'],'twins.png',100,30);
                       }
                       else if(p <= 3){
-                        this.BattleE('キングフロッグ',100,30,40,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],['呪文反射'],'madou.png',1200,12);
+                        this.BattleE('ウッドワーム',100,30,40,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],['火弱'],'wood.png',200,50);
                       }
-                      else if(p <= 8){
-                        this.BattleE('猫剣士',100,40,60,[{action: this.Einoru, per: 100},{action: this.EMagic_test, per: 10},{action: this.ESleep, per: 10}],['火弱','氷弱','雷弱'],'goremu.png',1200,12);
+                      else if(p <= 4){
+                        this.BattleE('闇の司祭',100,40,20,[{action: this.EMagic_fire, per: 70},],['呪文反射'],'madou.png',250,120);
                       }
                       else if(p <= 10){
-                        this.Takarabakohakken('ミミック',100,100,100,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],'','ミミック.png',1200,12);
+                        this.BattleE('リザード',100,40,40,[{action: this.Eskill_Firebress, per: 70},],['氷弱'],'rizado.png',300,50);
+                      }
+                    },
+                    E_Yakusou: function(){
+                      if(this.EHp > this.EMaxHp/2 ){//2/4以下の体力時のみ、発動。体力の40を回復する
+                        this.flag -= 1;
+                      }
+                      else{
+                        this.EBaff('は薬草を使った！',40,100,0,0,0,0);
                       }
                     },
                     Stage2: function(){
                       this.BClist = "confirm";//フィールドでのコマンドにする
                       this.Confirmtype = '次の行動';//フィールドでのコマンドにする
-                      if(this.BackImage !== "stage1"){//背景をstageに即したものにする
-                        this.BackImage = "stage1";
+                      if(this.BackImage !== "stage2"){//背景をstageに即したものにする
+                        this.BackImage = "stage2";
                       }
-                      const p = Math.floor(Math.random() * this.Gopoint) + 1;//進度
+                      //const p = Math.floor(Math.random() * this.Gopoint) + 1;//進度
+                      const p = this.Gopoint + Math.floor(Math.random() * -3) + 1;//TODO:修正実験,前後の階層と当たる可能性
                       const r = Math.floor(Math.random() * 100) + 1;//同pでの確率
-                      if(this.Gopoint === 7 && this.Doneivent !== "Stage1_Bossmae"){//まだボス前イベントしてない時
+                      if(this.Gopoint === 8 && this.Doneivent !== "Stage2_Bossmae"){//まだボス前イベントしてない時
                         this.Bossmae();
-                        this.Doneivent = "Stage1_Bossmae";
+                        this.Doneivent = "Stage2_Bossmae";
                       }
-                      else if(this.Gopoint === 8){
+                      else if(this.Gopoint === 9){
                         this.Gopoint+=1;//ボスには一度しか当たらないようにする
-                        this.BattleE('ジャイアントオーガ',300,80,30,[{action: this.EKaisin, per: 20},{action: this.EMagic_fire, per: 10}],[''],'oga.png',1000,1000);
+                        this.BattleE('ヒュドラ',600,130,50,[{action: this.jikosaisei, per: 80},{action: this.moudokuburesu, per: 60}],['火弱'],'hyudora.png',1300,2000);
                       }
-                      else if(this.Gopoint === 10){
+                      else if(this.Gopoint === 11){
                         this.Yado();
                       }
                       else if(r >= 75){//1/4の確率で宝箱
-                        this.Takarabakohakken('ミミック',100,100,100,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],'','ミミック.png',1200,12);
+                        this.Takarabakohakken('ミミック',100,100,100,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],'','ミミック.png',800,12);
                       }
                        else if(p <= 1){
-                        this.BattleE('マンドレイク',120,60,20,[{action: this.EPoisonattack, per: 40},],['火弱'],'ミイラ.png',100,12);
+                        this.BattleE('大蜘蛛',70,50,10,[{action: this.EPoisonattack, per: 40},],['火弱','氷弱'],'kumo.png',350,12);
                        }
                       else if(p <= 2){
-                        this.BattleE('ガブ',70,10,20,[{action: this.Eheal, per: 80},{action: this.Eheal80, per: 0}],["火弱"],'oku.png',120,12);
+                        this.BattleE('人食いきのこ',100,60,20,[{action: this.EPoisonattack, per: 80},{action: this.Eheal80, per: 0}],["火弱"],'kinoko.png',350,12);
                       }
                       else if(p <= 3){
-                        this.BattleE('キングフロッグ',100,30,40,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],['呪文反射'],'madou.png',1200,12);
+                        this.BattleE('語り木',120,30,40,[{action: this.ESleep, per: 30},{action: this.EMagic_fire, per: 30}],['火弱'],'kutiki.png',450,12);
+                      }
+                      else if(p <= 4){
+                        this.BattleE('イモリナイト',160,100,25,[{action: this.jikosaisei, per: 80},{action: this.EKaisin, per: 5}],["火弱"],'imori.png',600,12);
+                      }
+                      else if(p <= 5 && r > 20){//低確率で出現
+                        this.BattleE('ホワイトスネーク',120,100,90,[{action: this.EPoisonattack, per: 80},{action: this.EKaisin, per: 5}],['火弱'],'sirohebi.png',600,12);
+                      }
+                      else if(p <= 6){
+                        this.BattleE('プラントビースト',140,120,20,[{action: this.EPoisonattack, per: 70},{action: this.EKaisin, per: 5}],['火弱'],'plantdog.png',650,12);
+                      }
+                      else if(p <= 7){
+                        this.BattleE('プラントドラゴ',300,40,60,[{action: this.jikosaisei, per: 60},{action: this.moudokuburesu, per: 10},{action: this.EKaisin, per: 5}],['火弱','氷弱','雷弱'],'plantbirst.png',800,12);
                       }
                       else if(p <= 8){
-                        this.BattleE('猫剣士',100,40,60,[{action: this.Einoru, per: 100},{action: this.EMagic_test, per: 10},{action: this.ESleep, per: 10}],['火弱','氷弱','雷弱'],'goremu.png',1200,12);
+                        this.BattleE('イグアナゾンビ',400,150,0,[{action: this.EKaisin, per: 20},{action: this.moudokuburesu, per: 60}],['火弱'],'iguana.png',850,100);
                       }
-                      else if(p <= 10){
-                        this.Takarabakohakken('ミミック',100,100,100,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],'','ミミック.png',1200,12);
+                      else{//Noiventsになる
+                        this.Noivents();
+                        console.log("NOaction");
+                      }
+                    },
+                    moudokuburesu: function(){
+                      this.Eskill("は猛毒のブレスを吐き出した！",this.Level,100,5,100,0,0,0,0,'毒',90)
+                    },
+                    jikosaisei: function(){
+                      if(this.EHp > this.EMaxHp/4 ){//1/4以下の体力時のみ、発動。体力の1/6を回復する
+                        this.flag -= 1;
+                      }
+                      else{
+                        this.EBaff('は傷ついた体を自己再生した！',Math.ceil(this.EMaxHp/6),100,0,0,20,50)
+                      }
+                    },
+                    Stage3: function(){
+                      this.BClist = "confirm";//フィールドでのコマンドにする
+                      this.Confirmtype = '次の行動';//フィールドでのコマンドにする
+                      if(this.BackImage !== "stage3"){//背景をstageに即したものにする
+                        this.BackImage = "stage3";
+                      }
+                      //const p = Math.floor(Math.random() * this.Gopoint) + 1;//進度
+                      const p = this.Gopoint + Math.floor(Math.random() * -3) + 1;//TODO:修正実験,前後の階層と当たる可能性
+                      const r = Math.floor(Math.random() * 100) + 1;//同pでの確率
+                      if(this.Gopoint === 8 && this.Doneivent !== "Stage3_Bossmae"){//まだボス前イベントしてない時
+                        this.Bossmae();
+                        this.Doneivent = "Stage3_Bossmae";
+                      }
+                      else if(this.Gopoint === 9){
+                        this.Gopoint+=1;//ボスには一度しか当たらないようにする
+                        this.BattleE('フェニックス',500,130,10,[{action: this.EMagic_charge, per: 30},{action: this.EMagic_fullheal, per: 25}],['氷弱'],'fenikkusu.png',1300,2000);
+                      }
+                      else if(this.Gopoint === 11){
+                        this.Yado();
+                      }
+                      else if(r >= 85){//15%の確率で宝箱
+                        this.Takarabakohakken('ミミック',100,100,100,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],'','ミミック.png',800,12);
+                      }
+                       else if(p <= 1){
+                        this.BattleE('オオオオカミ',70,70,0,[{action: this.EKaisin, per: 20},],['火弱','氷弱','雷弱'],'okami.png',300,12);
+                       }
+                       else if(p <= 2){
+                        this.BattleE('スコーピオン',70,70,10,[{action: this.EPoisonattack, per: 40},],['火弱','氷弱'],'sasori.png',300,12);
+                       }
+                      else if(p <= 3){
+                        this.BattleE('彷徨うミイラ',200,100,20,[{action: this.EKaisin, per: 10}],['火弱','氷弱'],'ミイラ.png',300,12);
+                      }
+                      else if(p <= 4){
+                        this.BattleE('ハーピィ',170,100,20,[{action: this.EMagic_charge, per: 30},{action: this.ESkill_Huiuti, per: 10}],['氷弱','2回行動'],'hapy.png',600,12);
+                      }
+                      else if(p <= 5){
+                        this.BattleE('牛頭鬼',160,150,25,[{action: this.ESkill_Kabutowari, per: 80},{action: this.EKaisin, per: 5}],["氷弱"],'gozuki.png',650,12);
+                      }
+                      else if(p <= 6 && r >= 50){//低確率で出現
+                        this.BattleE('砂塵の死神',160,100,20,[{action: this.EKaisin, per: 30},],["火弱"],'sinigami.png',750,120);
+                      }
+                      else if(p <= 6 && r >= 25){
+                        this.BattleE('死人の戦車',100,110,90,[{action: this.EMagic_charge, per: 50},{action: this.ESkill_Kabutowari, per: 80},{action: this.EKaisin, per: 5}],['火弱','氷弱','2回行動'],'sensya.png',750,120);
+                      }
+                      else if(p <= 8 ){
+                        this.BattleE('スフィンクス',250,150,0,[{action: this.EMagic_charge, per: 50},{action: this.ESkill_Huiuti, per: 60}],['火弱'],'sufinkusu.png',750,500);
+                      }
+                      else{//Noiventsになる
+                        this.Noivents();
+                        console.log("NOaction");
+                      }
+                    },
+                    ESkill_Huiuti: function(){
+                      this.Eskill('の不意打ち攻撃！',Math.ceil(this.EATk/5),100,0,0,0,0,0,0,0,0)
+                    },
+                    EMagic_charge: function(){
+                      if(this.EATk > this.DEf *1.5 || this.EATk === this.EBaseATk*5){//相手の守備力の1.5倍以上攻撃力がある場合は、行わない
+                        this.flag -= 1;
+                      }
+                      else{//:TODO忘れないように注意！
+                        this.EBaff('は呪文「チャージ」を唱えた！',0,0,Math.ceil(this.EATk/2),100,0,0)
+                      }
+                    },
+                    EMagic_fullheal: function(){
+                      if(this.EHp > this.EMaxHp/4 ){//1/4以下の体力時のみ、発動。体力を全回復する
+                        this.flag -= 1;
+                      }
+                      else{
+                        this.EBaff('は呪文「フルヒール」を唱えた！',this.EMaxHp,100,0,0,0,0)
+                      }
+                    },
+                    ESkill_Kabutowari: function(){
+                      this.EAttack2('のかぶと割り！',0,100,0,0,0,0,Math.ceil(this.DEf/4),50,0,0)
+                    },
+                    Stage4: function(){
+                      this.BClist = "confirm";//フィールドでのコマンドにする
+                      this.Confirmtype = '次の行動';//フィールドでのコマンドにする
+                      if(this.BackImage !== "stage4"){//背景をstageに即したものにする
+                        this.BackImage = "stage4";
+                      }
+                      //const p = Math.floor(Math.random() * this.Gopoint) + 1;//進度
+                      const p = this.Gopoint + Math.floor(Math.random() * -3) + 1;//TODO:修正実験,前後の階層と当たる可能性
+                      const r = Math.floor(Math.random() * 100) + 1;//同pでの確率
+                      if(this.Gopoint === 8 && this.Doneivent !== "Stage4_Bossmae"){//まだボス前イベントしてない時
+                        this.Bossmae();
+                        this.Doneivent = "Stage4_Bossmae";
+                      }
+                      else if(this.Gopoint === 9){
+                        this.Gopoint+=1;//ボスには一度しか当たらないようにする
+                        this.BattleE('ゲンブタートル',600,150,this.ATk,[{action: this.EMagic_growth, per: 10},{action: this.Eskill_Icebress, per: 25}],['火弱'],'genbu.png',1300,2000);
+                      }
+                      else if(this.Gopoint === 11){
+                        this.Yado();
+                      }
+                      else if(r >= 85){//15%の確率で宝箱
+                        this.Takarabakohakken('ミミック',100,100,100,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],'','ミミック.png',600,12);
+                      }
+                       else if(p <= 1){
+                        this.BattleE('ビックバット',70,40,20,[{action: this.EKaisin, per: 10},],['火弱','氷弱','雷弱'],'koumori.png',400,12);
+                       }
+                       else if(p <= 2){
+                        this.BattleE('グラトニー',70,40,50,[{action: this.ESleep, per: 30},{action: this.EMagic_growth, per: 30}],['火弱','氷弱'],'guratoni.png',450,12);
+                       }
+                      else if(p <= 3 && r >= 75){
+                        this.BattleE('ツチノコ',40,50,100,[{action: this.moudokuburesu, per: 20}],['火弱','氷弱'],'tutinoko.png',1000,120);
+                      }
+                      else if(p <= 4){
+                        this.BattleE('地底竜',120,100,60,[{action: this.Eskill_Icebress, per: 30},{action: this.EMagic_growth, per: 20}],['炎弱',],'hakuryu.png',600,12);
+                      }
+                      else if(p <= 5){
+                        this.BattleE('盾の番人',100,100,80,[{action: this.EKaisin, per: 10},{action: this.EMagic_growth, per: 20}],["火弱"],'bannin.png',650,120);
+                      }
+                      else if(p <= 6){
+                        this.BattleE('メタルナイト',100,120,100,[{action: this.ESkill_Kabutowari, per: 30},{action: this.EMagic_charge, per: 30}],["呪文反射"],'metaru.png',750,100);
+                      }
+                      else if(p <= 8){
+                        this.BattleE('黄金竜',100,110,90,[{action: this.EMagic_growth, per: 20},{action: this.Eskill_Firebress, per: 50},{action: this.EKaisin, per: 5}],['呪文反射'],'kinryu.png',750,120);
+                      }
+                      else{//Noiventsになる
+                        this.Noivents();
+                        console.log("NOaction");
+                      }
+                    },
+                    Eskill_Icebress: function(){
+                      this.Eskill("は氷のブレスを吐き出した！",this.Level*2,100,5,100,0,0,0,0,0,0)
+                    },
+                    Eskill_Firebress: function(){
+                      this.Eskill("は炎のブレスを吐き出した！",this.Level*3,100,0,0,0,0,0,0,0,0)
+                    },
+                    EMagic_growth: function(){
+                      if(this.EATk > this.DEf*1.5 || this.EATk >= this.EBaseATk*5){//守備力の1.5倍の攻撃力を持っている場合は飛ばす
+                        this.flag -= 1;
+                      }
+                      else{
+                        this.EBaff('は呪文「グロース」を唱えた！',0,0,Math.ceil(this.EATk/8),100,Math.ceil(this.EDEf/8),100)
+                      }
+                    },
+                    Stage6: function(){
+                      this.BClist = "confirm";//フィールドでのコマンドにする
+                      this.Confirmtype = '次の行動';//フィールドでのコマンドにする
+                      if(this.Gopoint < 7){//背景をstageに即したものにする
+                        this.BackImage = "stage62";
+                      }
+                      else{
+                        this.BackImage = "stage61";//背景中盤で変える
+                      }
+                      //const p = Math.floor(Math.random() * this.Gopoint) + 1;//進度
+                      const p = this.Gopoint + Math.floor(Math.random() * -3) + 1;//TODO:修正実験,前後の階層と当たる可能性
+                      const r = Math.floor(Math.random() * 100) + 1;//同pでの確率
+                      if(this.Gopoint === 13 && this.Doneivent !== "Stage6_Bossmae"){//まだボス前イベントしてない時
+                        this.Bossmae();
+                        this.Doneivent = "Stage6_Bossmae";
+                      }
+                      else if(this.Gopoint === 14){
+                        this.Gopoint+=1;//ボスには一度しか当たらないようにする
+                        this.BattleE('マンティコア',1000,this.DEf+30,this.ATk,[{action: this.EMagic_charge, per: 30},{action: this.EMagic_build, per: 25}],['氷弱'],'manthikoa.png',2000,1000);
+                      }
+                      else if(this.Gopoint === 16){
+                        this.Yado();
+                      }
+                      else if(r >= 85){//15%の確率で宝箱
+                        this.Takarabakohakken('ミミック',100,100,150,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],'','ミミック.png',600,12);
+                      }
+                       else if(p <= 1){
+                        this.BattleE('アングリーエイプ',200,130,90,[{action: this.EKaisin, per: 20},],['火弱','氷弱','雷弱'],'gorira.png',850,12);
+                       }
+                       else if(p <= 2){
+                        this.BattleE('窮鼠の群れ',200,120,90,[{action: this.EMagic_build, per: 60},{action: this.ESkill_Huiuti, per: 30}],['火弱','氷弱','2回行動'],'rats.png',900,12);
+                       }
+                      else if(p <= 3 ){
+                        this.BattleE('ゴートマン',140,150,150,[{action: this.EKaisin, per: 10}],['火弱','氷弱'],'yagi.png',850,120);
+                      }
+                      else if(p <= 4){
+                        this.BattleE('ロックリザード',300,110,200,[{action: this.Eskill_Firebress, per: 50},{action: this.EKaisin, per: 20}],['炎弱',],'otokage.png',1000,12);
+                      }
+                      else if(p <= 5){
+                        this.BattleE('アサシン',200,130,150,[{action: this.EKaisin, per: 20},{action: this.EMagic_build, per: 60}],["火弱"],'neko.png',1050,120);
+                      }
+                      else if(p <= 6){
+                        this.BattleE('黒豹の騎士',200,120,120,[{action: this.ESkill_Ikari, per: 40},{action: this.EMagic_charge, per: 30}],["呪文反射"],'kurohyou.png',1200,100);
+                      }
+                      else if(p <= 7){
+                        this.BattleE('漆黒の獅子',500,200,40,[{action: this.EKaisin, per: 20},],[''],'kurosisi.png',1200,120);
+                      }
+                      else if(r <= 17){
+                        this.BattleE('ブラックホーン',300,130,60,[{action: this.ESkill_Saiminjutu, per: 60},{action: this.EMagic_charge, per: 100}],['炎弱',],'kokuba.png',1300,12);
+                      }
+                      else if(r <= 34){
+                        this.BattleE('グランドトータス',300,100,this.ATk,[{action: this.moudokuburesu, per: 30},{action: this.EKaisin, per: 10}],['雷弱',],'kame.png',1300,12);
+                      }
+                      else if(r <= 51){
+                        this.BattleE('ケンタウロス',400,220,160,[{action: this.ESkill_Huiuti, per: 30},{action: this.EMagic_fullheal, per: 50}],['',],'kentaurosu.png',1300,12);
+                      }
+                      else if(r <= 68){
+                        this.BattleE('キマイラ',350,200,40,[{action: this.EKaisin, per: 10}],['氷弱','雷弱','2回行動'],'kimaira.png',1400,100);
+                      }
+                      else if(r <= 84){
+                        this.BattleE('グリフィン',400,220,60,[{action: this.Eskill_Firebress, per: 30},{action: this.EKaisin, per: 20}],['氷弱','雷弱'],'gurifin.png',1400,100);
+                      }
+                      else{//Noiventsになる
+                        this.Noivents();
+                        console.log("NOaction");
+                      }
+                    },
+                    EMagic_build: function(){
+                      if(this.EDEf > this.ATk || this.EDEf >= this.EBaseDEf*3){//守備力が攻撃力を上回っている場合は飛ばす
+                        this.flag -= 1;
+                      }
+                      else{
+                        this.EBaff('は呪文「ビルド」を唱えた！',0,0,0,0,Math.ceil(this.EDEf/2),100)
+                      }
+                    },
+                    ESkill_Ikari: function(){
+                      if(this.EHp >= this.EMaxHp || this.Eunique.includes('怒り')){//ダメージ受けてない場合、一度使用した場合は飛ばす
+                        this.flag -= 1;
+                      }
+                      else{
+                        this.Eunique.push('怒り');
+                        this.EBaff('はダメージを受けて怒り狂っている！',0,0,this.EMaxHp - this.EHp,100,0,0)
+                      }
+                    },
+                    ESkill_Saiminjutu: function(){
+                      if(this.Joutaihennka !== "なし"){//不要な時に飛ばす
+                        this.flag -= 1;
+                      }
+                      else{
+                        this.Eskill('は催眠術を使った！',0,0,0,0,0,0,0,0,'眠り',80)
                       }
                     },
                     BattleE: function(ename,ehp,eatk,edef,actions,eunique,image,eexp,egold){
+                      //プレイヤーステータスの読み込み_敵より先に読み込まなければ、コピーできない
+                      this.ATk= this.BaseATk + this.WeponATk;
+                      this.DEf= this.BaseDEf + this.WeponDEf;
                       //敵ステータスの読み込み
                       this.EName = ename;
                       this.EMaxHp = ehp;
@@ -3501,9 +3784,6 @@ Tx_Melt:`相手の守備力を3/4にする
                       this.EGold = egold;
                       this.EActions = actions;
                       this.Eunique = eunique;
-                      //プレイヤーステータスの読み込み
-                      this.ATk= this.BaseATk + this.WeponATk;
-                      this.DEf= this.BaseDEf + this.WeponDEf;
                       /////
                       this.ImageOn = true;//画像表示
                       this.text = this.EName+"が現れた！";
@@ -3613,6 +3893,7 @@ Tx_Melt:`相手の守備力を3/4にする
                       this.Image = this.MimicImage;//宝箱からミミックの画像へ
                       this.SwitchOn= false;
                       this.Action = this.TakarabakoBattleE;
+                      this.turnflug = 1;//最初に誤発動しないように、武器の効果発動リセット:TODO
                       //勝利後に選択肢に戻れるよう調整
                       this.confirmmsg　="行動を選んでください";
                         this.Confirmtype = "次の行動";
@@ -3744,9 +4025,13 @@ Tx_Melt:`相手の守備力を3/4にする
                     },
                     Yado: function(){
                       if(a === 0){
-                        command = [this.Name+"は小さな集落を見つけた！","旅の方よ、ここで休んでいきなさい",this.Name+"はHPと魔力を全回復した！","何か買い物されますか？"];
+                        command = [this.Name+"は小さな集落を見つけた！","旅の方よ、ここで休んでいきなさい",this.Name+"はHPとMPを全回復した！","何か買い物されますか？"];
                         this.BackImage = "syuraku";
                         this.Action = this.Yado;
+                        this.Gopoint = 0;//次のステージのためにリセットしておく
+                        this.Hp = this.MaxHp
+                        this.Mp = this.MaxMp//全回復
+                        this.Joutaihennka = 'なし';
                       }
                       BClist = 0;
                       this.SwitchOn= false;
@@ -3788,8 +4073,16 @@ Tx_Melt:`相手の守備力を3/4にする
                         this.ImageOn = false;//画像非表示
                       }
                       if(a === 2){
+                        if(this.Stage < 6 && this.Stage >1){//ステージ2-5をクリアしたばかりである場合
+                          const p = 1;//Math.floor(Math.random() * 3) +1;//1-3の数字
+                          if(p === 1){
+                            this.Stage = 6;
+                            this.BackImage = "stage62";
+                            command[2]=this.Name+"は深い森に足を踏み入れた";
+                          }
+                        }
                         if(this.Stage === 1){//ステージ1をクリアしたばかりである場合
-                          const p = Math.floor(Math.random() * 4) +1;//1-4の数字
+                          const p = Math.floor(Math.random() * 3) +1;//1-3の数字
                           if(p === 1){
                             this.Stage = 2;
                             this.BackImage = "stage2";
