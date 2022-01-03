@@ -157,6 +157,26 @@
             background-repeat: no-repeat;
             background-size:cover;
           }
+          .final4{
+            background-image:url("final4.jpeg");
+            background-repeat: no-repeat;
+            background-size:cover;
+          }
+          .ending{
+            background-image:url("ending.jpeg");
+            background-repeat: no-repeat;
+            background-size:cover;
+          }
+          .stage0{
+            background-image:url("stage0.jpeg");
+            background-repeat: no-repeat;
+            background-size:cover;
+          }
+          .opening{
+            background-image:url("opening.jpeg");
+            background-repeat: no-repeat;
+            background-size:cover;
+          }
           .syuraku{
             background-image:url("村2.jpeg");
             background-repeat: no-repeat;
@@ -165,6 +185,54 @@
           .content {
             width: 100vw;
             height: 100vh;
+          }
+          .z31 {
+            z-index: 31;
+          }
+          .tytlemanu {
+            position: absolute;
+            z-index: 31;
+            /* top:50%;
+            left:50%; */
+            top: 60vh;
+            left: 42vw;
+            /* width: 10vw; */
+            /* height: 20vh; */
+            background-color: black;
+            color: white;
+            /* display: flex; */
+            /* flex-direction: column;
+            flex-wrap: wrap; */
+            /* font-size: 10vh; */
+            border-radius: 10px;
+            border: 5px solid rgb(134, 132, 129);
+             margin: 0 auto;
+            /* padding: 50vh 40vw 0 40vw; */
+            /* position: absolute;
+            top: 50vh;
+            left: 40vw; */
+            /* width: 20vw;
+            height: 20vh;  */
+            /* width: 30vw;
+            height: 30vw; */
+          }
+          .tytlecommand {
+            font-size: 2vw;
+            cursor: pointer;
+            width: 16vw;
+          }
+          .tytlecommand:hover{
+            background-color: rgb(44, 44, 44);
+            /* border-color: green; */
+            cursor: pointer;
+          }
+          .text2{
+            /* font-size: 2vw;
+            width: 16vw; */
+            cursor:text !important;
+          }
+          .gameover{
+            font-size: 2.5vh;
           }
           .Imagearea{
             position: absolute;
@@ -290,9 +358,24 @@
     </head>
     <body>
       <div id="app">
-        <div class = "content" v-bind:class="{'syuraku': this.BackImage==='syuraku','stage1': this.BackImage==='stage1','stage2': this.BackImage==='stage2','stage3': this.BackImage==='stage3','stage4': this.BackImage==='stage4','stage61': this.BackImage==='stage61','stage62': this.BackImage==='stage62','stage71': this.BackImage==='stage71','stage73': this.BackImage==='stage73','stage93': this.BackImage==='stage93','stage92': this.BackImage==='stage92',}">
-          <div>{{"msg2"}}</div>
-          <button name="myBtn" v-show="SwitchOn === false" class="z" v-on:click="Action" ></button>
+        <div class = "content z31 opening" v-show="Newgame === 0 && Gameover === 0">
+          <div class = "tytlemanu ">
+            <div class = "tytlecommand gameover" @click="Newgame = 1; Opening();">ゲームを始める</div>
+            <div class = "tytlecommand gameover" @click="setumei();">説明を読む</div>
+          </div>
+        </div>
+        <div class = "z31" v-show="Gameover === 1">
+          <div class = "tytlemanu gameover">
+            <div class = "text2"  >実績</div>
+            <div class = "text2"  >{{stagename}}（{{Gopoint}}/{{stagelength}}）</div>
+            <div class = "text2"  >敵：{{EName}}</div>
+            <div class = "text2"  >敵のHP：{{EHp}}/{{EMaxHp}}</div>
+            <div class = "tytlecommand  gameover"  @click="reset();">タイトルに戻る</div>
+          </div>
+        </div>
+        <div class = "content" v-show="Newgame === 1 " v-bind:class="{'syuraku': this.BackImage==='syuraku','stage1': this.BackImage==='stage1','stage2': this.BackImage==='stage2','stage3': this.BackImage==='stage3','stage4': this.BackImage==='stage4','stage61': this.BackImage==='stage61','stage62': this.BackImage==='stage62','stage71': this.BackImage==='stage71','stage73': this.BackImage==='stage73','stage93': this.BackImage==='stage93','stage92': this.BackImage==='stage92','final4': this.BackImage==='final4','ending': this.BackImage==='ending','stage0': this.BackImage==='stage0',}">
+          <!-- <div>{{"msg2"}}</div> -->
+          <button name="myBtn" v-show="SwitchOn === false && Gameover === 0 " class="z" v-on:click="Action" ></button>
 
           <div class="Textarea">
               <div class="Maincommand center ml-3vw" v-show="SwitchOn && BClist !== 'confirm'">
@@ -362,7 +445,7 @@
                 <div class="command" v-show=" Confirmtype === '買い物'" @click="NonBCommand = 'Buy'" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">物を買う</div>
                 <div class="command" v-show=" Confirmtype === '買い物'" @click="NonBCommand = 'Sell'" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">物を売る</div>
                 <div class="command" v-show=" Confirmtype === '買い物'" @click="NonBCommand = 'item_nonbattle' " v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">持ち物を確認する</div>
-                <div class="command" v-show=" Confirmtype === '買い物'" @click="Nextstage()" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">村を出る</div>
+                <div class="command" v-show=" Confirmtype === '買い物'" @click="Nextstage()" v-on:mouseover="msg1 = '雑に攻撃' " v-on:mouseleave="msg1 = ''">{{Tx_saki}}</div>
 
               </div>
               <div class="Maincommand center ml-3vw" v-show=" SwitchOn && BClist === 'confirm' && NonBCommand === 'item_nonbattle' ||SwitchOn && BClist === 'confirm' && NonBCommand !== 'main'">
@@ -544,6 +627,8 @@
                      color:'yellow',
                      fontSize: '90px',
                    },
+                   Newgame:0,//0ならゲームのタイトル画面
+                   Gameover:0,//Gameover時の画面
                    SwitchOn: true,//falseの時には全画面クリックのモードになる
                    Battle: true,
                    BCommand: true,//バトルのコマンドかアクション処理中か
@@ -567,19 +652,19 @@
                    BackImage:"stage1",//背景画像のクラス
                    //戦闘時に必要な変数------------------------------
                    //自分の変数
-                   Name:"プレイヤー",
+                   Name:"あなた",//二人称元々プレイヤー
                    Level:1,
                    MaxHp:160,
-                   Hp:150,
+                   Hp:160,
                    MaxMp:10,
                    Mp:10,
                    Joutaihennka:"なし",
-                   Wepon:"",
-                   Shield:"",//着けている防具
+                   Wepon:"木刀",
+                   Shield:"鍋ぶた",//着けている防具
                    BaseATk:50,
                    BaseDEf:20,
-                   WeponATk:0,
-                   WeponDEf:0,
+                   WeponATk:10,
+                   WeponDEf:10,
                    ATk:0,
                    DEf:0,
                    Mirror:false,//プレイヤーが呪文を跳ね返すための変数
@@ -610,6 +695,8 @@
                    Noivent:0,//周囲を調べ尽くした際のカウンター
                    Doneivent:0,//行われたイベント
                    Stage:1,//現在のステージ
+                   stagename:"STAGE1：草原",
+                   stagelength:9,
                    //覚えられる特技、魔法関連
                    Allskill:["二段斬り","乱れ突き","回復斬り","かぶと割り",'刃砕き','起死回生','不意打ち','会心必中'],
                    Useskill:[],//["二段斬り","乱れ突き","回復斬り","かぶと割り",'刃砕き','起死回生','不意打ち','会心必中'],
@@ -786,6 +873,7 @@ Tx_Spoil:`相手の攻撃力を3/4にする
 Tx_Melt:`相手の守備力を3/4にする
 消費MP：2
 `,
+Tx_saki:'村を出る',
 
                   },
                   methods: {
@@ -1006,7 +1094,7 @@ Tx_Melt:`相手の守備力を3/4にする
                         this.Enemyturn();
                       }
                       this.text=command[a];
-                      this.EfectImage="青魔法陣.png"
+                      this.EfectImage="aomahoujin.png"
                       console.log(a+"2");
                       this.msg2=a;
                       a+=1;
@@ -1061,7 +1149,7 @@ Tx_Melt:`相手の守備力を3/4にする
                         this.Enemyturn();
                       }
                       this.text=command[a];
-                      this.EfectImage="青魔法陣.png"
+                      this.EfectImage="aomahoujin.png"
                       console.log(a+"2");
                       this.msg2=a;
                       a+=1;
@@ -3432,33 +3520,50 @@ Tx_Melt:`相手の守備力を3/4にする
                       this.Gopoint += 1;
                       this.Noivent = 0;//Noiventsを解除
                       if(this.Stage === 1){//Stage毎にアクションは変わる
+                        this.stagename ="STAGE1：草原";
+                        this.stagelength = 9;
                         this.Stage1();
                       }
                       if(this.Stage === 2){//Stage毎にアクションは変わる
+                        this.stagename ="STAGE2：沼地";
+                        this.stagelength = 10;
                         this.Stage2();
                       }
                       if(this.Stage === 3){//Stage毎にアクションは変わる
+                        this.stagename ="STAGE3：荒野";
+                        this.stagelength = 10;
                         this.Stage3();
                       }
                       if(this.Stage === 4){//Stage毎にアクションは変わる
+                        this.stagename ="STAGE2：洞窟";
+                        this.stagelength = 10;
                         this.Stage4();
                       }
                       if(this.Stage === 5){//Stage毎にアクションは変わる
                         this.Stage5();
                       }
                       if(this.Stage === 6){//Stage毎にアクションは変わる
+                        this.stagename ="STAGE3：森";
+                        this.stagelength = 15;
                         this.Stage6();
                       }
                       if(this.Stage === 7){//Stage毎にアクションは変わる
+                        this.stagename ="STAGE3：海";
+                        this.stagelength = 18;
                         this.Stage7();
                       }
                       if(this.Stage === 9){//Stage毎にアクションは変わる
+                        this.stagename ="STAGE4：魔界";
+                        this.stagelength = 12;
                         this.Stage9();
+                      }
+                      if(this.Stage === 10){//Stage毎にアクションは変わる
+                        this.Lastboss();
                       }
                     },
                     Lookaround: function(){
                       const p = Math.floor(Math.random() * 3);
-                      if(p < 1 || this.Noivent >= 1){//1/3の確率でNoiventsになる
+                      if(p < 1 || this.Noivent >= 1 || this.Stage === 10){//1/3の確率でNoiventsになる,ラスボス前は何も起こさない
                         this.Noivents();
                         console.log("NOaction");
                       }
@@ -3484,6 +3589,7 @@ Tx_Melt:`相手の守備力を3/4にする
                         this.BattleE('ジャイアントオーガ',200,50,20,[{action: this.EKaisin, per: 20},{action: this.EMagic_fire, per: 10}],[''],'oga.png',400,1000);
                       }
                       else if(this.Gopoint === 10){
+                        //this.Doneivent = "Stage9_Bossmae"//TODO:ラスボス前実験
                         this.Yado();
                       }
                       else if(r >= 75){//1/4の確率で宝箱
@@ -3501,7 +3607,7 @@ Tx_Melt:`相手の守備力を3/4にする
                         this.BattleE('ウッドワーム',100,30,40,[{action: this.EPoisonattack, per: 10},{action: this.ESleep, per: 80}],['火弱'],'wood.png',200,50);
                       }
                       else if(p <= 4){
-                        this.BattleE('闇の司祭',100,40,20,[{action: this.EMagic_fire, per: 70},],['呪文反射'],'madou.png',250,120);
+                        this.BattleE('闇の司祭',100,40,20,[{action: this.E_Jumonhansya, per: 70},{action: this.EMagic_fire, per: 70},],['火弱'],'madou.png',250,120);
                       }
                       else if(p <= 10){
                         this.BattleE('リザード',100,40,40,[{action: this.Eskill_Firebress, per: 70},],['氷弱'],'rizado.png',300,50);
@@ -3725,10 +3831,10 @@ Tx_Melt:`相手の守備力を3/4にする
                         this.BattleE('盾の番人',100,100,80,[{action: this.EKaisin, per: 10},{action: this.EMagic_growth, per: 20}],["火弱"],'bannin.png',650,120);
                       }
                       else if(p <= 6){
-                        this.BattleE('メタルナイト',100,120,100,[{action: this.ESkill_Kabutowari, per: 30},{action: this.EMagic_charge, per: 30}],["呪文反射"],'metaru.png',750,100);
+                        this.BattleE('メタルナイト',150,120,130,[{action: this.E_Jumonhansya, per: 90},{action: this.ESkill_Kabutowari, per: 30},{action: this.EMagic_charge, per: 30}],["炎弱"],'metaru.png',750,100);
                       }
                       else if(p <= 8){
-                        this.BattleE('黄金竜',100,110,90,[{action: this.EMagic_growth, per: 20},{action: this.Eskill_Firebress, per: 50},{action: this.EKaisin, per: 5}],['呪文反射'],'kinryu.png',750,120);
+                        this.BattleE('黄金竜',150,110,150,[{action: this.E_Jumonhansya, per: 70},{action: this.EMagic_growth, per: 20},{action: this.Eskill_Firebress, per: 50},{action: this.EKaisin, per: 5}],[''],'kinryu.png',750,120);
                       }
                       else{//Noiventsになる
                         this.Noivents();
@@ -3791,7 +3897,7 @@ Tx_Melt:`相手の守備力を3/4にする
                         this.BattleE('アサシン',200,130,150,[{action: this.EKaisin, per: 20},{action: this.EMagic_build, per: 60}],["火弱"],'neko.png',1050,120);
                       }
                       else if(p <= 6){
-                        this.BattleE('黒豹の騎士',200,120,120,[{action: this.ESkill_Ikari, per: 40},{action: this.EMagic_charge, per: 30}],["呪文反射"],'kurohyou.png',1200,100);
+                        this.BattleE('黒豹の騎士',250,120,150,[{action: this.E_Jumonhansya, per: 70},{action: this.ESkill_Ikari, per: 40},{action: this.EMagic_charge, per: 30}],["氷弱"],'kurohyou.png',1200,100);
                       }
                       else if(p <= 7){
                         this.BattleE('漆黒の獅子',500,200,40,[{action: this.EKaisin, per: 20},],[''],'kurosisi.png',1200,120);
@@ -3883,7 +3989,7 @@ Tx_Melt:`相手の守備力を3/4にする
                         this.BattleE('剛魚',400,150,40,[{action: this.EKaisin, per: 10},],["火弱"],'sakana.png',1050,120);
                       }
                       else if(p <= 6){
-                        this.BattleE('ミラージュフィッシュ',200,120,120,[{action: this.EMajic_Splash, per: 40},{action: this.EMagic_build, per: 30}],["呪文反射"],'fish.png',1200,100);
+                        this.BattleE('ミラージュフィッシュ',200,120,120,[{action: this.E_Jumonhansya, per: 70},{action: this.EMajic_Splash, per: 40},{action: this.EMagic_build, per: 30}],[""],'fish.png',1200,100);
                       }
                       else if(p <= 7){
                         this.BattleE('エレキシャーク',250,130,40,[{action: this.Eskill_Houden, per: 30},],[],'same.png',1200,120);
@@ -4292,15 +4398,53 @@ Tx_Melt:`相手の守備力を3/4にする
                       this.msg2=a;
                       a+=1;
                     },
+                    Opening: function(){
+                      if(a === 0){
+                        command = ["よくぞ参られた、勇者の血を引き継ぐ者よ","大魔王の復活により、世界は今滅亡の危機に瀕している","この世界の命運は貴殿に託された","どうか大魔王を倒し、この世界を救ってほしい","貴殿の中に眠りし勇者の力も、旅の中で目覚めていくであろう",this.Name+"は魔王討伐の旅に出た！"];
+                        this.Action = this.Opening;
+                        this.Gopoint = 0;//次のステージのためにリセットしておく
+                          this.BackImage = "stage0";//背景を変える
+                      }
+                      BClist = 0;
+                      this.SwitchOn= false;
+                      if(a === command.length){
+                        a= -1;
+                        //戦闘ではない場合
+                          // this.BClist = "confirm";
+                          this.SwitchOn = true;
+                          // this.Confirmtype = '買い物';
+                          console.log("ousama");
+                      }
+                      if(a === 1){
+                        this.Image = "osama.png";
+                        this.ImageOn = true;//画像表示
+
+                      }
+                      if(a === 5){
+                        this.Image = "osama.png";
+                        this.ImageOn = false;//画像表示
+                        this.BackImage ="stage1";
+
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
                     Yado: function(){
                       if(a === 0){
                         command = [this.Name+"は小さな集落を見つけた！","旅の方よ、ここで休んでいきなさい",this.Name+"はHPとMPを全回復した！","何か買い物されますか？"];
-                        this.BackImage = "syuraku";
                         this.Action = this.Yado;
                         this.Gopoint = 0;//次のステージのためにリセットしておく
                         this.Hp = this.MaxHp
                         this.Mp = this.MaxMp//全回復
                         this.Joutaihennka = 'なし';
+                        if(this.Doneivent === "Stage9_Bossmae"){
+                          this.Tx_saki = '先に進む';//ラスボス前
+                          command = ["あなたなら必ずここまで来れると信じていました","旅の方、いえ、伝説の勇者よ、ここで休んでいきなさい",this.Name+"はHPとMPを全回復した！","魔王はこの先にいます、何か買い物されますか？"];
+                        }
+                        else{
+                          this.BackImage = "syuraku";//最終ボス戦前でないなら、背景を変える
+                        }
                       }
                       BClist = 0;
                       this.SwitchOn= false;
@@ -4324,8 +4468,11 @@ Tx_Melt:`相手の守備力を3/4にする
                     Nextstage: function(){
                       if(a === 0){
                         command = ["旅の方よ、どうかご無事であらんことを",this.Name+"は集落を立ち去った",'',];
-                        this.BackImage = "syuraku";
+                        //this.BackImage = "syuraku";
                         this.Action = this.Nextstage;
+                        if(this.Doneivent === "Stage9_Bossmae"){
+                          command = ["私にできることはここまでです、ご武運をお祈りします",this.Name+"は扉の先へと進んだ","前方に凄まじいオーラを感じる"];
+                        }
                       }
                       BClist = 0;
                       this.SwitchOn= false;
@@ -4342,6 +4489,10 @@ Tx_Melt:`相手の守備力を3/4にする
                         this.ImageOn = false;//画像非表示
                       }
                       if(a === 2){
+                        if(this.Doneivent === "Stage9_Bossmae"){//ステージ9をクリアしたばかりである場合
+                            this.Stage = 10;
+                            this.BackImage = "final4";
+                          }
                         if(this.Stage === 6 || this.Stage === 7){//ステージ6,7をクリアしたばかりである場合
                             this.Stage = 9;
                             this.BackImage = "stage93";
@@ -4389,7 +4540,93 @@ Tx_Melt:`相手の守備力を3/4にする
                       this.msg2=a;
                       a+=1;
                     },
+                    Lastboss: function(){
+                      let done = 0;
+                      if(a === 0){
+                        command = ["よくぞここまでたどり着いたな、褒めて遣わす","貴様は余が直接葬り去ってやろう",];
+                        //this.BackImage = "syuraku";
+                        this.Action = this.Lastboss;
+                        this.Doneivent = 'ラスボス戦';
+                        this.stagename = 'STGE：FAINAL';
+                        this.stagelength =1;
+                      }
+                      BClist = 0;
+                      this.SwitchOn= false;
+                      if(a === command.length){
+                        a= -1;
+                        done = 1;
+                        //魔王との戦い
+                        //this.BattleE('魔王',1000,270,270,[{action: this.EMajic_Burning, per: 30},{action: this.ESkill_Suijaku, per: 10},],[],'maou.png',3000,1000);
+                      }
+                      if(a === 1){
+                        this.Image = "娘.png";
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                      if(done === 1){//テキストを全て読み込んだのちに戦闘開始TODO:
+                        this.BattleE('魔王',1000,270,270,[{action: this.EMajic_Burning, per: 30},{action: this.ESkill_Suijaku, per: 10},],[],'maou.png',3000,1000);
+                      }
+                    },
+                    Lastboss2: function(){
+                      let done = 0;
+                      if(a === 0){
+                        command = ["おのれ、この程度で勝ったと思うなよ","おのれ、この程度で勝ったと思うなよ","余の真の力を見せてやろう",];//TODO:実験
+                        //this.BackImage = "syuraku";
+                        this.Action = this.Lastboss2;
+                        this.Doneivent = 'ラスボス戦2';
+                      }
+                      BClist = 0;
+                      this.SwitchOn= false;
+                      if(a === command.length){
+                        a= -1;
+                        done = 1;
+                        //魔王との戦い
+                        //this.BattleE('魔王',1000,270,270,[{action: this.EMajic_Burning, per: 30},{action: this.ESkill_Suijaku, per: 10},],[],'maou.png',3000,1000);
+                      }
+                      if(a === 1){
+                        this.Image = "娘.png";
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                      if(done === 1){//テキストを全て読み込んだのちに戦闘開始TODO:
+                        this.BattleE('大魔王ルシファー',2000,this.DEf+70,this.ATk - 10,[{action: this.E_Jumonhansya, per: 100},{action: this.E_Hadou, per: 25},{action: this.ESkill_Kanakiri, per: 20},{action: this.EMajic_Burning, per: 20},{action: this.EKaisin, per: 10},],[],'maou2.png',3000,1000);
+                      }
+                    },
+                    Ending: function(){
+                      // let done = 0;
+                      if(a === 0){
+                        command = ["ふふ、貴様の力、見事であったぞ","余の野望もついに破れたり","だが絶望はまた訪れるのだ","数百年の時を経て余が復活した時、貴様のような勇者は果たして現れるかな？","ではさらばだ、、ぐはっ","・・・","大丈夫、きっと数百年後もあなたの意志は受け継がれていますよ","-END-"];
+                        //this.BackImage = "syuraku";
+                        this.Action = this.Ending;
+                        this.Doneivent = 'ラスボス撃破';
+                        this.Image = 'maou.png';
+                        this.ImageOn = true;
+                      }
+                      BClist = 0;
+                      this.SwitchOn= false;
+                      if(a === command.length -1){
+                        this.Action ='';//TODO:何かクリア後のアクションを入れる
+                        //
+                        //done = 1;
+                        //魔王との戦い
+                        //this.BattleE('魔王',1000,270,270,[{action: this.EMajic_Burning, per: 30},{action: this.ESkill_Suijaku, per: 10},],[],'maou.png',3000,1000);
+                      }
+                      if(a === 4){
+                        this.ImageOn = false;//画像非表示
+                      }
+                      if(a === 6){
+                        this.BackImage = 'ending';
+                        this.Image = '娘.png';
+                        this.ImageOn = true;
+                      }
+                      this.text=command[a];
+                      this.msg2=a;
+                      a+=1;
+                    },
                     BattleEnd: function(){
+                      let done = 0;//魔王戦に使用
                       this.Action= this.BattleEnd;
                       if(this.Hp<=0){
                         //this.text=this.Name+"は息絶えた";
@@ -4399,6 +4636,7 @@ Tx_Melt:`相手の守備力を3/4にする
                         this.msg2=a;
                         //a+=1;
                         a=0;
+                          this.Gameover = 1;//GameOverの画面表示
                       }
                       else if(this.EHp<=0){
                         if(this.pushflag === false  && a=== -1){//一番最初に読み込んだ時のみの処理にする
@@ -4454,6 +4692,7 @@ MPが5上がった！
                           this.BClist='confirm';
                           console.log("out");
                           this.pushflag = false;//レベルアップ時にオンにしたが、オフにする
+                          done = 1;//魔王戦に使う
                         }
 
                         //}
@@ -4461,9 +4700,20 @@ MPが5上がった！
                         this.text=command[a];
                         this.msg2=a;
                         a+=1;
+                        if(this.Doneivent === 'ラスボス戦' && this.Hp > 0 && done === 1){//第一形態に勝った場合
+                          this.Lastboss2();
+                        }
+                        if(this.Doneivent === 'ラスボス戦2' && this.Hp > 0 && done === 1){//第一形態に勝った場合
+                          this.Ending();
+                        }
                       }
-                    }
-
+                    },
+                    reset: function () {
+                      location.reload();
+                    },
+                    setumei: function () {
+                      window.open('https://welcome19981998.github.io/explain/','_blank');
+                    },
                   }//methodの終わり
                 });
               </script>
