@@ -629,6 +629,16 @@
                    },
                    Newgame:0,//0ならゲームのタイトル画面
                    Gameover:0,//Gameover時の画面
+                   audio1:new Audio('bgm1.mp3'),
+                   bossbgm:new Audio('boss.mp3'),
+                   lastbossbgm:new Audio('lastboss.mp3'),
+                   openingbgm:new Audio('openingbgm.mp3'),
+                   yadobgm:new Audio('yadobgm.mp3'),
+                   s_dageki:new Audio('dageki.mp3'),
+                   s_kaihuku:new Audio('kaihuku.mp3'),
+                   s_dead:new Audio('dead.mp3'),
+                   s_magic:new Audio('magic.mp3'),
+                   bossflag:0,//ボス戦時のBGMを操作する
                    SwitchOn: true,//falseの時には全画面クリックのモードになる
                    Battle: true,
                    BCommand: true,//バトルのコマンドかアクション処理中か
@@ -882,6 +892,7 @@ Tx_saki:'村を出る',
                       return a;
                     },
                     Hurueru: function(){
+                      this.dageki();//効果音
                       if(this.huruerufun===2){
                         this.huruerufun-=1;
                       }
@@ -893,6 +904,7 @@ Tx_saki:'村を出る',
                       }
                     },
                     Tennmetu: function(){
+                      this.dageki();//効果音
                       if(this.tennmetufun===2){
                         this.tennmetufun-=1;
                       }
@@ -904,6 +916,7 @@ Tx_saki:'村を出る',
                       }
                     },
                     Scale: function(){
+                      this.magicplay();//効果音
                       if(this.scalefun===2){
                         this.scalefun-=1;
                       }
@@ -3587,6 +3600,7 @@ Tx_saki:'村を出る',
                       }
                       else if(this.Gopoint === 8){
                         this.Gopoint+=1;//ボスには一度しか当たらないようにする
+                        this.bossflag = 1;//ボス戦のBGMにする
                         this.BattleE('ジャイアントオーガ',200,50,20,[{action: this.EKaisin, per: 20},{action: this.EMagic_fire, per: 10}],[''],'oga.png',400,1000);
                       }
                       else if(this.Gopoint === 10){
@@ -3671,6 +3685,7 @@ Tx_saki:'村を出る',
                       }
                       else if(this.Gopoint === 9){
                         this.Gopoint+=1;//ボスには一度しか当たらないようにする
+                        this.bossflag = 1;//ボス戦のBGMにする
                         this.BattleE('ヒュドラ',600,130,50,[{action: this.jikosaisei, per: 80},{action: this.moudokuburesu, per: 60}],['火弱'],'hyudora.png',1300,2000);
                       }
                       else if(this.Gopoint === 11){
@@ -3734,6 +3749,7 @@ Tx_saki:'村を出る',
                       }
                       else if(this.Gopoint === 9){
                         this.Gopoint+=1;//ボスには一度しか当たらないようにする
+                        this.bossflag = 1;//ボス戦のBGMにする
                         this.BattleE('フェニックス',500,130,10,[{action: this.EMagic_charge, per: 30},{action: this.EMagic_fullheal, per: 25}],['氷弱'],'fenikkusu.png',1300,2000);
                       }
                       else if(this.Gopoint === 11){
@@ -3808,6 +3824,7 @@ Tx_saki:'村を出る',
                       }
                       else if(this.Gopoint === 9){
                         this.Gopoint+=1;//ボスには一度しか当たらないようにする
+                        this.bossflag = 1;//ボス戦のBGMにする
                         this.BattleE('ゲンブタートル',600,150,this.ATk,[{action: this.EMagic_growth, per: 10},{action: this.Eskill_Icebress, per: 25}],['火弱'],'genbu.png',1300,2000);
                       }
                       else if(this.Gopoint === 11){
@@ -3874,6 +3891,7 @@ Tx_saki:'村を出る',
                       }
                       else if(this.Gopoint === 14){
                         this.Gopoint+=1;//ボスには一度しか当たらないようにする
+                        this.bossflag = 1;//ボス戦のBGMにする
                         this.BattleE('マンティコア',1000,this.DEf+30,this.ATk,[{action: this.EMagic_charge, per: 30},{action: this.EMagic_build, per: 25}],['氷弱'],'manthikoa.png',2000,1000);
                       }
                       else if(this.Gopoint === 16){
@@ -3966,6 +3984,7 @@ Tx_saki:'村を出る',
                       }
                       else if(this.Gopoint === 17){
                         this.Gopoint+=1;//ボスには一度しか当たらないようにする
+                        this.bossflag = 1;//ボス戦のBGMにする
                         this.BattleE('リヴァイアサン',1000,240,220,[{action: this.E_Jumonhansya, per: 80},{action: this.E_Hadou, per: 30},{action: this.EKaisin, per: 10}],[],'ribaiasan.png',2000,1000);
                       }
                       else if(this.Gopoint === 19){
@@ -4077,6 +4096,7 @@ Tx_saki:'村を出る',
                       }
                       else if(this.Gopoint === 11){
                         this.Gopoint+=1;//ボスには一度しか当たらないようにする
+                        this.bossflag = 1;//ボス戦のBGMにする
                         this.BattleE('ケルベロス',1000,this.DEf+100,100,[{action: this.E_Jumonhansya, per: 60},{action: this.ESkill_Kabutowari, per: 30},{action: this.ESkill_minimam, per: 30},{action: this.ESkill_Kanakiri, per: 20}],[],'keruberosu.png',2000,1000);
                       }
                       else if(this.Gopoint === 13){
@@ -4160,6 +4180,16 @@ Tx_saki:'村を出る',
                       this.EGold = egold;
                       this.EActions = actions;
                       this.Eunique = eunique;
+                      //音楽の再生
+                      if(this.bossflag === 1){//ボス戦
+                        this.bossbgmplay();
+                      }
+                      else if(this.bossflag === 2){//ラスボス戦
+                        this.lastbossbgmplay();
+                      }
+                      else{//その他雑魚
+                        this.audio1play();
+                      }
                       /////
                       this.ImageOn = true;//画像表示
                       this.text = this.EName+"が現れた！";
@@ -4274,6 +4304,10 @@ Tx_saki:'村を出る',
                       this.confirmmsg　="行動を選んでください";
                         this.Confirmtype = "次の行動";
                       //
+                      if(a === 1){
+                        //音声の再生
+                        this.audio1play();
+                      }
                       command = ["なんと、宝箱はモンスターだった！",this.EName+"が現れた！",];
                       if(a === command.length){
                         a= -1;
@@ -4405,6 +4439,7 @@ Tx_saki:'村を出る',
                         this.Action = this.Opening;
                         this.Gopoint = 0;//次のステージのためにリセットしておく
                           this.BackImage = "stage0";//背景を変える
+                          this.openingbgmplay();//BGM流す
                       }
                       BClist = 0;
                       this.SwitchOn= false;
@@ -4415,6 +4450,7 @@ Tx_saki:'村を出る',
                           this.SwitchOn = true;
                           // this.Confirmtype = '買い物';
                           console.log("ousama");
+                          this.audiopause();//BGM止める
                       }
                       if(a === 1){
                         this.Image = "osama.png";
@@ -4439,6 +4475,7 @@ Tx_saki:'村を出る',
                         this.Hp = this.MaxHp
                         this.Mp = this.MaxMp//全回復
                         this.Joutaihennka = 'なし';
+                        this.yadobgmplay();//宿のBGM流す
                         if(this.Doneivent === "Stage9_Bossmae"){
                           this.Tx_saki = '先に進む';//ラスボス前
                           command = ["あなたなら必ずここまで来れると信じていました","旅の方、いえ、伝説の勇者よ、ここで休んでいきなさい",this.Name+"はHPとMPを全回復した！","魔王はこの先にいます、何か買い物されますか？"];
@@ -4490,6 +4527,7 @@ Tx_saki:'村を出る',
                         this.ImageOn = false;//画像非表示
                       }
                       if(a === 2){
+                        this.audiopause();//宿のBGM止める
                         if(this.Doneivent === "Stage9_Bossmae"){//ステージ9をクリアしたばかりである場合
                             this.Stage = 10;
                             this.BackImage = "final4";
@@ -4566,6 +4604,7 @@ Tx_saki:'村を出る',
                       this.msg2=a;
                       a+=1;
                       if(done === 1){//テキストを全て読み込んだのちに戦闘開始TODO:
+                        this.bossflag = 1;//ボス戦のBGMにする
                         this.BattleE('魔王',1000,270,270,[{action: this.EMajic_Burning, per: 30},{action: this.ESkill_Suijaku, per: 10},],[],'maou.png',3000,1000);
                       }
                     },
@@ -4592,6 +4631,7 @@ Tx_saki:'村を出る',
                       this.msg2=a;
                       a+=1;
                       if(done === 1){//テキストを全て読み込んだのちに戦闘開始TODO:
+                        this.bossflag = 2;//ラスボス戦のBGMにする
                         this.BattleE('大魔王ルシファー',2000,this.DEf+70,this.ATk - 10,[{action: this.E_Jumonhansya, per: 100},{action: this.E_Hadou, per: 25},{action: this.ESkill_Kanakiri, per: 20},{action: this.EMajic_Burning, per: 20},{action: this.EKaisin, per: 10},],[],'maou2.png',3000,1000);
                       }
                     },
@@ -4621,12 +4661,16 @@ Tx_saki:'村を出る',
                         this.BackImage = 'ending';
                         this.Image = '娘.png';
                         this.ImageOn = true;
+                        this.openingbgmplay();//BGM流す
                       }
                       this.text=command[a];
                       this.msg2=a;
                       a+=1;
                     },
                     BattleEnd: function(){
+                      //BGM停止
+                      this.audiopause();
+                      this.bossflag = 0;//BGMも元に戻す
                       let done = 0;//魔王戦に使用
                       this.Action= this.BattleEnd;
                       if(this.Hp<=0){
@@ -4638,6 +4682,7 @@ Tx_saki:'村を出る',
                         //a+=1;
                         a=0;
                           this.Gameover = 1;//GameOverの画面表示
+                          this.deadplay();//GameOver時のBGM
                       }
                       else if(this.EHp<=0){
                         if(this.pushflag === false  && a=== -1){//一番最初に読み込んだ時のみの処理にする
@@ -4700,6 +4745,10 @@ MPが5上がった！
                         this.ImageOn = false;//画像非表示
                         this.text=command[a];
                         this.msg2=a;
+                        //効果音出す
+                        if( command[a]=== `${this.Name}はレベルが${this.Level -1}に上がった！` || command[a]=== `${this.Name}はレベルが${this.Level}に上がった！`|| command[a]=== `${this.Name}はレベルが${this.Level-2}に上がった！`){
+                          this.kaihuku();
+                        }
                         a+=1;
                         if(this.Doneivent === 'ラスボス戦' && this.Hp > 0 && done === 1){//第一形態に勝った場合
                           this.Lastboss2();
@@ -4715,6 +4764,55 @@ MPが5上がった！
                     setumei: function () {
                       window.open('https://welcome19981998.github.io/explain/','_blank');
                     },
+                    audio1play: function () {
+                      this.audio1.currentTime = 0;
+                      this.audio1.play();
+                      this.audio1.loop = true;
+                    },
+                    bossbgmplay: function () {
+                      this.bossbgm.currentTime = 0;
+                      this.bossbgm.play();
+                      this.bossbgm.loop = true;
+                    },
+                    lastbossbgmplay: function () {
+                      this.lastbossbgm.currentTime = 0;
+                      this.lastbossbgm.play();
+                      this.lastbossbgm.loop = true;
+                    },
+                    yadobgmplay: function () {
+                      this.yadobgm.currentTime = 0;
+                      this.yadobgm.play();
+                      this.yadobgm.loop = true;
+                    },
+                    openingbgmplay: function () {
+                      this.openingbgm.currentTime = 0;
+                      this.openingbgm.play();
+                      this.openingbgm.loop = true;
+                    },
+                    deadplay: function () {
+                      this.s_dead.currentTime = 0;
+                      this.s_dead.play();
+                      this.s_dead.loop = true;
+                    },
+                    magicplay: function () {
+                      this.s_magic.currentTime = 0;
+                      this.s_magic.play();
+                    },
+                    audiopause: function() {
+                      this.audio1.pause();
+                      this.bossbgm.pause();
+                      this.lastbossbgm.pause();
+                      this.yadobgm.pause();
+                      this.openingbgm.pause();
+
+                    },
+                    dageki: function() {
+                      this.s_dageki.play();
+                    },
+                    kaihuku: function() {
+                      this.s_kaihuku.currentTime = 0;
+                      this.s_kaihuku.play();
+                    }
                   }//methodの終わり
                 });
               </script>
